@@ -1,0 +1,9 @@
+var singleleftbox = document.getElementById('singleleftbox');
+var singlebdiv = document.getElementById('singlebdiv');
+var singleleftdiv = document.getElementById('singleleftdiv');
+var srdtitle = document.getElementById('srdtitle');
+var srdcontent = document.getElementById('srdcontent');
+singlebdiv.style.width = singleleftbox.offsetWidth + "px";
+srdtitle.style.maxWidth = (singleleftbox.offsetWidth - 290) + "px";
+srdcontent.style.maxWidth = (singleleftbox.offsetWidth - 30) + "px";
+singleleftdiv.style.height = singlebdiv.offsetHeight + "px";
