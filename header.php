@@ -73,6 +73,7 @@ $keywords = trim(strip_tags($keywords));
 </head>
 <?php flush(); ?>
 <body>
+    <div id="bodyhidden"></div>
   <?php
   $wallpapers = scandir("./wallpaper/");
   $sentences = scandir("./sentence/");

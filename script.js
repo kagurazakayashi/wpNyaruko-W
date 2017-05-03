@@ -25,6 +25,7 @@ $(document).ready(function(){
             });
         }
     });
+    $("#bodyhidden").fadeOut(500,null);
 });
 function searchclick() {
     var searchkeyword = $("#searchkeyword");
@@ -46,49 +47,4 @@ function searchblur() {
 }
 function searchfocus() {
     searchclick();
-}
-function blockbdivclick(selfid,url) {
-    var self = $('#blockbdiv'+selfid);
-    self.css({"position":"fixed","z-index":"200","padding":"0px","border-radius":"0px"});
-    self.animate({
-        left:"0px",
-        height:"100%",
-        width:"100%"
-    },500);
-    $("body").fadeOut(500,function() {
-        window.location.href = url;
-    });
-}
-function blockbdivblur(selfid) {
-    var self = $('#blockbdiv'+selfid);
-    var selfimg = $('#blocktopimg'+selfid);
-    var selfimgdiv = $('#blocktopdiv'+selfid);
-    selfimg.stop();
-    var frame = getsizebyid('blocktopimg'+selfid, 'blocktopdiv'+selfid);
-    selfimg.css({
-        "left":frame[0]+"px",
-        "top":frame[1]+"px",
-        "width":frame[2]+"px",
-        "height":frame[3]+"px"
-    });
-    var newframe = [(frame[0]-(frame[2]*0.1)),(frame[1]-(frame[3]*0.1)),(frame[2]+(frame[2]*0.2)),(frame[3]+(frame[3]*0.2))];
-    selfimg.animate({
-        "left":newframe[0],
-        "top":newframe[1],
-        "width":newframe[2],
-        "height":newframe[3]
-    },500);
-}
-function blockbdivfocus(selfid) {
-    var self = $('#blockbdiv'+selfid);
-    var selfimg = $('#blocktopimg'+selfid);
-    var selfimgdiv = $('#blocktopdiv'+selfid);
-    selfimg.stop();
-    var frame = getsizebyid('blocktopimg'+selfid, 'blocktopdiv'+selfid);
-    selfimg.animate({
-        "left":frame[0],
-        "top":frame[1],
-        "width":frame[2],
-        "height":frame[3],
-    },500);
 }
