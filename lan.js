@@ -12,21 +12,10 @@ function imageslode() {
 		blocktopimg[i].onload = function() {
 			// console.log(btopimgNumber++);
 			if (this.complete) {
-				// console.log("--" + btopimgNumber);
-				// lrdimgCenter(this, this.parentNode);
-				var imgwidth = this.naturalWidth;
-				var imgheight = this.naturalHeight;
-				var imgwh = imgwidth / imgheight;
-				var screenwidth = this.parentNode.offsetWidth;
-				var screenheight = this.parentNode.offsetHeight;
-				var ccss = nyarukoplayer_imgcenter(imgwidth, imgheight, screenwidth, screenheight);
-
-				this.style.top = ccss[1] + "px";
-				this.style.left = ccss[0] + "px";
-				this.style.width = ccss[2] + "px";
-				this.style.height = ccss[3] + "px";
+				lrdimgCenter(this, this.parentNode);
 			}
 		}
+		lrdimgCenter(blocktopimg[i], blocktopdiv[i]);
 	}
 }
 
