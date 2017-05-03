@@ -19,6 +19,12 @@ function imageslode() {
 	}
 }
 
+function getsizebyid(imgid,divid) {
+	var blocktopimg = document.getElementById(imgid);
+	var blocktopdiv = document.getElementById(divid);
+	return lrdimgCenter(blocktopimg,blocktopdiv,false);
+}
+
 function lrdimgRight() {
 	var lrdimg = document.getElementsByName('lrdimg');
 	var lanrightdiv = document.getElementsByName('lanrightdiv');
@@ -48,14 +54,16 @@ function lrdimgRight() {
 	}
 }
 
-function lrdimgCenter(blocktopimg, blocktopdiv) {
+function lrdimgCenter(blocktopimg, blocktopdiv, echo = true) {
 	var imgwidth = blocktopimg.naturalWidth;
 	var imgheight = blocktopimg.naturalHeight;
 	var imgwh = imgwidth / imgheight;
 	var screenwidth = blocktopdiv.offsetWidth;
 	var screenheight = blocktopdiv.offsetHeight;
 	var ccss = nyarukoplayer_imgcenter(imgwidth, imgheight, screenwidth, screenheight);
-
+	if (echo == false) {
+		return ccss;
+	}
 	blocktopimg.style.top = ccss[1] + "px";
 	blocktopimg.style.left = ccss[0] + "px";
 	blocktopimg.style.width = ccss[2] + "px";

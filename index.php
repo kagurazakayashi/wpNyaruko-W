@@ -8,14 +8,14 @@ if (!isset($_GET["data"])) { get_header(); ?>
 	<div class="postlist">
 		<!-- Blog Post -->
 		<div id="postsbox">
-<?php } $datacount = isset($_GET["data"])?$_GET["data"]:0; echo "<script>var paged=".(isset($_GET["paged"])?$_GET["paged"]:1).";datacount=".$datacount.";</script>" ?>
+<?php } $datacount = isset($_GET["data"])?$_GET["data"]+1:0; echo "<script>var paged=".(isset($_GET["paged"])?$_GET["paged"]:1).";datacount=".$datacount.";</script>" ?>
 			<?php
 				$indexint=$datacount;
 				if (have_posts()) : while (have_posts()) : the_post();
 			?>
-			<div id=<?php echo "blockbdiv".$indexint++; ?> class="blockbdiv" onclick="javascrtpt:window.location.href='<?php the_permalink(); ?>'">
-				<div name="blocktopdiv" class="blocktopdiv">
-					<img name="blocktopimg" id="blocktopimg" src="<?php echo catch_that_image() ?>" alt=""/>
+			<div id="blockbdiv<?php echo $indexint ?>" class="blockbdiv" onclick="blockbdivclick(<?php echo "'".$indexint."','"; the_permalink(); echo "'"; ?>)" onmouseover="blockbdivblur(<?php echo $indexint ?>)" onmouseout="blockbdivfocus(<?php echo $indexint ?>)">
+				<div name="blocktopdiv" id="blocktopdiv<?php echo $indexint ?>" class="blocktopdiv">
+					<img name="blocktopimg" id="blocktopimg<?php echo $indexint ?>" src="<?php echo catch_that_image() ?>" alt="<?php the_title(); ?>" />
 					<div class="topline"><?php the_time('Y-m-d') ?>&nbsp;</div>
 					<div class="toptags"><?php $category = get_the_category(); echo '<a href="'.get_category_link($category[0]->term_id ).'">'.$category[0]->cat_name.'</a>'; ?></div>
 				</div>
@@ -35,7 +35,7 @@ if (!isset($_GET["data"])) { get_header(); ?>
 							?></div>
 				</div>
 			</div>
-			<?php echo "<script>datacount=".$indexint.";</script>" ?>
+			<?php echo "<script>datacount=".$indexint.";</script>"; $indexint++; ?>
 			<div class="postlisthr">&nbsp;</div>
 			<?php endwhile; else : ?>
 				<p id="nopost">没啦</p>
