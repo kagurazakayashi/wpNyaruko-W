@@ -3,7 +3,7 @@ if (!isset($_GET["data"])) { get_header(); ?>
 	<div class="postlist">
 		<!-- Blog Post -->
 		<div id="postsbox">
-<?php } $datacount = isset($_GET["data"])?$_GET["data"]:0; echo "<script>var paged=".(isset($_GET["paged"])?$_GET["paged"]:1).";datacount=".$datacount.";</script>" ?>
+<?php } $datacount = isset($_GET["data"])?$_GET["data"]+1:0; echo "<script>var paged=".(isset($_GET["paged"])?$_GET["paged"]:1).";datacount=".$datacount.";</script>" ?>
 			<?php
 				$indexint=$datacount;
 				if (have_posts()) : while (have_posts()) : the_post();
@@ -34,6 +34,7 @@ if (!isset($_GET["data"])) { get_header(); ?>
 							?></div>
 				</div>
 			</div>
+			<script>blockbdivin($("#blockhiddendiv<?php echo $indexint ?>"));</script>
 			<?php echo "<script>datacount=".$indexint.";</script>"; $indexint++; ?>
 			<div class="postlisthr">&nbsp;</div>
 			<?php endwhile; else : ?>

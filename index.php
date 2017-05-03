@@ -14,6 +14,7 @@ if (!isset($_GET["data"])) { get_header(); ?>
 				if (have_posts()) : while (have_posts()) : the_post();
 			?>
 			<div id="blockbdiv<?php echo $indexint ?>" class="blockbdiv" onclick="blockbdivclick(<?php echo "'".$indexint."','"; the_permalink(); echo "'"; ?>)" onmouseover="blockbdivblur(<?php echo $indexint ?>)" onmouseout="blockbdivfocus(<?php echo $indexint ?>)">
+			<div id="blockhiddendiv<?php echo $indexint ?>" class="blockhiddendiv"></div>
 				<div name="blocktopdiv" id="blocktopdiv<?php echo $indexint ?>" class="blocktopdiv">
 					<img name="blocktopimg" id="blocktopimg<?php echo $indexint ?>" src="<?php echo catch_that_image() ?>" alt="<?php the_title(); ?>" />
 					<div class="topline"><?php the_time('Y-m-d') ?>&nbsp;</div>
@@ -35,6 +36,7 @@ if (!isset($_GET["data"])) { get_header(); ?>
 							?></div>
 				</div>
 			</div>
+			<script>blockbdivin($("#blockhiddendiv<?php echo $indexint ?>"));</script>
 			<?php echo "<script>datacount=".$indexint.";</script>"; $indexint++; ?>
 			<div class="postlisthr">&nbsp;</div>
 			<?php endwhile; else : ?>

@@ -111,7 +111,7 @@ $keywords = trim(strip_tags($keywords));
   <div id="bannerimg" class="bannerimgs">
       <div id="bannertw"></div>
       <div id="bannerdw"></div>
-      <a href="<?php echo get_option('home'); ?>/"><img id="title" src="resources/title3.gif" alt=<?php bloginfo('name'); ?> name=<?php bloginfo('name'); ?> /></a>
+      <a title="返回<?php bloginfo('name'); ?>主页" href="<?php echo get_option('home'); ?>/"><img id="title" src="resources/title3.gif" alt=<?php bloginfo('name'); ?> name=<?php bloginfo('name'); ?> /></a>
       <div id="sentence"><?=$nowsentence?></div>
       <div id="mainmenubox">
           <?php wp_nav_menu(array(

@@ -34,10 +34,10 @@ function searchclick() {
         searchkeyword.css("color","black");
     }
 }
-function searchenter() {
-    var searchkeyword = $("#searchkeyword").attr("value");
-    console.log(searchkeyword);
-}
+// function searchenter() {
+//     var searchkeyword = $("#searchkeyword").attr("value");
+//     console.log(searchkeyword);
+// }
 function searchblur() {
     var searchkeyword = $("#searchkeyword");
     if (searchkeyword.attr("value") == "") {
@@ -47,4 +47,10 @@ function searchblur() {
 }
 function searchfocus() {
     searchclick();
+}
+function blockbdivin(self) {
+	//self.fadeOut(1000,null);
+    self.animate({
+        "height":0
+    },500);
 }
