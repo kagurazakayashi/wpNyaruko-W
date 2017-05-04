@@ -1,11 +1,11 @@
 /*
-Theme Name: uuumoe
-Theme URI:
-Description:
-Version: 0.1
+Theme Name: wpNyaruko
+Theme URI: https://github.com/cxchope/wpNyaruko-W
+Description: 该主题为定制向主题，不提供任何设置，也不保证在其他网站上可以正确运行。
+Version: 1.0
 Author: 0wew0,yashi
-Author URI:
-Tags:
+Author URI: https://github.com/cxchope/wpNyaruko-W
+Tags: nyaruko, acg
 */
 
 /* Global Styles */
@@ -226,7 +226,7 @@ h4 {
 	float: left;
 }
 /*头条列表*/
-#scrolltext {
+#scrolltext, #scrolltextsingle {
 	width: 20%;
 	float: left;
 }
@@ -247,7 +247,7 @@ h4 {
 		width: 100%;
 	}
 	/*头条列表*/
-	#scrolltext {
+	#scrolltext, #scrolltextsingle {
 		width: 100%;
 	}
 }
@@ -690,7 +690,7 @@ p, h3, label, cite {
 }
 
 /*single样式*/
-#singleleftbox{
+.singleleftbox{
 	margin-top: 5px;
 	margin-bottom: 5px;
 }
@@ -735,6 +735,9 @@ p, h3, label, cite {
 	font-size: 12px;
 	float: left;
 	margin-left: 90px;
+}
+#srddate a {
+	color: #FFF;
 }
 
 #srdcontent{

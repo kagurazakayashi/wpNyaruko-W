@@ -1,9 +1,25 @@
-var singleleftbox = document.getElementById('singleleftbox');
-var singlebdiv = document.getElementById('singlebdiv');
-var singleleftdiv = document.getElementById('singleleftdiv');
-var srdtitle = document.getElementById('srdtitle');
-var srdcontent = document.getElementById('srdcontent');
-singlebdiv.style.width = singleleftbox.offsetWidth + "px";
-srdtitle.style.maxWidth = (singleleftbox.offsetWidth - 290) + "px";
-srdcontent.style.maxWidth = (singleleftbox.offsetWidth - 30) + "px";
-singleleftdiv.style.height = singlebdiv.offsetHeight + "px";
+singlelode();
+$(window).resize(function() {
+	singlelode();
+});
+
+function singlelode() {
+	var scrollpic = $('#scrollpic');
+	var singlebdiv = $('#singlebdiv');
+	var singleleftdiv = $('#singleleftdiv');
+	var srdtitle = $('#srdtitle');
+	var srdcontent = $('#srdcontent');
+	console.log(singlebdiv.width());
+	singlebdiv.css({
+		"width": (scrollpic.width() - 3) + "px"
+	});
+	srdtitle.css({
+		"max-width": (scrollpic.width() - 293) + "px"
+	});
+	srdcontent.css({
+		"max-width": (scrollpic.width() - 33) + "px"
+	});
+	singleleftdiv.css({
+		"height": singlebdiv.height() + "px"
+	});
+}

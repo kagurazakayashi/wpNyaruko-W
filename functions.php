@@ -177,17 +177,25 @@ function search_orderby_filter($orderby = ''){
 
 /*高亮搜索的内容*/
 function search_word_replace($buffer){
-    if(is_search()){
-        $arr = explode(" ", get_search_query());
-        $arr = array_unique($arr);
-        foreach($arr as $v)
-            if($v)
-                $buffer = preg_replace("/(".$v.")/i", "<span style=\"background-color:#ff0;\"><strong>$1</strong></span>", $buffer);
+  if(is_search()){
+    $arr = explode(" ", get_search_query());
+    $arr = array_unique($arr);
+    foreach($arr as $v)
+      if($v)
+        $buffer = preg_replace("/(".$v.")/i", "<span style=\"background-color:#ff0;\"><strong>$1</strong></span>", $buffer);
     }
-    return $buffer;
+  return $buffer;
 }
 add_filter("the_title", "search_word_replace", 200);
 // add_filter("the_excerpt", "search_word_replace", 200);
 // add_filter("the_content", "search_word_replace", 200);
 /*高亮搜索的内容*/
+
+// 移除Wordpress后台顶部左上角的W图标
+function annointed_admin_bar_remove() {
+  global $wp_admin_bar;
+  /* Remove their stuff */
+  $wp_admin_bar->remove_menu('wp-logo');
+}
+add_action('wp_before_admin_bar_render', 'annointed_admin_bar_remove', 0);
 ?>
