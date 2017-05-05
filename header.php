@@ -23,7 +23,7 @@
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有文章" href="<?php echo get_bloginfo('rss2_url'); ?>" />
 <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有评论" href="<?php bloginfo('comments_rss2_url'); ?>" />
-<script type="text/javascript" src="<?php bloginfo("template_url"); ?>/jquery.min.js"></script>
+<script type="text/javascript" src="/lib/jQuery/jquery.min.js"></script>
 <script type="text/javascript" src="<?php bloginfo("template_url"); ?>/script.js"></script>
 <?php
 $description = '';
@@ -75,17 +75,19 @@ $keywords = trim(strip_tags($keywords));
 <body>
     <div id="bodyhidden"></div>
   <?php
-  $wallpapers = scandir("./wallpaper/");
-  $sentences = scandir("./sentence/");
+  $wpuploaddirs = wp_upload_dir();
+  $sentencedir = $wpuploaddirs["basedir"]."/sentence/";
+  $wallpapers = scandir($wpuploaddirs["basedir"]."/wallpaper/");
+  $sentences = scandir($sentencedir);
   $wallpaperid = rand(0,count($wallpapers)-3)+2;
   $sentenceid = rand(0,count($sentences)-3)+2;
-  echo '<style>.bannerimgs {background-image: url(wallpaper/'.$wallpapers[$wallpaperid].');}</style>';
-  $nowsentence = "./sentence/".$sentences[$sentenceid];
+  echo '<style>.bannerimgs {background-image: url('.$wpuploaddirs['baseurl'].'/wallpaper/'.$wallpapers[$wallpaperid].');}</style>';
+  $nowsentence = $sentencedir.$sentences[$sentenceid];
   if(file_exists($nowsentence)){
       $nowsentence = file_get_contents($nowsentence);
       $nowsentence = str_replace("\n","<br />",$nowsentence);
   } else {
-      $nowsentence = "ERROR";
+      $nowsentence = "ERROR:".$nowsentence;
   }
   ?>
   <div id="rightbottommenubox" value="0">
@@ -111,7 +113,9 @@ $keywords = trim(strip_tags($keywords));
   <div id="bannerimg" class="bannerimgs">
       <div id="bannertw"></div>
       <div id="bannerdw"></div>
-      <a title="返回<?php bloginfo('name'); ?>主页" href="<?php echo get_option('home'); ?>/"><img id="title" src="resources/title3.gif" alt=<?php bloginfo('name'); ?> name=<?php bloginfo('name'); ?> /></a>
+      <a title="返回<?php bloginfo('name'); ?>主页" href="<?php echo get_option('home'); ?>/">
+      <img id="title" src="<?php echo $wpuploaddirs['baseurl']; ?>/resources/title3.gif" alt=<?php bloginfo('name'); ?> name=<?php bloginfo('name'); ?> />
+      </a>
       <div id="sentence"><?=$nowsentence?></div>
       <div id="mainmenubox">
           <?php wp_nav_menu(array(

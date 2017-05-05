@@ -39,7 +39,7 @@ $first_img = $matches [1] [0];
 //如果文章无图片，获取自定义图片
  
 if(empty($first_img)){ //Defines a default image
-$first_img = "/images/default.jpg";
+$first_img = bloginfo("template_url")."/images/default.jpg";
  
 //请自行设置一张default.jpg图片
 }
