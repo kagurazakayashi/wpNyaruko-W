@@ -23,16 +23,17 @@ if (!isset($_GET["data"])) { get_header(); ?>
 				<div class="blockbottomdiv">
 					<div class="bottomtitle"><?php the_title(); ?></div>
 					<div class="bottomcontent"><?php
-							$content = get_the_content();
-							$content = preg_replace('/<img.*? \/>/','',$content);
-							$content = str_replace(array("\r\n", "\r", "\n"), "<br/>", $content);
-							$content = str_replace("<br/><br/>", "<br/>", $content);
-							$content = str_replace("<br/><br/>", "<br/>", $content);
-							$contentStart = substr($content,0,5);
-							if ($contentStart == "<br/>") {
-								$content = substr($content,5,(strlen($content)-5));
-							}
-							echo $content;
+							the_excerpt();
+							// $content = get_the_content();
+							// $content = preg_replace('/<img.*? \/>/','',$content);
+							// $content = str_replace(array("\r\n", "\r", "\n"), "<br/>", $content);
+							// $content = str_replace("<br/><br/>", "<br/>", $content);
+							// $content = str_replace("<br/><br/>", "<br/>", $content);
+							// $contentStart = substr($content,0,5);
+							// if ($contentStart == "<br/>") {
+							// 	$content = substr($content,5,(strlen($content)-5));
+							// }
+							// echo $content;
 							?></div>
 				</div>
 			</div>

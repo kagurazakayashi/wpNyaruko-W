@@ -17,20 +17,21 @@ if (!isset($_GET["data"])) { get_header(); ?>
 				<div class="blockbottomdiv">
 					<div class="bottomtitle"><?php the_title(); ?></div>
 					<div class="bottomcontent"><?php
-							$content = get_the_content();
-							$content = mb_strimwidth(strip_tags(apply_filters('the_content', $post->post_content)), 0, 600,"......");
-							$keys = explode(" ",$s);
-							$content = preg_replace('/('.implode('|', $keys) .')/iu','<span style="font-weight:700;background:#ffff00;">\0</span>',$content);
-							// echo "<script>console.log('".$con11."');</script>";
-							$content = preg_replace('/<img.*? \/>/','',$content);
-							$content = str_replace(array("\r\n", "\r", "\n"), "<br/>", $content);
-							$content = str_replace("<br/><br/>", "<br/>", $content);
-							$content = str_replace("<br/><br/>", "<br/>", $content);
-							$contentStart = substr($content,0,5);
-							if ($contentStart == "<br/>") {
-								$content = substr($content,5,(strlen($content)-5));
-							}
-							echo $content;
+					the_excerpt();
+							// $content = get_the_content();
+							// $content = mb_strimwidth(strip_tags(apply_filters('the_content', $post->post_content)), 0, 600,"......");
+							// $keys = explode(" ",$s);
+							// $content = preg_replace('/('.implode('|', $keys) .')/iu','<span style="font-weight:700;background:#ffff00;">\0</span>',$content);
+							// // echo "<script>console.log('".$con11."');</script>";
+							// $content = preg_replace('/<img.*? \/>/','',$content);
+							// $content = str_replace(array("\r\n", "\r", "\n"), "<br/>", $content);
+							// $content = str_replace("<br/><br/>", "<br/>", $content);
+							// $content = str_replace("<br/><br/>", "<br/>", $content);
+							// $contentStart = substr($content,0,5);
+							// if ($contentStart == "<br/>") {
+							// 	$content = substr($content,5,(strlen($content)-5));
+							// }
+							// echo $content;
 							?></div>
 				</div>
 			</div>

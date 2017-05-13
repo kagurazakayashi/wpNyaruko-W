@@ -198,4 +198,13 @@ function annointed_admin_bar_remove() {
   $wp_admin_bar->remove_menu('wp-logo');
 }
 add_action('wp_before_admin_bar_render', 'annointed_admin_bar_remove', 0);
+
+function new_excerpt_length($length) {
+    return 195;
+}
+add_filter('excerpt_length', 'new_excerpt_length');
+function new_excerpt_more($more) {
+    return '...[点击阅览全文]';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
 ?>
