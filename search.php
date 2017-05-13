@@ -5,7 +5,7 @@ if (!isset($_GET["data"])) { get_header(); ?>
 		<div id="postsbox">
 <?php } $datacount = isset($_GET["data"])?$_GET["data"]+1:0; echo "<script>var paged=".(isset($_GET["paged"])?$_GET["paged"]:1).";datacount=".$datacount.";</script>" ?>
 			<?php
-				$indexint=$datacount;
+				$indexint = $datacount;
 				if (have_posts()) : while (have_posts()) : the_post();
 			?>
 			<div id="blockbdiv<?php echo $indexint ?>" class="blockbdiv" onclick="blockbdivclick(<?php echo "'".$indexint."','"; the_permalink(); echo "'"; ?>)" onmouseover="blockbdivblur(<?php echo $indexint ?>)" onmouseout="blockbdivfocus(<?php echo $indexint ?>)">
@@ -40,7 +40,7 @@ if (!isset($_GET["data"])) { get_header(); ?>
 			<div class="postlisthr">&nbsp;</div>
 			<?php endwhile; else : ?>
 				<p id="nopost">没啦</p>
-<?php endif; if (!isset($_GET["data"])) { get_header(); ?>
+		<?php endif; if (!isset($_GET["data"])) { get_header(); ?>
 		</div>
 		<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/ceramictiles.js"></script>
 		<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/lan.js"></script>

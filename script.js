@@ -54,3 +54,9 @@ function blockbdivin(self) {
         "height":0
     },500);
 }
+function showprivacy() {
+    if ($(".yashiprivacy").length == 0) {
+        $("body").append("<div class='yashiprivacy'></div>");
+        $(".yashiprivacy").load('privacy.html .yashiprivacyw');
+    }
+}

@@ -95,19 +95,21 @@ $keywords = trim(strip_tags($keywords));
     <div id="bodyhidden"></div>
   <?php
   $wpuploaddirs = wp_upload_dir();
-  $sentencedir = $wpuploaddirs["basedir"]."/sentence/";
   $wallpapers = scandir($wpuploaddirs["basedir"]."/wallpaper/");
-  $sentences = scandir($sentencedir);
   $wallpaperid = rand(0,count($wallpapers)-3)+2;
-  $sentenceid = rand(0,count($sentences)-3)+2;
+//   $sentencedir = $wpuploaddirs["basedir"]."/sentence/";
+//   $sentences = scandir($sentencedir);
+//   $sentenceid = rand(0,count($sentences)-3)+2;
   echo '<style>.bannerimgs {background-image: url('.$wpuploaddirs['baseurl'].'/wallpaper/'.$wallpapers[$wallpaperid].');}</style>';
-  $nowsentence = $sentencedir.$sentences[$sentenceid];
-  if(file_exists($nowsentence)){
-      $nowsentence = file_get_contents($nowsentence);
-      $nowsentence = str_replace("\n","<br />",$nowsentence);
-  } else {
-      $nowsentence = "ERROR:".$nowsentence;
-  }
+//   $nowsentence = $sentencedir.$sentences[$sentenceid];
+//   if(file_exists($nowsentence)){
+//       $nowsentence = file_get_contents($nowsentence);
+//       $nowsentence = str_replace("\n","<br />",$nowsentence);
+//   } else {
+//       $nowsentence = "ERROR:".$nowsentence;
+//   }
+  $sentences = $wpdb->get_results("select * from yashisentence order by rand() limit 1;")[0];
+  $nowsentence = $sentences->text.'</br><a href="https://zh.moegirl.org/'.$sentences->from.'" target="_blank" title="点击这里可以在《萌娘百科》中搜索「'.$sentences->from.'」词条。可以刷新网页来看看其他句子。" >——'.$sentences->from.'</a>';
   ?>
   <div id="rightbottommenubox" value="0">
       <div id="rightbottommenuboxf">

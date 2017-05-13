@@ -60,7 +60,7 @@ else if ( isset($_GET['order']) && ($_GET['order']=='alpha') )
 				<div name="blocktopdiv" id="blocktopdiv<?php echo $indexint ?>" class="blocktopdiv">
 					<img name="blocktopimg" id="blocktopimg<?php echo $indexint ?>" src="<?php echo catch_that_image() ?>" alt="<?php the_title(); ?>" />
 					<div class="topline"><?php the_time('Y-m-d') ?>&nbsp;</div>
-					<div class="toptags"><?php $category = get_the_category(); echo '<a href="'.get_category_link($category[0]->term_id ).'">'.$category[0]->cat_name.'</a>'; ?></div>
+					<div class="toptags"><?php $category = get_the_category(); echo '<a href="'.get_category_link(end($category)->term_id ).'">'.end($category)->cat_name.'</a>'; ?></div>
 				</div>
 				<div class="blockbottomdiv">
 					<div class="bottomtitle"><?php the_title(); ?></div>

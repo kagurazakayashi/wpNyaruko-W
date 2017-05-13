@@ -185,13 +185,11 @@ h4 {
     top: 70px;
     left: 0px;
     width: 80%;
-    height: 70px;
     box-shadow: -5px 5px 5px lightgray;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
     padding: 0;
     text-align: center;
-    padding-top: 17px;
 }
 #foot #footbox:hover {
 	background-color: rgba(255, 255, 255, 0.9);
