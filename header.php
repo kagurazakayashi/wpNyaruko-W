@@ -3,6 +3,25 @@
 <head profile="http://gmpg.org/xfn/11">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="abstract" content="KagurazakaYashi 神楽坂雅詩 BLOG">
+<meta name="author" content="cxchope">
+<meta name="classification" content="Personal website, Blog">
+<meta name="copyright" content="Copyright KagurazakaYashi, All rights Reserved.">
+<meta name="designer" content="KagurazakaYashi">
+<meta name="distribution" content="Global">
+<meta name="language" content="zh-CN">
+<meta name="publisher" content="KagurazakaYashi 神楽坂雅詩">
+<meta name="rating" content="General">
+<meta name="resource-type" content="Document">
+<meta name="revisit-after" content="7">
+<meta name="subject" content="Blog">
+<meta name="template" content="Yashi">
+<meta name="server" content="YashiServer-BJA">
+<meta name="theme-color" content="#FE99CC">
+<link rel="shortcut icon" href="/yashi/favicon.ico">
+<link rel="icon" href="/yashi/resources/Android-192.png" />
+<link rel="apple-touch-icon" href="/yashi/resources/iPhone3x-180.png" />
+<link rel="apple-touch-icon-precomposed" href="/yashi/resources/iPhone3x-180.png" />
 <title>
 <?php if ( is_home() ) {
         bloginfo('name'); echo " - "; bloginfo('description');
@@ -114,7 +133,7 @@ $keywords = trim(strip_tags($keywords));
       <div id="bannertw"></div>
       <div id="bannerdw"></div>
       <a title="返回<?php bloginfo('name'); ?>主页" href="<?php echo get_option('home'); ?>/">
-      <img id="title" src="<?php echo $wpuploaddirs['baseurl']; ?>/resources/title3.gif" alt=<?php bloginfo('name'); ?> name=<?php bloginfo('name'); ?> />
+      <img id="title" src="/yashi/wp-content/uploads/2017/05/yaship.gif" alt=<?php bloginfo('name'); ?> name=<?php bloginfo('name'); ?> />
       </a>
       <div id="sentence"><?=$nowsentence?></div>
       <div id="mainmenubox">
