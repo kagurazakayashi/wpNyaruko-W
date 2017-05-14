@@ -413,6 +413,13 @@ p, h3, label, cite {
 .pageadimg {
 	width: 170px;
 }
+/*评论区*/
+#commentsbox {
+	padding: 20px;
+}
+.comment {
+	display: none;
+}
 /*右下角按钮*/
 #rightbottommenubox {
     position: fixed;
