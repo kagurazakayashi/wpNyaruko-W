@@ -616,11 +616,11 @@ p, h3, label, cite {
 	position: relative;
 	/*background-color: green;*/
 }
-
+/*文章块*/
 .blockbdiv{
 	width:310px;
 	height:400px;
-	background: linear-gradient(to top, #FFCCFF, #FFF);
+	background: linear-gradient(to top, #FFF0F5, #FFF);
 	box-shadow:0px 3px 5px lightgray;
 	border-radius: 4px;
 	overflow: hidden;
@@ -630,6 +630,7 @@ p, h3, label, cite {
 }
 .blockbdiv:hover {
 	box-shadow:0px 3px 5px gray;
+	background: linear-gradient(to bottom, #FFF0F5, #FFF);
 }
 .blockhiddendiv {
 	position:relative;
