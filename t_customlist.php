@@ -10,17 +10,19 @@ Template Name: 自定义列表
 $jsondata = json_decode(explode("[JSON]",get_the_content())[1]);
 $indexint = 0;
 foreach ($jsondata as $nowdata){
-    $itemtitle = $nowdata[0];
-    $itemsubtitle = $nowdata[1];
-    $itemimage = $nowdata[2];
-    $itemhref = $nowdata[3];
+	$itemtype = $nowdata[0];
+	$itemdate = $nowdata[1];
+    $itemtitle = $nowdata[2];
+    $itemsubtitle = $nowdata[3];
+    $itemimage = $nowdata[4];
+    $itemhref = $nowdata[5];
 ?>
 <div id="blockbdiv<?php echo $indexint ?>" class="blockbdiv" onclick="blockbdivclick(<?php echo "'".$indexint."','"; echo $itemhref; echo "'"; ?>)" onmouseover="blockbdivblur(<?php echo $indexint ?>)" onmouseout="blockbdivfocus(<?php echo $indexint ?>)">
 			<div id="blockhiddendiv<?php echo $indexint ?>" class="blockhiddendiv"></div>
 				<div name="blocktopdiv" id="blocktopdiv<?php echo $indexint ?>" class="blocktopdiv">
 					<img name="blocktopimg" id="blocktopimg<?php echo $indexint; ?>" src="<?php echo $itemimage ?>" alt="<?php echo $itemtitle; ?>" />
-					<div class="topline"></div>
-					<div class="toptags"><?php the_title(); ?></div>
+					<div class="topline"><?php echo $itemdate; ?></div>
+					<div class="toptags"><?php echo $itemtype; ?></div>
 				</div>
 				<div class="blockbottomdiv">
 					<div class="bottomtitle"><?php echo $itemtitle; ?></div>
