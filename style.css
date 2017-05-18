@@ -132,7 +132,8 @@ h4 {
 #bannerimg #mainmenubox li a {
 	height: 80px;
 	line-height:80px;
-    width:90px;
+    /*width: 90px;*/
+	/*width: 100%;*/
 }
 #bannerimg #mainmenubox ul{
     position:absolute;
@@ -140,13 +141,18 @@ h4 {
     top: -18px;
     font-size: 18px;
     align-content: center;
+	width: 100%;
+	width: calc(100% - 300px);
 }
 #bannerimg #mainmenubox li{
     float:left;
+	width: 90px;
+	width: calc(100% / 5);
 }
 #bannerimg #mainmenubox a{
     display:block;
     text-align:center;
+	width: 100%;
 }
 #bannerimg #mainmenubox a:link{
     color:#666;
