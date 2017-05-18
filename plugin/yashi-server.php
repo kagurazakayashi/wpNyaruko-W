@@ -7,9 +7,9 @@ Version:0.1
 Author:
 Author URI:
 */
-$password0 = false
-$password1 = "userpwd";
-$password2 = "webpwd";
+$password0 = false; //额外检查开关
+$password1 = "userpassword"; ///wp-admin/?pwd=$password1 当天当IP记住
+$password2 = "sysstr"; //无需用户提供
 if (!class_exists("yashiserverc")) {
 	class yashiserverc {
 		// Ram using calc
@@ -133,7 +133,8 @@ if (class_exists("yashiserverc")) {
 if (isset($yashiserverc)) {
 	//!is_super_admin() || !is_admin_bar_showing()
 	add_action('wp_before_admin_bar_render', array(&$yashiserverc, 'Print_Admin_Bar'));
-	if ($password0 && strstr($_SERVER['PHP_SELF'],"wp-admin")) {
+	//lock
+	if ($password0 == true && strstr($_SERVER['PHP_SELF'],"wp-admin")) {
 		$vstr = $password2.$yashiserverc->Getip();
 		if (!isset($_GET["pwd"]) || $_GET["pwd"] != $password1) {
 			if (!isset($_COOKIE["wp-admin"]) || $_COOKIE["wp-admin"] != $vstr) {

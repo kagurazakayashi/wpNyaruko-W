@@ -5,7 +5,7 @@
 <div>
     <?php the_content(); ?>
     <!-- Contact Form -->
-    <?php comments_template(); ?>
+    <div id="commentsbox"><p><b>评论区</b>（如果看不到，请先想办法访问谷歌233）</p><?php comments_template(); ?></div>
 </div>
 <?php else : ?>
 <div>

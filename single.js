@@ -9,7 +9,6 @@ function singlelode() {
 	var singleleftdiv = $('#singleleftdiv');
 	var srdtitle = $('#srdtitle');
 	var srdcontent = $('#srdcontent');
-	console.log(singlebdiv.width());
 	singlebdiv.css({
 		"width": (scrollpic.width() - 3) + "px"
 	});
