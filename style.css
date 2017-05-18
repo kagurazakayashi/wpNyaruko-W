@@ -228,60 +228,6 @@ h4 {
 	width: 20%;
 	float: left;
 }
-/*首尾响应式布局*/
-@media screen and (max-width: 950px) {
-	#bannerimg #mainmenubox {
-		width: 100%;
-		border-top-left-radius: 0px;
-		border-bottom-left-radius: 0px;
-	}
-	#foot #footbox {
-		width: 100%;
-		border-top-right-radius: 0px;
-		border-bottom-right-radius: 0px;
-	}
-	/*滚动图片*/
-	#scrollpic {
-		width: 100%;
-	}
-	/*头条列表*/
-	#scrolltext, #scrolltextsingle {
-		width: 100%;
-	}
-}
-@media screen and (max-width: 750px) {
-	#bannerimg #mainmenubox {
-		visibility: hidden;
-	}
-	#bannerimg #sentence {
-		top: 130px;
-		right: auto;
-		left: 20px;
-	}
-	#bannerimg {
-		height: 300px;
-	}
-	.page {
-		top: 300px;
-	}
-	/*滚动图片*/
-	#scrollpic {
-		width: 100%;
-	}
-	/*头条列表*/
-	#scrolltext {
-		width: 100%;
-		display: none;
-	}
-}
-@media screen and (min-width: 750px) {
-	#rightbottommenubox {
-		visibility: hidden;
-	}
-	.page {
-		top: 600px;
-	}
-}
 /*主页面区域*/
 .page {
     position:absolute;
@@ -750,7 +696,7 @@ p, h3, label, cite {
 #srddate{
 	line-height: 30px;
 	font-size: 12px;
-	float: left;
+	float: right;
 	margin-left: 90px;
 }
 #srddate a {
@@ -772,3 +718,61 @@ p, h3, label, cite {
 	overflow: hidden;
 }
 /*single样式*/
+
+/*响应式布局*/
+@media screen and (max-width: 950px) {
+	#bannerimg #mainmenubox {
+		width: 100%;
+		border-top-left-radius: 0px;
+		border-bottom-left-radius: 0px;
+	}
+	#foot #footbox {
+		width: 100%;
+		border-top-right-radius: 0px;
+		border-bottom-right-radius: 0px;
+	}
+	/*滚动图片*/
+	#scrollpic {
+		width: 100%;
+	}
+	/*头条列表*/
+	#scrolltext, #scrolltextsingle {
+		width: 100%;
+	}
+	#singlebdiv{
+		border-top-right-radius: 0px;
+	}
+}
+@media screen and (max-width: 750px) {
+	#bannerimg #mainmenubox {
+		visibility: hidden;
+	}
+	#bannerimg #sentence {
+		top: 130px;
+		right: auto;
+		left: 20px;
+	}
+	#bannerimg {
+		height: 300px;
+	}
+	.page {
+		top: 300px;
+	}
+	/*滚动图片*/
+	#scrollpic {
+		width: 100%;
+	}
+	/*头条列表*/
+	#scrolltext {
+		width: 100%;
+		display: none;
+	}
+}
+@media screen and (min-width: 750px) {
+	#rightbottommenubox {
+		visibility: hidden;
+	}
+	.page {
+		top: 600px;
+	}
+}
