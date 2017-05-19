@@ -11,7 +11,12 @@ function theme_settings_admin() {
 ?>
 <link rel="stylesheet" href="<?php bloginfo("template_url") ?>/style-admin.css" type="text/css" media="screen" /><img id="optionbg" class="optionfull" src="<?php bloginfo("template_url") ?>/nya.jpg" /></div><div id="optionbg2" class="optionfull"></div>
 <div id="optionbox">
-    <h1>wpNyaruko 主题首选项</h1><hr>
+<h1>wpNyaruko 主题首选项</h1><hr>
+<?php
+if(!is_admin()) {
+  echo '<p>欢迎使用 wpNyaruko 主题，<br/>请使用管理员权限登录来继续设置。</p><hr><p>';
+} else {
+?>
     <table border="0" cellspacing="0" cellpadding="10">
     <tbody>
     <tr>
@@ -77,7 +82,7 @@ function theme_settings_admin() {
     </tr>
   </tbody>
     </table>
-    <hr><p><input id="submitoption" type="submit" name="input_save" value="应用这些设定" />　　<a title="开源是一种态度" target="_blank" href="https://github.com/cxchope/wpNyaruko-W" target="_blank">Github</a></p>
+    <hr><p><input id="submitoption" type="submit" name="input_save" value="应用这些设定" />　　<?php } ?><a title="开源是一种态度" target="_blank" href="https://github.com/cxchope/wpNyaruko-W" target="_blank">Github</a></p><p><br/></p>
 </div>
 <?php
 }

@@ -42,11 +42,13 @@
 - 要保存个性化设置，浏览器需要开启 Cookie 。
 
 ## 截图
-
+WP主题显示图：
 ![WP主题显示图](screenshot.png)
-
-![实装截图](ScreenShot/screenshot2.jpg)
-
+文章列表截图：
+![文章列表截图](ScreenShot/screenshot2.jpg)
+文章和页面截图：
+![文章和页面截图](ScreenShot/screenshot3.jpg)
+主题设置：
 ![主题设置](ScreenShot/screenshot1.jpg)
 
 ## 许可协议

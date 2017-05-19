@@ -1,5 +1,7 @@
 <?php
-require ('theme-options.php');
+if(is_admin()) {
+  require ('theme-options.php');
+}
 /** widgets */
 if( function_exists('register_sidebar') ) {
 	register_sidebar(array(
