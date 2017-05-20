@@ -5,13 +5,31 @@ function getOptions() {
         $options['wpNyarukoTest'] = '此处可以任意填写一些笔记';
         $options['wpNyarukoLogo'] = '/wp-content/uploads/logo.png';
         $options['wpNyarukoColor'] = 'FE99CC';
+        $options['wpNyarukoColorH'] = 'CC00FF';
+        $options['wpNyarukoColorT'] = '000000';
+        $options['wpNyarukoColorI'] = 'FFFFFF';
+        $options['wpNyarukoColorH1'] = 'CC00FF';
+        $options['wpNyarukoColorH2'] = 'CC00FF';
+        $options['wpNyarukoColorH3'] = 'FE99CC';
+        $options['wpNyarukoColorH4'] = '000000';
+        $options['wpNyarukoColorBG'] = 'FFFFFF';
+        $options['wpNyarukoColorL'] = 'FFF0F5';
+        $options['wpNyarukoColorLL'] = 'FFF0F5';
+        $options['wpNyarukoCursor'] = '';
+        $options['wpNyarukoHandCursor'] = '';
+        $options['wpNyarukoMenuLeft'] = 'off';
+        $options['wpNyarukoMenuItemW'] = '90';
+        $options['wpNyarukoPad'] = '950';
+        $options['wpNyarukoPhone'] = '750';
         $options['wpNyarukoPicDir'] = 'wallpaper';
         $options['wpNyarukoTextTable'] = 'sentence';
         $options['wpNyarukoSearchName'] = '百度';
         $options['wpNyarukoSearchURL'] = 'https://www.baidu.com/s?ie=UTF-8&wd=';
+        $options['wpNyarukoFont'] = '思源黑体,Source Han Sans,苹方黑体,PingFang SC,冬青黑体,Hiragino Sans GB,微软雅黑,Microsoft YaHei,Hiragino Sans GB,STHeiti Light,SimHei';
+        $options['wpNyarukoFontSize'] = '12';
         $options['wpNyarukoIndexKeywords'] = '';
-        $options['wpNyarukoRSSArticle'] = 'true';
-        $options['wpNyarukoRSSComment'] = 'false';
+        $options['wpNyarukoRSSArticle'] = 'on';
+        $options['wpNyarukoRSSComment'] = 'off';
         $options['wpNyarukoJQ'] = '/lib/jQuery/jquery.min.js';
         $options['wpNyarukoHeader'] = '<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>';
         $options['wpNyarukoFooter'] = '版权所有 &copy; 。自豪地使用 <a rel="external" title="WordPress主页" target="_blank" class="link" href="http://wordpress.org/">WordPress</a> 。使用 <a title="开源是一种态度" target="_blank" href="https://github.com/kagurazakayashi/wpNyaruko-W">wpNyaruko-W</a> 作为本站主题。<!--备案号--><!--统计代码-->';
@@ -30,10 +48,28 @@ function init() {
         $options['wpNyarukoTest'] = stripslashes($_POST['wpNyarukoTest']);
         $options['wpNyarukoLogo'] = stripslashes($_POST['wpNyarukoLogo']);
         $options['wpNyarukoColor'] = stripslashes($_POST['wpNyarukoColor']);
+        $options['wpNyarukoColorH'] = stripslashes($_POST['wpNyarukoColorH']);
+        $options['wpNyarukoColorT'] = stripslashes($_POST['wpNyarukoColorT']);
+        $options['wpNyarukoColorI'] = stripslashes($_POST['wpNyarukoColorI']);
+        $options['wpNyarukoColorH1'] = stripslashes($_POST['wpNyarukoColorH1']);
+        $options['wpNyarukoColorH2'] = stripslashes($_POST['wpNyarukoColorH2']);
+        $options['wpNyarukoColorH3'] = stripslashes($_POST['wpNyarukoColorH3']);
+        $options['wpNyarukoColorH4'] = stripslashes($_POST['wpNyarukoColorH4']);
+        $options['wpNyarukoColorBG'] = stripslashes($_POST['wpNyarukoColorBG']);
+        $options['wpNyarukoColorL'] = stripslashes($_POST['wpNyarukoColorL']);
+        $options['wpNyarukoColorLL'] = stripslashes($_POST['wpNyarukoColorLL']);
+        $options['wpNyarukoCursor'] = stripslashes($_POST['wpNyarukoCursor']);
+        $options['wpNyarukoHandCursor'] = stripslashes($_POST['wpNyarukoHandCursor']);
+        $options['wpNyarukoMenuLeft'] = stripslashes($_POST['wpNyarukoMenuLeft']);
+        $options['wpNyarukoMenuItemW'] = stripslashes($_POST['wpNyarukoMenuItemW']);
+        $options['wpNyarukoPad'] = stripslashes($_POST['wpNyarukoPad']);
+        $options['wpNyarukoPhone'] = stripslashes($_POST['wpNyarukoPhone']);
         $options['wpNyarukoPicDir'] = stripslashes($_POST['wpNyarukoPicDir']);
         $options['wpNyarukoTextTable'] = stripslashes($_POST['wpNyarukoTextTable']);
         $options['wpNyarukoSearchName'] = stripslashes($_POST['wpNyarukoSearchName']);
         $options['wpNyarukoSearchURL'] = stripslashes($_POST['wpNyarukoSearchURL']);
+        $options['wpNyarukoFont'] = stripslashes($_POST['wpNyarukoFont']);
+        $options['wpNyarukoFontSize'] = stripslashes($_POST['wpNyarukoFontSize']);
         $options['wpNyarukoIndexKeywords'] = stripslashes($_POST['wpNyarukoIndexKeywords']);
         $options['wpNyarukoRSSArticle'] = stripslashes($_POST['wpNyarukoRSSArticle']);
         $options['wpNyarukoRSSComment'] = stripslashes($_POST['wpNyarukoRSSComment']);
@@ -68,43 +104,75 @@ if(!is_admin()) {
     <tbody>
     <tr>
       <td>笔记(不呈现)</td>
-      <td><input name="wpNyarukoTest" type="text" id="wpNyarukoTest" value="<?php echo($options['wpNyarukoTest']); ?>" size="64" maxlength="128"></td>
+      <td><input name="wpNyarukoTest" type="text" id="wpNyarukoTest" value="<?php echo($options['wpNyarukoTest']); ?>" size="64" maxlength="128" /></td>
     </tr>
     <tr>
       <td>标题图片网址</td>
-      <td><input name="wpNyarukoLogo" type="text" id="wpNyarukoLogo" value="<?php echo($options['wpNyarukoLogo']); ?>" size="64" maxlength="128"></td>
+      <td><input name="wpNyarukoLogo" type="text" id="wpNyarukoLogo" value="<?php echo($options['wpNyarukoLogo']); ?>" size="64" maxlength="128" /></td>
     </tr>
     <tr>
-      <td>主题前景色</td>
-      <td>#<input name="wpNyarukoColor" type="text" id="wpNyarukoColor" value="<?php echo($options['wpNyarukoColor']); ?>" size="6" maxlength="6"></td>
+      <td>首选字体(用,分隔)</td>
+      <td><input name="wpNyarukoFont" type="text" id="wpNyarukoFont" value="<?php echo($options['wpNyarukoFont']); ?>" size="40" maxlength="300" />　　字号：<input name="wpNyarukoFontSize" type="text" id="wpNyarukoFontSize" value="<?php echo($options['wpNyarukoFontSize']); ?>" size="2" maxlength="2" />pt (留空为自动)</td>
+    </tr>
+    <tr>
+      <td>主题色</td>
+      <td>修饰：#<input name="wpNyarukoColor" type="text" id="wpNyarukoColor" value="<?php echo($options['wpNyarukoColor']); ?>" size="6" maxlength="6" />　　强调：#<input name="wpNyarukoColorH" type="text" id="wpNyarukoColorH" value="<?php echo($options['wpNyarukoColorH']); ?>" size="6" maxlength="6" />　　文本：#<input name="wpNyarukoColorT" type="text" id="wpNyarukoColorT" value="<?php echo($options['wpNyarukoColorT']); ?>" size="6" maxlength="6" />　　内嵌：#<input name="wpNyarukoColorI" type="text" id="wpNyarukoColorI" value="<?php echo($options['wpNyarukoColorI']); ?>" size="6" maxlength="6" /></td>
+    </tr>
+    <tr>
+      <td>页面色</td>
+      <td>网页背景：#<input name="wpNyarukoColorBG" type="text" id="wpNyarukoColorBG" value="<?php echo($options['wpNyarukoColorBG']); ?>" size="6" maxlength="6" />　　列表项：#<input name="wpNyarukoColorL" type="text" id="wpNyarukoColorL" value="<?php echo($options['wpNyarukoColorL']); ?>" size="6" maxlength="6" />　　当前列表项：#<input name="wpNyarukoColorLL" type="text" id="wpNyarukoColorLL" value="<?php echo($options['wpNyarukoColorLL']); ?>" size="6" maxlength="6" />
+    </tr>
+    <tr>
+      <td>标题色</td>
+      <td>一级：#<input name="wpNyarukoColorH1" type="text" id="wpNyarukoColorH1" value="<?php echo($options['wpNyarukoColorH1']); ?>" size="6" maxlength="6" />　　二级：#<input name="wpNyarukoColorH2" type="text" id="wpNyarukoColorH2" value="<?php echo($options['wpNyarukoColorH2']); ?>" size="6" maxlength="6" />　　三级：#<input name="wpNyarukoColorH3" type="text" id="wpNyarukoColorH3" value="<?php echo($options['wpNyarukoColorH3']); ?>" size="6" maxlength="6" />　　四级：#<input name="wpNyarukoColorH4" type="text" id="wpNyarukoColorH4" value="<?php echo($options['wpNyarukoColorH4']); ?>" size="6" maxlength="6" /></td>
+    </tr>
+    <tr>
+      <td>自定义鼠标指针</td>
+      <td><input name="wpNyarukoCursor" type="text" id="wpNyarukoCursor" value="<?php echo($options['wpNyarukoCursor']); ?>" size="32" maxlength="100" />(cur文件,留空为默认)</td>
+    </tr>
+    <tr>
+      <td>自定义手形指针</td>
+      <td><input name="wpNyarukoHandCursor" type="text" id="wpNyarukoHandCursor" value="<?php echo($options['wpNyarukoHandCursor']); ?>" size="32" maxlength="100" />(cur文件,留空为默认)</td>
+    </tr>
+    <tr>
+      <td>主选单项布局</td>
+      <td><input name="wpNyarukoMenuLeft" type="checkbox" id="wpNyarukoMenuLeft" <?php if($options['wpNyarukoMenuLeft']!='')echo('checked'); ?> />使用左对齐而不是分散对齐，每个菜单项宽度<input name="wpNyarukoMenuItemW" type="text" id="wpNyarukoMenuItemW" value="<?php echo($options['wpNyarukoMenuItemW']); ?>" size="3" maxlength="3" />像素</td>
+    </tr>
+    <tr>
+      <td>响应式布局</td>
+      <td>低于<input name="wpNyarukoPad" type="text" id="wpNyarukoPad" value="<?php echo($options['wpNyarukoPad']); ?>" size="4" maxlength="4" />像素时显示平板布局，低于<input name="wpNyarukoPhone" type="text" id="wpNyarukoPhone" value="<?php echo($options['wpNyarukoPhone']); ?>" size="3" maxlength="3" />像素时显示手机布局</td>
+    </tr>
+    <tr>
+      <td>响应式加载</td>
+      <td>滚动到页面底部时自动加载<input name="wpNyarukoAutoLoad" type="text" id="wpNyarukoAutoLoad" value="10" size="3" maxlength="3" disabled="true" />篇文章，最多加载<input name="wpNyarukoAutoLoadI" type="text" id="wpNyarukoAutoLoadI" value="-1" size="3" maxlength="3" disabled="true" />次</td>
     </tr>
     <tr>
       <td>随机图片扫描文件夹</td>
-      <td>~/wp-content/uploads/<input name="wpNyarukoPicDir" type="text" id="wpNyarukoPicDir" value="<?php echo($options['wpNyarukoPicDir']); ?>" size="32" maxlength="100">/</td>
+      <td>~/wp-content/uploads/<input name="wpNyarukoPicDir" type="text" id="wpNyarukoPicDir" value="<?php echo($options['wpNyarukoPicDir']); ?>" size="32" maxlength="100" />/</td>
     </tr>
     <tr>
       <td>随机文字查询表</td>
-      <td><input name="wpNyarukoTextTable" type="text" id="wpNyarukoTextTable" value="<?php echo($options['wpNyarukoTextTable']); ?>" size="32" maxlength="100">(留空可禁用)</td>
+      <td><input name="wpNyarukoTextTable" type="text" id="wpNyarukoTextTable" value="<?php echo($options['wpNyarukoTextTable']); ?>" size="32" maxlength="100" />(留空可禁用)</td>
     </tr>
     <tr>
       <td>随机文字搜索引擎名称</td>
-      <td><input name="wpNyarukoSearchName" type="text" id="wpNyarukoSearchName" value="<?php echo($options['wpNyarukoSearchName']); ?>" size="15" maxlength="30"></td>
+      <td><input name="wpNyarukoSearchName" type="text" id="wpNyarukoSearchName" value="<?php echo($options['wpNyarukoSearchName']); ?>" size="15" maxlength="30" /></td>
     </tr>
     <tr>
       <td>随机文字搜索引擎接口</td>
-      <td><input name="wpNyarukoSearchURL" type="text" id="wpNyarukoSearchURL" value="<?php echo($options['wpNyarukoSearchURL']); ?>" size="40" maxlength="100">关键字</td>
+      <td><input name="wpNyarukoSearchURL" type="text" id="wpNyarukoSearchURL" value="<?php echo($options['wpNyarukoSearchURL']); ?>" size="40" maxlength="100" />关键字</td>
     </tr>
     <tr>
       <td>主页关键字</td>
-      <td><input name="wpNyarukoIndexKeywords" type="text" id="wpNyarukoIndexKeywords" value="<?php echo($options['wpNyarukoIndexKeywords']); ?>" size="40" maxlength="100"></td>
+      <td><input name="wpNyarukoIndexKeywords" type="text" id="wpNyarukoIndexKeywords" value="<?php echo($options['wpNyarukoIndexKeywords']); ?>" size="40" maxlength="100" /></td>
     </tr>
     <tr>
       <td>RSS 订阅</td>
-      <td><input name="wpNyarukoRSSArticle" type="checkbox" id="wpNyarukoRSSArticle" checked="<?php echo($options['wpNyarukoRSSArticle']); ?>">文章　<input name="wpNyarukoRSSComment" type="checkbox" id="wpNyarukoRSSComment" checked="<?php echo($options['wpNyarukoRSSComment']); ?>">评论</td>
+      <td><input name="wpNyarukoRSSArticle" type="checkbox" id="wpNyarukoRSSArticle" <?php if($options['wpNyarukoRSSArticle']!='')echo('checked'); ?> />文章　<input name="wpNyarukoRSSComment" type="checkbox" id="wpNyarukoRSSComment" <?php if($options['wpNyarukoRSSComment']!='')echo('checked'); ?> />评论</td>
     </tr>
     <tr>
       <td>自定义 jQuery 路径</td>
-      <td><input name="wpNyarukoJQ" type="text" id="wpNyarukoJQ" value="<?php echo($options['wpNyarukoJQ']); ?>" size="40" maxlength="100"></td>
+      <td><input name="wpNyarukoJQ" type="text" id="wpNyarukoJQ" value="<?php echo($options['wpNyarukoJQ']); ?>" size="40" maxlength="100" /></td>
     </tr>
     <tr>
       <td>页头信息</td>
