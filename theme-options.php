@@ -31,7 +31,7 @@ function getOptions() {
         $options['wpNyarukoRSSArticle'] = 'on';
         $options['wpNyarukoRSSComment'] = 'off';
         $options['wpNyarukoJQ'] = '/lib/jQuery/jquery.min.js';
-        $options['wpNyarukoHeader'] = '<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>';
+        $options['wpNyarukoHeader'] = '<meta name="copyright" content="Copyright xxx, All rights Reserved.">';
         $options['wpNyarukoFooter'] = '版权所有 &copy; 。自豪地使用 <a rel="external" title="WordPress主页" target="_blank" class="link" href="http://wordpress.org/">WordPress</a> 。使用 <a title="开源是一种态度" target="_blank" href="https://github.com/kagurazakayashi/wpNyaruko-W">wpNyaruko-W</a> 作为本站主题。<!--备案号--><!--统计代码-->';
         update_option('wpNyaruko_options', $options);
         die('<div id="wpNyarukoInfo" style="text-align: center; width: 100%; height: 25px; line-height: 25px; border-radius: 0px 0px 5px 5px; overflow: hidden; background-color: yellow; box-shadow: 0px 0px 5px gray; font-size: 12px;">欢迎使用 wpNyaruko 主题，请先完成初始设定。<a href="themes.php?page=theme-options.php">现在开始</a></div>');
@@ -112,19 +112,19 @@ if(!is_admin()) {
     </tr>
     <tr>
       <td>首选字体(用,分隔)</td>
-      <td><input name="wpNyarukoFont" type="text" id="wpNyarukoFont" value="<?php echo($options['wpNyarukoFont']); ?>" size="40" maxlength="300" />　　字号：<input name="wpNyarukoFontSize" type="text" id="wpNyarukoFontSize" value="<?php echo($options['wpNyarukoFontSize']); ?>" size="2" maxlength="2" />pt (留空为自动)</td>
+      <td><input name="wpNyarukoFont" type="text" id="wpNyarukoFont" value="<?php echo($options['wpNyarukoFont']); ?>" size="38" maxlength="300" />　字号：<input name="wpNyarukoFontSize" type="text" id="wpNyarukoFontSize" value="<?php echo($options['wpNyarukoFontSize']); ?>" size="2" maxlength="2" />像素 (留空为自动)</td>
     </tr>
     <tr>
       <td>主题色</td>
-      <td>修饰：#<input name="wpNyarukoColor" type="text" id="wpNyarukoColor" value="<?php echo($options['wpNyarukoColor']); ?>" size="6" maxlength="6" />　　强调：#<input name="wpNyarukoColorH" type="text" id="wpNyarukoColorH" value="<?php echo($options['wpNyarukoColorH']); ?>" size="6" maxlength="6" />　　文本：#<input name="wpNyarukoColorT" type="text" id="wpNyarukoColorT" value="<?php echo($options['wpNyarukoColorT']); ?>" size="6" maxlength="6" />　　内嵌：#<input name="wpNyarukoColorI" type="text" id="wpNyarukoColorI" value="<?php echo($options['wpNyarukoColorI']); ?>" size="6" maxlength="6" /></td>
+      <td>修饰：#<input name="wpNyarukoColor" type="text" id="wpNyarukoColor" value="<?php echo($options['wpNyarukoColor']); ?>" size="6" maxlength="6" />　强调：#<input name="wpNyarukoColorH" type="text" id="wpNyarukoColorH" value="<?php echo($options['wpNyarukoColorH']); ?>" size="6" maxlength="6" />　文本：#<input name="wpNyarukoColorT" type="text" id="wpNyarukoColorT" value="<?php echo($options['wpNyarukoColorT']); ?>" size="6" maxlength="6" />　内嵌：#<input name="wpNyarukoColorI" type="text" id="wpNyarukoColorI" value="<?php echo($options['wpNyarukoColorI']); ?>" size="6" maxlength="6" /></td>
     </tr>
     <tr>
       <td>页面色</td>
-      <td>网页背景：#<input name="wpNyarukoColorBG" type="text" id="wpNyarukoColorBG" value="<?php echo($options['wpNyarukoColorBG']); ?>" size="6" maxlength="6" />　　列表项：#<input name="wpNyarukoColorL" type="text" id="wpNyarukoColorL" value="<?php echo($options['wpNyarukoColorL']); ?>" size="6" maxlength="6" />　　当前列表项：#<input name="wpNyarukoColorLL" type="text" id="wpNyarukoColorLL" value="<?php echo($options['wpNyarukoColorLL']); ?>" size="6" maxlength="6" />
+      <td>网页背景：#<input name="wpNyarukoColorBG" type="text" id="wpNyarukoColorBG" value="<?php echo($options['wpNyarukoColorBG']); ?>" size="6" maxlength="6" />　列表项：#<input name="wpNyarukoColorL" type="text" id="wpNyarukoColorL" value="<?php echo($options['wpNyarukoColorL']); ?>" size="6" maxlength="6" />　当前列表项：#<input name="wpNyarukoColorLL" type="text" id="wpNyarukoColorLL" value="<?php echo($options['wpNyarukoColorLL']); ?>" size="6" maxlength="6" />
     </tr>
     <tr>
       <td>标题色</td>
-      <td>一级：#<input name="wpNyarukoColorH1" type="text" id="wpNyarukoColorH1" value="<?php echo($options['wpNyarukoColorH1']); ?>" size="6" maxlength="6" />　　二级：#<input name="wpNyarukoColorH2" type="text" id="wpNyarukoColorH2" value="<?php echo($options['wpNyarukoColorH2']); ?>" size="6" maxlength="6" />　　三级：#<input name="wpNyarukoColorH3" type="text" id="wpNyarukoColorH3" value="<?php echo($options['wpNyarukoColorH3']); ?>" size="6" maxlength="6" />　　四级：#<input name="wpNyarukoColorH4" type="text" id="wpNyarukoColorH4" value="<?php echo($options['wpNyarukoColorH4']); ?>" size="6" maxlength="6" /></td>
+      <td>一级：#<input name="wpNyarukoColorH1" type="text" id="wpNyarukoColorH1" value="<?php echo($options['wpNyarukoColorH1']); ?>" size="6" maxlength="6" />　二级：#<input name="wpNyarukoColorH2" type="text" id="wpNyarukoColorH2" value="<?php echo($options['wpNyarukoColorH2']); ?>" size="6" maxlength="6" />　三级：#<input name="wpNyarukoColorH3" type="text" id="wpNyarukoColorH3" value="<?php echo($options['wpNyarukoColorH3']); ?>" size="6" maxlength="6" />　四级：#<input name="wpNyarukoColorH4" type="text" id="wpNyarukoColorH4" value="<?php echo($options['wpNyarukoColorH4']); ?>" size="6" maxlength="6" /></td>
     </tr>
     <tr>
       <td>自定义鼠标指针</td>
@@ -175,16 +175,16 @@ if(!is_admin()) {
       <td><input name="wpNyarukoJQ" type="text" id="wpNyarukoJQ" value="<?php echo($options['wpNyarukoJQ']); ?>" size="40" maxlength="100" /></td>
     </tr>
     <tr>
-      <td>页头信息</td>
+      <td>页头信息和额外加载文件</td>
       <td><textarea name="wpNyarukoHeader" cols="64" rows="10" maxlength="2000" id="wpNyarukoHeader"><?php echo($options['wpNyarukoHeader']); ?></textarea></td>
     </tr>
     <tr>
-      <td>页脚内容</td>
+      <td>页脚内容,备案号和统计</td>
       <td><textarea name="wpNyarukoFooter" cols="64" rows="10" maxlength="2000" id="wpNyarukoFooter"><?php echo($options['wpNyarukoFooter']); ?></textarea></td>
     </tr>
   </tbody>
     </table>
-    <hr><p><input id="submitoption" type="submit" name="input_save" value="应用这些设定" />　　<a href="themes.php?page=theme-options.php&reset">恢复初始设定</a>　　<?php } ?><a title="开源是一种态度" target="_blank" href="https://github.com/cxchope/wpNyaruko-W" target="_blank">Github</a></p></form><p><br/></p>
+    <hr><p><input id="submitoption" type="submit" name="input_save" value="应用这些设定" />　<a href="themes.php?page=theme-options.php&reset">恢复初始设定</a>　<?php } ?><a title="开源是一种态度" target="_blank" href="https://github.com/cxchope/wpNyaruko-W" target="_blank">Github</a></p></form><p><br/></p>
 </div>
 <?php
 }
