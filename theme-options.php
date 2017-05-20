@@ -1,6 +1,6 @@
 <?php 
 function getOptions() {
-    $options = get_option('wpNyaruko_options');
+    $options = get_option('wpNyaruko_options'); //SELECT * FROM `cxc_options` WHERE `option_name` = 'wpNyaruko_options'
     if (!is_array($options)) {
         $options['wpNyarukoTest'] = '此处可以任意填写一些笔记';
         $options['wpNyarukoLogo'] = '/wp-content/uploads/logo.png';
@@ -9,16 +9,22 @@ function getOptions() {
         $options['wpNyarukoTextTable'] = 'sentence';
         $options['wpNyarukoSearchName'] = '百度';
         $options['wpNyarukoSearchURL'] = 'https://www.baidu.com/s?ie=UTF-8&wd=';
+        $options['wpNyarukoIndexKeywords'] = '';
         $options['wpNyarukoRSSArticle'] = 'true';
         $options['wpNyarukoRSSComment'] = 'false';
         $options['wpNyarukoJQ'] = '/lib/jQuery/jquery.min.js';
         $options['wpNyarukoHeader'] = '<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>';
-        $options['wpNyarukoFooter'] = '版权所有 &copy; 。自豪地使用 <a rel="external" title="WordPress主页" target="_blank" class="link" href="http://wordpress.org/">WordPress</a> 。使用 <a title="开源是一种态度" target="_blank" href="https://github.com/kagurazakayashi/wpNyaruko-W">wpNyaruko-W</a> 作为本站主题。';
+        $options['wpNyarukoFooter'] = '版权所有 &copy; 。自豪地使用 <a rel="external" title="WordPress主页" target="_blank" class="link" href="http://wordpress.org/">WordPress</a> 。使用 <a title="开源是一种态度" target="_blank" href="https://github.com/kagurazakayashi/wpNyaruko-W">wpNyaruko-W</a> 作为本站主题。<!--备案号--><!--统计代码-->';
         update_option('wpNyaruko_options', $options);
+        die('<div id="wpNyarukoInfo" style="text-align: center; width: 100%; height: 25px; line-height: 25px; border-radius: 0px 0px 5px 5px; overflow: hidden; background-color: yellow; box-shadow: 0px 0px 5px gray; font-size: 12px;">欢迎使用 wpNyaruko 主题，请先完成初始设定。<a href="themes.php?page=theme-options.php">现在开始</a></div>');
     }
     return $options;
 }
-function init() {        
+function init() {
+  if (is_admin()) {
+    if(isset($_GET['reset'])) {
+      delete_option('wpNyaruko_options');
+    }
     if(isset($_POST['input_save'])) {
         $options = getOptions();
         $options['wpNyarukoTest'] = stripslashes($_POST['wpNyarukoTest']);
@@ -28,6 +34,7 @@ function init() {
         $options['wpNyarukoTextTable'] = stripslashes($_POST['wpNyarukoTextTable']);
         $options['wpNyarukoSearchName'] = stripslashes($_POST['wpNyarukoSearchName']);
         $options['wpNyarukoSearchURL'] = stripslashes($_POST['wpNyarukoSearchURL']);
+        $options['wpNyarukoIndexKeywords'] = stripslashes($_POST['wpNyarukoIndexKeywords']);
         $options['wpNyarukoRSSArticle'] = stripslashes($_POST['wpNyarukoRSSArticle']);
         $options['wpNyarukoRSSComment'] = stripslashes($_POST['wpNyarukoRSSComment']);
         $options['wpNyarukoJQ'] = stripslashes($_POST['wpNyarukoJQ']);
@@ -37,6 +44,7 @@ function init() {
     } else {
         getOptions();
     }
+  }
     add_theme_page('wpNyaruko Theme Options','wpNyaruko 主题选项', 'edit_themes', basename(__FILE__),  'display');
 }
 function display() {
@@ -84,7 +92,11 @@ if(!is_admin()) {
     </tr>
     <tr>
       <td>随机文字搜索引擎接口</td>
-      <td><input name="wpNyarukoSearchURL" type="text" id="wpNyarukoSearchURL" value="<?php echo($options['wpNyarukoSearchURL']); ?>" size="32" maxlength="100">关键字</td>
+      <td><input name="wpNyarukoSearchURL" type="text" id="wpNyarukoSearchURL" value="<?php echo($options['wpNyarukoSearchURL']); ?>" size="40" maxlength="100">关键字</td>
+    </tr>
+    <tr>
+      <td>主页关键字</td>
+      <td><input name="wpNyarukoIndexKeywords" type="text" id="wpNyarukoIndexKeywords" value="<?php echo($options['wpNyarukoIndexKeywords']); ?>" size="40" maxlength="100"></td>
     </tr>
     <tr>
       <td>RSS 订阅</td>
@@ -92,7 +104,7 @@ if(!is_admin()) {
     </tr>
     <tr>
       <td>自定义 jQuery 路径</td>
-      <td><input name="wpNyarukoJQ" type="text" id="wpNyarukoJQ" value="<?php echo($options['wpNyarukoJQ']); ?>" size="32" maxlength="100"></td>
+      <td><input name="wpNyarukoJQ" type="text" id="wpNyarukoJQ" value="<?php echo($options['wpNyarukoJQ']); ?>" size="40" maxlength="100"></td>
     </tr>
     <tr>
       <td>页头信息</td>
@@ -104,7 +116,7 @@ if(!is_admin()) {
     </tr>
   </tbody>
     </table>
-    <hr><p><input id="submitoption" type="submit" name="input_save" value="应用这些设定" />　　<?php } ?><a title="开源是一种态度" target="_blank" href="https://github.com/cxchope/wpNyaruko-W" target="_blank">Github</a></p></form><p><br/></p>
+    <hr><p><input id="submitoption" type="submit" name="input_save" value="应用这些设定" />　　<a href="themes.php?page=theme-options.php&reset">恢复初始设定</a>　　<?php } ?><a title="开源是一种态度" target="_blank" href="https://github.com/cxchope/wpNyaruko-W" target="_blank">Github</a></p></form><p><br/></p>
 </div>
 <?php
 }

@@ -1,27 +1,10 @@
+<?php $wpNyarukoOption = get_option('wpNyaruko_options'); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head profile="http://gmpg.org/xfn/11">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<meta name="abstract" content="KagurazakaYashi 神楽坂雅詩 BLOG">
-<meta name="author" content="cxchope">
-<meta name="classification" content="Personal website, Blog">
-<meta name="copyright" content="Copyright KagurazakaYashi, All rights Reserved.">
-<meta name="designer" content="KagurazakaYashi">
-<meta name="distribution" content="Global">
-<meta name="language" content="zh-CN">
-<meta name="publisher" content="KagurazakaYashi 神楽坂雅詩">
-<meta name="rating" content="General">
-<meta name="resource-type" content="Document">
-<meta name="revisit-after" content="7">
-<meta name="subject" content="Blog">
-<meta name="template" content="Yashi">
-<meta name="server" content="YashiServer-BJA">
-<meta name="theme-color" content="#FE99CC">
-<link rel="shortcut icon" href="/yashi/favicon.ico">
-<link rel="icon" href="/yashi/resources/Android-192.png" />
-<link rel="apple-touch-icon" href="/yashi/resources/iPhone3x-180.png" />
-<link rel="apple-touch-icon-precomposed" href="/yashi/resources/iPhone3x-180.png" />
+<?php echo $wpNyarukoOption['wpNyarukoHeader']; ?>
 <title>
 <?php if ( is_home() ) {
         bloginfo('name'); echo " - "; bloginfo('description');
@@ -40,20 +23,20 @@
 <!-- Stylesheets -->
 <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
+<?php if ($wpNyarukoOption['wpNyarukoRSSArticle'] == "true") { ?>
 <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有文章" href="<?php echo get_bloginfo('rss2_url'); ?>" />
+<?php } if ($wpNyarukoOption['wpNyarukoRSSComment'] == "true") { ?>
 <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有评论" href="<?php bloginfo('comments_rss2_url'); ?>" />
-<script type="text/javascript" src="/lib/jQuery/jquery.min.js"></script>
+<?php } ?>
+<script type="text/javascript" src="<?php echo $wpNyarukoOption['wpNyarukoJQ']; ?>"></script>
 <script type="text/javascript" src="<?php bloginfo("template_url"); ?>/script.js"></script>
 <?php
 $description = '';
 $keywords = '';
 
 if (is_home() || is_page()) {
-   // 将以下引号中的内容改成你的主页description
    $description = get_bloginfo('description');
-
-   // 将以下引号中的内容改成你的主页keywords
-   $keywords = "";
+   $keywords = $wpNyarukoOption['wpNyarukoIndexKeywords'];
 }
 elseif (is_single()) {
    $description1 = get_post_meta($post->ID, "description", true);
@@ -95,12 +78,12 @@ $keywords = trim(strip_tags($keywords));
     <div id="bodyhidden"></div>
   <?php
   $wpuploaddirs = wp_upload_dir();
-  $wallpapers = scandir($wpuploaddirs["basedir"]."/wallpaper/");
+  $wallpapers = scandir($wpuploaddirs["basedir"]."/".$wpNyarukoOption['wpNyarukoPicDir']."/");
   $wallpaperid = rand(0,count($wallpapers)-3)+2;
 //   $sentencedir = $wpuploaddirs["basedir"]."/sentence/";
 //   $sentences = scandir($sentencedir);
 //   $sentenceid = rand(0,count($sentences)-3)+2;
-  echo '<style>.bannerimgs {background-image: url('.$wpuploaddirs['baseurl'].'/wallpaper/'.$wallpapers[$wallpaperid].');}</style>';
+  echo '<style>.bannerimgs {background-image: url('.$wpuploaddirs['baseurl'].'/'.$wpNyarukoOption['wpNyarukoPicDir'].'/'.$wallpapers[$wallpaperid].');}</style>';
 //   $nowsentence = $sentencedir.$sentences[$sentenceid];
 //   if(file_exists($nowsentence)){
 //       $nowsentence = file_get_contents($nowsentence);
@@ -108,8 +91,14 @@ $keywords = trim(strip_tags($keywords));
 //   } else {
 //       $nowsentence = "ERROR:".$nowsentence;
 //   }
-  $sentences = $wpdb->get_results("select * from yashisentence order by rand() limit 1;")[0];
-  $nowsentence = $sentences->text.'</br><a href="https://zh.moegirl.org/'.$sentences->from.'" target="_blank" title="点击这里可以在《萌娘百科》中搜索「'.$sentences->from.'」词条。可以刷新网页来看看其他句子。" >——'.$sentences->from.'</a>';
+$sentences = "";
+$nowsentence = "";
+if ($wpNyarukoOption['wpNyarukoTextTable'] && $wpNyarukoOption['wpNyarukoTextTable'] != "") {
+    $sentences = $wpdb->get_results("select * from ".$wpNyarukoOption['wpNyarukoTextTable']." order by rand() limit 1;")[0];
+    if ($sentences && $sentences != null) {
+        $nowsentence = $sentences->text.'</br><a href="'.$wpNyarukoOption['wpNyarukoSearchURL'].$sentences->from.'" target="_blank" title="点击这里可以在《'.$wpNyarukoOption['wpNyarukoSearchName'].'》中搜索「'.$sentences->from.'」词条。可以刷新网页来看看其他句子。" >——'.$sentences->from.'</a>';
+    }
+}
   ?>
   <div id="rightbottommenubox" value="0">
       <div id="rightbottommenuboxf">
@@ -135,7 +124,7 @@ $keywords = trim(strip_tags($keywords));
       <div id="bannertw"></div>
       <div id="bannerdw"></div>
       <a title="返回<?php bloginfo('name'); ?>主页" href="<?php echo get_option('home'); ?>/">
-      <img id="title" src="/yashi/wp-content/uploads/2017/05/yaship.gif" alt=<?php bloginfo('name'); ?> name=<?php bloginfo('name'); ?> />
+      <img id="title" src="<?php echo $wpNyarukoOption['wpNyarukoLogo']; ?>" alt=<?php bloginfo('name'); ?> name=<?php bloginfo('name'); ?> />
       </a>
       <div id="sentence"><?=$nowsentence?></div>
       <div id="mainmenubox">

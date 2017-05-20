@@ -74,6 +74,7 @@
     display: none;
 }
 #wpNyarukoInfo {
+    position:relative;
     font-size: 12px;
     line-height: 50px;
     width: 200px;
