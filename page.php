@@ -1,5 +1,4 @@
 <?php get_header(); ?>
-
 	<div id="scrollpic" class="singleleftbox">
 		<!-- Column 1 /Content -->
 		<?php if (have_posts()) : the_post(); update_post_caches($posts); ?>
@@ -13,7 +12,7 @@
 			</div>
 		</div>
 		<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/single.js"></script>
-		<div id="commentsbox"><p><b>评论区</b>（如果看不到，请先想办法访问谷歌233）</p><?php comments_template(); ?></div>
+		<div id="commentsbox"><p><?php echo $wpNyarukoOption['wpNyarukoCommentTitle'] ?></p><?php comments_template(); ?></div>
 	    <?php else : ?>
 	    <div class="errorbox">
 	        没有文章！

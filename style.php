@@ -195,6 +195,7 @@ h4 {
 	border-radius:0px 0px 5px 5px;
 	position:absolute;
 	top:5px;
+	color:#fff;
 }
 .blocktopdiv .toptags a{
 	color:#fff;

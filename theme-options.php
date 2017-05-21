@@ -31,6 +31,9 @@ function getOptions() {
         $options['wpNyarukoRSSArticle'] = 'on';
         $options['wpNyarukoRSSComment'] = 'off';
         $options['wpNyarukoJQ'] = '/lib/jQuery/jquery.min.js';
+        $options['wpNyarukoCommentMode'] = 'on';
+        $options['wpNyarukoCommentBox'] = '正在加载 Disqus 评论……';
+        $options['wpNyarukoCommentTitle'] = '<b>评论区</b>（如果看不到，请先想办法访问谷歌233）';
         $options['wpNyarukoHeader'] = '<meta name="copyright" content="Copyright xxx, All rights Reserved.">';
         $options['wpNyarukoFooter'] = '版权所有 &copy; 。自豪地使用 <a rel="external" title="WordPress主页" target="_blank" class="link" href="http://wordpress.org/">WordPress</a> 。使用 <a title="开源是一种态度" target="_blank" href="https://github.com/kagurazakayashi/wpNyaruko-W">wpNyaruko-W</a> 作为本站主题。<!--备案号--><!--统计代码-->';
         update_option('wpNyaruko_options', $options);
@@ -74,6 +77,9 @@ function init() {
         $options['wpNyarukoRSSArticle'] = stripslashes($_POST['wpNyarukoRSSArticle']);
         $options['wpNyarukoRSSComment'] = stripslashes($_POST['wpNyarukoRSSComment']);
         $options['wpNyarukoJQ'] = stripslashes($_POST['wpNyarukoJQ']);
+        $options['wpNyarukoCommentMode'] = stripslashes($_POST['wpNyarukoCommentMode']);
+        $options['wpNyarukoCommentBox'] = stripslashes($_POST['wpNyarukoCommentBox']);
+        $options['wpNyarukoCommentTitle'] = stripslashes($_POST['wpNyarukoCommentTitle']);
         $options['wpNyarukoHeader'] = stripslashes($_POST['wpNyarukoHeader']);
         $options['wpNyarukoFooter'] = stripslashes($_POST['wpNyarukoFooter']);
         update_option('wpNyaruko_options', $options);
@@ -175,11 +181,23 @@ if(!is_admin()) {
       <td><input name="wpNyarukoJQ" type="text" id="wpNyarukoJQ" value="<?php echo($options['wpNyarukoJQ']); ?>" size="40" maxlength="100" /></td>
     </tr>
     <tr>
-      <td>页头信息和额外加载文件</td>
+      <td>评论方式</td>
+      <td><input name="wpNyarukoCommentMode" type="checkbox" id="wpNyarukoCommentMode" <?php if($options['wpNyarukoCommentMode']!='')echo('checked'); ?> />使用第三方评论系统</td>
+    </tr>
+    <tr>
+      <td>第三方评论<br/>平台加载HTML</td>
+      <td><textarea name="wpNyarukoCommentBox" cols="64" rows="5" maxlength="2000" id="wpNyarukoCommentBox"><?php echo($options['wpNyarukoCommentBox']); ?></textarea></td>
+    </tr>
+    <tr>
+      <td>评论区<br/>前置HTML</td>
+      <td><textarea name="wpNyarukoCommentTitle" cols="64" rows="5" maxlength="2000" id="wpNyarukoCommentTitle"><?php echo($options['wpNyarukoCommentTitle']); ?></textarea></td>
+    </tr>
+    <tr>
+      <td>页头信息HTML<br/>额外加载文件HTML</td>
       <td><textarea name="wpNyarukoHeader" cols="64" rows="10" maxlength="2000" id="wpNyarukoHeader"><?php echo($options['wpNyarukoHeader']); ?></textarea></td>
     </tr>
     <tr>
-      <td>页脚内容,备案号和统计</td>
+      <td>页脚内容HTML<br/>备案号HTML<br/>统计HTML</td>
       <td><textarea name="wpNyarukoFooter" cols="64" rows="10" maxlength="2000" id="wpNyarukoFooter"><?php echo($options['wpNyarukoFooter']); ?></textarea></td>
     </tr>
   </tbody>

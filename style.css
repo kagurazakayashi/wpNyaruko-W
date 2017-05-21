@@ -2,7 +2,7 @@
 Theme Name: wpNyaruko
 Theme URI: https://github.com/kagurazakayashi/wpNyaruko-W
 Description: 该主题为定制向主题，不保证在其他网站上可以正确运行。
-Version: 1.0
+Version: 1.2
 Author: yashi
 Author URI: https://github.com/kagurazakayashi/wpNyaruko-W
 Tags: nyaruko, acg
@@ -495,6 +495,7 @@ Tags: nyaruko, acg
 	font-size: 12px;
 	float: right;
 	margin-left: 90px;
+	color: #FFF;
 }
 #srddate a {
 	color: #FFF;
