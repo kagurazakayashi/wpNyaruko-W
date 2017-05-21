@@ -36,6 +36,7 @@ function getOptions() {
         $options['wpNyarukoCommentTitle'] = '<b>评论区</b>（如果看不到，请先想办法访问谷歌233）';
         $options['wpNyarukoHeader'] = '<meta name="copyright" content="Copyright xxx, All rights Reserved.">';
         $options['wpNyarukoFooter'] = '版权所有 &copy; 。自豪地使用 <a rel="external" title="WordPress主页" target="_blank" class="link" href="http://wordpress.org/">WordPress</a> 。使用 <a title="开源是一种态度" target="_blank" href="https://github.com/kagurazakayashi/wpNyaruko-W">wpNyaruko-W</a> 作为本站主题。<!--备案号--><!--统计代码-->';
+        $options['wpNyarukoScrollpic'] = '此处为自定义HTML，右侧是一个小工具区';
         update_option('wpNyaruko_options', $options);
         die('<div id="wpNyarukoInfo" style="text-align: center; width: 100%; height: 25px; line-height: 25px; border-radius: 0px 0px 5px 5px; overflow: hidden; background-color: yellow; box-shadow: 0px 0px 5px gray; font-size: 12px;">欢迎使用 wpNyaruko 主题，请先完成初始设定。<a href="themes.php?page=theme-options.php">现在开始</a></div>');
     }
@@ -82,6 +83,7 @@ function init() {
         $options['wpNyarukoCommentTitle'] = stripslashes($_POST['wpNyarukoCommentTitle']);
         $options['wpNyarukoHeader'] = stripslashes($_POST['wpNyarukoHeader']);
         $options['wpNyarukoFooter'] = stripslashes($_POST['wpNyarukoFooter']);
+        $options['wpNyarukoScrollpic'] = stripslashes($_POST['wpNyarukoScrollpic']);
         update_option('wpNyaruko_options', $options);
     } else {
         getOptions();
@@ -199,6 +201,18 @@ if(!is_admin()) {
     <tr>
       <td>页脚内容HTML<br/>备案号HTML<br/>统计HTML</td>
       <td><textarea name="wpNyarukoFooter" cols="64" rows="10" maxlength="2000" id="wpNyarukoFooter"><?php echo($options['wpNyarukoFooter']); ?></textarea></td>
+    </tr>
+    <tr>
+      <td>首页顶部<br/>左侧模块<br/>自定义HTML</td>
+      <td>顶部由此自定义块和一个小工具块组成。如果留空，小工具也会隐藏。<br/><textarea name="wpNyarukoScrollpic" cols="64" rows="10" maxlength="2000" id="wpNyarukoScrollpic"><?php echo($options['wpNyarukoScrollpic']); ?></textarea></td>
+    </tr>
+    <tr>
+      <td>自定义列表项<br/>(代替自动生成<br/>的文章列表)</td>
+      <td>请创建一个JSON列表页面，<br/>定义每个块显示的内容，包含在[JSON][JSON]中。<br/>然后为此页面使用「自定义列表」模板。<br/>例子：<br/><code>[JSON][["type","date","title","txt","jpg","goto"],["type","date","title","txt","jpg","goto"]][JSON]</code></td>
+    </tr>
+    <tr>
+      <td>使用自己的网页<br/>代替某个页面<br/>(例如主页)</td>
+      <td>请创建一个写有目标网址的页面，<br/>网址包含在[GOTO][GOTO]中。<br/>然后为此页面使用「自定义列表」模板。<br/>例子：<br/><code>[GOTO]/home.html[GOTO]</code></td>
     </tr>
   </tbody>
     </table>

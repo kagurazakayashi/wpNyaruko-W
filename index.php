@@ -1,9 +1,12 @@
-<?php echo "<script>var max_num_pages=".$wp_query->max_num_pages.";var now_num_pages=1;</script>";
+<?php $wpNyarukoOption = get_option('wpNyaruko_options');
+echo "<script>var max_num_pages=".$wp_query->max_num_pages.";var now_num_pages=1;</script>";
 if (!isset($_GET["data"])) { get_header(); ?>
+	<?php if($wpNyarukoOption['wpNyarukoScrollpic'] && $wpNyarukoOption['wpNyarukoScrollpic']!="") { ?>
 	<div style="width: 100%;">
-		<div id="scrollpic"><?php echo do_shortcode("[huge_it_slider id='2']"); ?></div>
+		<div id="scrollpic"><?php echo $wpNyarukoOption['wpNyarukoScrollpic']; ?></div>
 		<div id="scrolltext"><?php get_sidebar(); ?></div>
 	</div>
+	<?php } ?>
 	<!-- Column 1 /Content -->
 	<div class="postlist">
 		<!-- Blog Post -->
