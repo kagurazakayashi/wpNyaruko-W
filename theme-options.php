@@ -32,6 +32,8 @@ function getOptions() {
         $options['wpNyarukoRSSComment'] = 'off';
         $options['wpNyarukoJQ'] = '/lib/jQuery/jquery.min.js';
         $options['wpNyarukoCommentMode'] = 'on';
+        $options['wpNyarukoGravatarProxyPage'] = '';
+        $options['wpNyarukoGravatarProxy'] = '';
         $options['wpNyarukoCommentBox'] = '正在加载 Disqus 评论……';
         $options['wpNyarukoCommentTitle'] = '<b>评论区</b>（如果看不到，请先想办法访问谷歌233）';
         $options['wpNyarukoHeader'] = '<meta name="copyright" content="Copyright xxx, All rights Reserved.">';
@@ -84,6 +86,8 @@ function init() {
         $options['wpNyarukoHeader'] = stripslashes($_POST['wpNyarukoHeader']);
         $options['wpNyarukoFooter'] = stripslashes($_POST['wpNyarukoFooter']);
         $options['wpNyarukoScrollpic'] = stripslashes($_POST['wpNyarukoScrollpic']);
+        $options['wpNyarukoGravatarProxyPage'] = stripslashes($_POST['wpNyarukoGravatarProxyPage']);
+        $options['wpNyarukoGravatarProxy'] = stripslashes($_POST['wpNyarukoGravatarProxy']);
         update_option('wpNyaruko_options', $options);
     } else {
         getOptions();
@@ -181,6 +185,14 @@ if(!is_admin()) {
     <tr>
       <td>自定义 jQuery 路径</td>
       <td><input name="wpNyarukoJQ" type="text" id="wpNyarukoJQ" value="<?php echo($options['wpNyarukoJQ']); ?>" size="40" maxlength="100" /></td>
+    </tr>
+    <tr>
+      <td>Gravatar代理页面</td>
+      <td><input name="wpNyarukoGravatarProxyPage" type="text" id="wpNyarukoGravatarProxyPage" value="<?php echo($options['wpNyarukoGravatarProxyPage']); ?>" size="40" maxlength="100" />(指向 t_gravatar 模板页面)</td>
+    </tr>
+    <tr>
+      <td>Gravatar代理地址</td>
+      <td><input name="wpNyarukoGravatarProxy" type="text" id="wpNyarukoGravatarProxy" value="<?php echo($options['wpNyarukoGravatarProxy']); ?>" size="40" maxlength="100" />(http://proxyserver:host)<br/>留空为禁用(用户直连),只填"serverhost"字样为服务器直接中转(海外服推荐)</td>
     </tr>
     <tr>
       <td>评论方式</td>
