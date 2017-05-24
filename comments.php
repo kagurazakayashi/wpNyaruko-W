@@ -5,11 +5,10 @@
         die ('Please do not load this page directly. Thanks!');
     }
     $wpNyarukoCommentMode = false;
-    if($options['wpNyarukoCommentMode']!='') {
+    if($wpNyarukoOption['wpNyarukoCommentMode']!='') {
         $wpNyarukoCommentMode = true;
     }
 ?>
-<ol class="commentlist">
     <?php if($wpNyarukoCommentMode) { ?>
 	<li class="decmt-box">
         <p><?php echo $wpNyarukoOption['wpNyarukoCommentBox'] ?></a></p>
@@ -37,11 +36,29 @@
         </li>
         <?php 
             } else {
-                wp_list_comments('type=comment&callback=aurelius_comment');
-            }
-        ?>
+                ?>
+                <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/comments.js"></script>
+                <div class="commitbgDiv">
+	                <div class="commitDiv">
+					<div id="t2" width="100%">
+			            <?php 
+                        wp_list_comments(array(
+                            'max_depth'=> 0,
+                            'end-callback'=> null,
+                            'type'=> 'comment',
+                            'avatar_size'=> 40,
+                            'reverse_top_level'=> false,
+                            'reverse_children'=> false,
+                            'callback'=>'comment'
+                        ));
+                            }
+                        ?>
+
+                </div>
+            </div>
+        </div>
+	<div class="commitinputDiv"></div>
     <?php } ?>
-</ol>
 <!-- Comment Form -->
 <?php 
 if ( !comments_open() || $wpNyarukoCommentMode) :
@@ -53,7 +70,6 @@ elseif ( get_option('comment_registration') && !is_user_logged_in() ) :
 <!-- Comment Form -->
 <form id="commentform" name="commentform" action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post">
     <h3>发表评论</h3>
-    <div class="hr dotted clearfix">&nbsp;</div>
     <ul>
         <?php if ( !is_user_logged_in() ) : ?>
         <li class="clearfix">
@@ -82,4 +98,53 @@ elseif ( get_option('comment_registration') && !is_user_logged_in() ) :
     <?php comment_id_fields(); ?>
     <?php do_action('comment_form', $post->ID); ?>
 </form>
-<?php endif; ?>
+<?php endif; 
+function comment($comment, $args, $depth) {
+    while(list($key,$val)= each($comment)) { 
+      echo $key." : ".$val."<br/>"; 
+    }
+    $wpNyarukoOption = get_option('wpNyaruko_options');
+    $chatme = "l";
+    if ($comment->user_id == get_the_author_ID()) {
+        $chatme = "r";
+    }
+?>
+<div class="<?php echo $chatme; ?>2">
+    <div class="t<?php echo $chatme; ?>">
+        <?php if ($chatme=="r") {
+        echo '<div class="trRight">';
+        } else {
+        echo '<span class="tlLeft">';
+        }
+        ?>
+        <div class="commitname"><?php echo $comment->comment_author; ?></div>
+        <div class="committime"><?php echo $comment->comment_date; ?></div>
+        <?php if ($chatme=="r") {
+        echo '</div>';
+        } else {
+            echo '</span>';
+        }
+        ?>
+    </div>
+    <div class="t2">
+        <div class="<?php echo $chatme; ?>i">
+            <img src=<?php
+                if ($wpNyarukoOption['wpNyarukoGravatarProxy'] && $wpNyarukoOption['wpNyarukoGravatarProxyPage'] && $wpNyarukoOption['wpNyarukoGravatarProxy'] != "" && $wpNyarukoOption['wpNyarukoGravatarProxyPage'] != "") {
+                    echo ('"'.$wpNyarukoOption['wpNyarukoGravatarProxyPage'].'&mail='.$comment->comment_author_email.'&size=64"');
+                } else {
+                    echo '"https://cn.gravatar.com/avatar/'.md5($comment->comment_author_email).'?s=64"';
+                }
+            ?> alt="<?php echo $comment->comment_author; ?>"/>
+			<div class="commiticon"></div>
+        </div>
+		<div class="<?php echo $chatme; ?>d"></div>
+        <span class="<?php echo $chatme; ?>s">
+            <div class="<?php echo $chatme; ?>l">  
+                <div class="d2"><?php echo $comment->comment_content; ?></div>
+            </div>
+        </span>
+    </div>
+</div>
+<?php
+}
+?>

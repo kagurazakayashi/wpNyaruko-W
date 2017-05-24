@@ -78,7 +78,19 @@ h4 {
 	width: <?php echo $wpNyarukoOption['wpNyarukoMenuItemW']; ?>px;
     <?php
     if (!$wpNyarukoOption['wpNyarukoMenuLeft'] || $wpNyarukoOption['wpNyarukoMenuLeft'] == "") {
-        echo "width: calc(100% / 5);";
+		$mainmenu = wp_nav_menu(array(
+			'container_id' => 'rightbottommenuboxff',
+			'theme_location' => 'primary',
+			'header-menu' => 'header-menu',
+			'menu_id' => 'header-menu',
+			'echo' => false,
+			'before' => '',
+			'after' => '',
+			'link_before' => '',
+			'link_after' => '',
+			'depth' => 1
+		));
+        echo "width: calc(100% / ".substr_count($mainmenu,'<li').");";
     }
     ?>
 }

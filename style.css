@@ -291,10 +291,373 @@ Tags: nyaruko, acg
 /*评论区*/
 #commentsbox {
 	padding: 20px;
+	overflow: scroll;
 }
-.comment {
+.commitbgDiv div {
+	/*overflow: auto;*/
+}
+.commitbgDiv table{
+	width: 100vw;
+	margin: 0px;
+	padding: 0px;
+	border-spacing: 0;
+}
+.commitbgDiv .children {
+	margin: 0;
+	padding: 0;
+}
+
+.commitbgDiv #backDiv{width:100%;}
+
+.commitbgDiv #bdtd1{
+	width: 100%;
+}
+.commitbgDiv #bdtd2{
+	height: 1%;
+	border-top: 1px solid #D9D9D9;
+}
+
+.commitbgDiv #t2backDiv{
+	overflow-y:auto;
+	box-sizing: border-box;
+	width:100%;
+	height:100%;
+}
+.commitbgDiv .tl{
+	height: 16px;
+	color:#BDBDBD;
+	font-size:8px;
+	margin-left:73px;
+}
+.commitbgDiv .tl .tlLeft {
+	height: 16px;
+	overflow: hidden;
+}
+.commitbgDiv .tl .commitname{
+	float: left;
+}
+.commitbgDiv .tl .committime{
+	float: right;
+}
+.commitbgDiv .tr{
+	height: 16px;
+	text-align:right;
+	color:#BDBDBD;
+	font-size:8px;
+	margin-right:73px;
+}
+.commitbgDiv .trRight {
+	height: 16px;
+	float: right;
+}
+.commitbgDiv .tr .commitname{
+	float: right;
+}
+.commitbgDiv .tr .committime {
+	float: left;
+}
+
+
+.commitbgDiv #t2{width:100%;}
+/*.commitbgDiv .l2 {
+	border-top: 1px solid gray;
+}*/
+.commitbgDiv #t2 .l2 .t2{
+	width: 100%;
+	margin: auto;
+	overflow: hidden;
+}
+.commitbgDiv #t2 .r2 .t2{
+	width: 100%;
+	margin: auto;
+	overflow: hidden;
+}
+.commitbgDiv .l2 .li{
+	width:64px;
+	height:64px;
+	float:left;
+	position: relative;
+	}
+.commitbgDiv .l2 .li img{
+	width:64px;
+	height:64px;
+	border-radius:64px;
+	}
+.commitbgDiv .commiticon{
+	width:20px;
+	height:20px;
+	bottom: 0px;
+	right: 0px;
+	border-radius:20px;
+	background-color: pink;
+	position: absolute;
+	}
+.commitbgDiv .l2 .ls{
+	background-color:#D8D8D8;
+	min-height:50px;
+	border-radius:5px;
+	padding:5px;
+	float:left;
+	margin-left:-1px;
+	max-width:calc(100% - 114px);
+	display:block;
+	}
+.commitbgDiv .l2 .ls .li{
+	width:100px;
+	height:100px;
+	float:left;
+	margin-right:3px;
+	}
+.commitbgDiv .l2 .ls .ll{
+	float:left;
+	}
+.commitbgDiv .l2 .ls .ll .d2{
+	word-break:break-all;
+	word-wrap:break-word;
+}
+.commitbgDiv .l2 .ld{
+	float:left;
+	margin-top:7px;
+	width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-right: 8px solid #D8D8D8;
+    border-bottom: 5px solid transparent;
+	}
+
+.commitbgDiv .r2{text-align:right;}
+.commitbgDiv .r2 .ri{
+	width:64px;
+	height:64px;
+	float:right;
+	position: relative;
+}
+.commitbgDiv .r2 .ri img{
+	width: 64px;
+	height: 64px;
+	border-radius:64px;
+}
+.commitbgDiv .r2 .rs{
+	max-width: calc(100% - 114px);
+	background-color:#5CE1B6;
+	min-height:50px;
+	border-radius:5px;
+	padding:5px;
+	float:right;
+}
+.commitbgDiv .r2 .rs .ri{
+	width:100px;
+	height:100px;
+	float:right;
+	margin-left:3px;
+}
+.commitbgDiv .r2 .rs .rl{
+	float:right;
+}
+.commitbgDiv .r2 .rs .rl .d2{
+	word-break:break-all;
+	word-wrap:break-word;
+}
+.commitbgDiv .r2 .rd{
+	float:right;
+	margin-top:7px;
+	width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-left: 8px solid #5CE1B6;
+    border-bottom: 5px solid transparent;
+}
+	
+.commitbgDiv #t3{
+	/*position:absolute;
+	bottom:0px;*/
+	width: 100%;
+}
+.commitbgDiv #downdivD{
+	background-color:#fff;
+	box-sizing:border-box;
+	width: 100%;
+	max-height: 300px;
+	float: left;
+	padding: 1px;
+	word-break: break-all;
+	outline: none;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.commitbgDiv #downimgD{
+	float:left;
+	width:20px;
+	height:20px;
+	padding:2px;
+	border:1px solid #000;
+	background-color:#fff;
+}
+.commitbgDiv #downclickD{
+	margin-bottom:3px;
+	margin-right:3px;
+	float:right;
+	width: 20px;
+	height: 20px;
+	text-align:center;
+	padding:2px;
+
+}
+.commitbgDiv #downclickD img{
+	width: 20px;
+	height: 20px;
+}
+
+.commitbgDiv #downimgoptionbg{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
 	display: none;
 }
+.commitbgDiv #downimgoption{
+	width: 80%;
+	height: 50%;
+	background-color: #f3f3f3;
+	border: 1px solid #D3D3D3;
+	position: fixed;
+	left: 15px;
+	bottom: 15px;
+}
+.commitbgDiv #downimgoption span{
+	width: 20px;
+	height: 20px;
+}
+.commitbgDiv #downimgoption span img{
+	margin: 5px;
+}
+@media only screen and (max-width: 518px){
+.commitbgDiv .d1{max-width:433px; word-break:break-all; word-wrap:break-word;}
+.commitbgDiv .d2{max-width:378px; word-break:break-all; word-wrap:break-word;}
+.commitbgDiv #backDiv{width:500px; height:438px;}
+.commitbgDiv #t2backDiv{overflow-y:auto; width:500px; height:100%;}
+
+.commitbgDiv .tl{color:#BDBDBD; font-size:8px; margin-left:73;}
+.commitbgDiv .tr{text-align:right; color:#BDBDBD; font-size:8px; margin-right:73;}
+
+.commitbgDiv #t2{width:483px;}
+.commitbgDiv .l2 .li{
+	width:64px;
+	height:64px;
+	float:left;
+	}
+.commitbgDiv .l2 .li img{
+	width: 64px;
+	height: 64px;
+	border-radius:64px;
+}
+.commitbgDiv .l2 .ls{
+	background-color:#D8D8D8;
+	min-height:50px;
+	border-radius:5px;
+	padding:5px;
+	float:left;
+	margin-left:-1px;
+	}
+.commitbgDiv .l2 .ls .li{
+	width:50px;
+	float:left;
+	margin-right:3px;
+	}
+.commitbgDiv .l2 .ls .ll{
+	float:left;
+	max-width: 373px;
+	}
+.commitbgDiv .l2 .ld{
+	float:left;
+	margin-top:7px;
+	width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-right: 8px solid #D8D8D8;
+    border-bottom: 5px solid transparent;
+	}
+
+.commitbgDiv .r2{
+	text-align: right;
+}
+.commitbgDiv .r2 .ri{
+	width:64px;
+	height:64px;
+	float:right;
+}
+.commitbgDiv .r2 .ri img{
+	width:64px;
+	height:64px;
+	border-radius:64px;
+}
+.commitbgDiv .r2 .rs{
+	background-color:#5CE1B6;
+	min-height:50px;
+	border-radius:5px;
+	padding:5px;
+	float:right;
+}
+.commitbgDiv .r2 .rs .ri{
+	width:50px;
+	float:right;
+	margin-left:3px;
+}
+.commitbgDiv .r2 .rs .rl{
+	float:right;
+}
+.commitbgDiv .r2 .rd{
+	float:right;
+	margin-top:7px;
+	width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-left: 8px solid #5CE1B6;
+    border-bottom: 5px solid transparent;
+}
+	
+.commitbgDiv #t3{
+	/*position:absolute;
+	bottom:0px;*/
+	width: 100%;
+}
+.commitbgDiv #downdivD{
+	background-color:#fff;
+	box-sizing:border-box;
+	width: 100%;
+	max-height: 300px;
+	float: left;
+	padding: 1px;
+	word-break: break-all;
+	outline: none;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.commitbgDiv #downimgD{
+	float:left;
+	width:20px;
+	height:20px;
+	padding:2px;
+	border:1px solid #000;
+	background-color:#fff;
+}
+.commitbgDiv #downclickD{
+	margin-bottom:3px;
+	margin-right:3px;
+	float:right;
+	width: 20px;
+	height: 20px;
+	text-align:center;
+	padding:2px;
+
+}
+.commitbgDiv #downclickD img{
+	width: 20px;
+	height: 20px;
+}
+}
+/*评论区结束*/
 /*右下角按钮*/
 #rightbottommenubox {
     position: fixed;
