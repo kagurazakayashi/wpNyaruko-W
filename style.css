@@ -293,7 +293,7 @@ Tags: nyaruko, acg
 	padding: 20px;
 }
 .commitbgDiv div {
-	/*overflow: auto;*/
+	/*overflow: hidden;*/
 }
 .commitbgDiv table{
 	width: 100vw;
@@ -315,18 +315,11 @@ Tags: nyaruko, acg
 	height: 1%;
 	border-top: 1px solid #D9D9D9;
 }
-
 .commitbgDiv #t2backDiv{
 	overflow-y:auto;
 	box-sizing: border-box;
 	width:100%;
 	height:100%;
-}
-.commitbgDiv .tl{
-	height: 16px;
-	color:#BDBDBD;
-	font-size:8px;
-	margin-left:73px;
 }
 .commitbgDiv .tl .tlLeft {
 	height: 16px;
@@ -338,13 +331,6 @@ Tags: nyaruko, acg
 .commitbgDiv .tl .committime{
 	float: right;
 }
-.commitbgDiv .tr{
-	height: 16px;
-	text-align:right;
-	color:#BDBDBD;
-	font-size:8px;
-	margin-right:73px;
-}
 .commitbgDiv .trRight {
 	height: 16px;
 	float: right;
@@ -355,12 +341,10 @@ Tags: nyaruko, acg
 .commitbgDiv .tr .committime {
 	float: left;
 }
-
-
 .commitbgDiv #t2{width:100%;}
-/*.commitbgDiv .l2 {
-	border-top: 1px solid gray;
-}*/
+.commitbgDiv .l2 {
+	position: relative;
+}
 .commitbgDiv #t2 .l2 .t2{
 	width: 100%;
 	margin: auto;
@@ -376,12 +360,12 @@ Tags: nyaruko, acg
 	height:64px;
 	float:left;
 	position: relative;
-	}
+}
 .commitbgDiv .l2 .li img{
 	width:64px;
 	height:64px;
 	border-radius:64px;
-	}
+}
 .commitbgDiv .commiticon{
 	width:15px;
 	height:15px;
@@ -398,7 +382,6 @@ Tags: nyaruko, acg
 	user-select: none;
 }
 .commitbgDiv .l2 .ls{
-	background-color:#D8D8D8;
 	min-height:50px;
 	border-radius:5px;
 	padding:5px;
@@ -426,11 +409,14 @@ Tags: nyaruko, acg
 	width: 0;
     height: 0;
     border-top: 5px solid transparent;
-    border-right: 8px solid #D8D8D8;
+    border-right: 8px solid transparent;
     border-bottom: 5px solid transparent;
 	}
 
-.commitbgDiv .r2{text-align:right;}
+.commitbgDiv .r2{
+	text-align:right;
+	position: relative;
+}
 .commitbgDiv .r2 .ri{
 	width:64px;
 	height:64px;
@@ -463,15 +449,6 @@ Tags: nyaruko, acg
 	word-break:break-all;
 	word-wrap:break-word;
 }
-.commitbgDiv .r2 .rd{
-	float:right;
-	margin-top:7px;
-	width: 0;
-    height: 0;
-    border-top: 5px solid transparent;
-    border-left: 8px solid #5CE1B6;
-    border-bottom: 5px solid transparent;
-}
 	
 .commitbgDiv #t3{
 	/*position:absolute;
@@ -479,7 +456,6 @@ Tags: nyaruko, acg
 	width: 100%;
 }
 .commitbgDiv #downdivD{
-	background-color:#fff;
 	box-sizing:border-box;
 	width: 100%;
 	max-height: 300px;
@@ -488,7 +464,7 @@ Tags: nyaruko, acg
 	word-break: break-all;
 	outline: none;
 	overflow-y: auto;
-	overflow-x: hidden;
+	overflow-x: auto;
 }
 .commitbgDiv #downimgD{
 	float:left;
@@ -496,7 +472,6 @@ Tags: nyaruko, acg
 	height:20px;
 	padding:2px;
 	border:1px solid #000;
-	background-color:#fff;
 }
 .commitbgDiv #downclickD{
 	margin-bottom:3px;
@@ -557,14 +532,7 @@ Tags: nyaruko, acg
 	height: 64px;
 	border-radius:64px;
 }
-.commitbgDiv .l2 .ls{
-	background-color:#D8D8D8;
-	min-height:50px;
-	border-radius:5px;
-	padding:5px;
-	float:left;
-	margin-left:-1px;
-	}
+
 .commitbgDiv .l2 .ls .li{
 	width:50px;
 	float:left;
@@ -574,16 +542,6 @@ Tags: nyaruko, acg
 	float:left;
 	max-width: 373px;
 	}
-.commitbgDiv .l2 .ld{
-	float:left;
-	margin-top:7px;
-	width: 0;
-    height: 0;
-    border-top: 5px solid transparent;
-    border-right: 8px solid #D8D8D8;
-    border-bottom: 5px solid transparent;
-	}
-
 .commitbgDiv .r2{
 	text-align: right;
 }
@@ -596,13 +554,6 @@ Tags: nyaruko, acg
 	width:64px;
 	height:64px;
 	border-radius:64px;
-}
-.commitbgDiv .r2 .rs{
-	background-color:#5CE1B6;
-	min-height:50px;
-	border-radius:5px;
-	padding:5px;
-	float:right;
 }
 .commitbgDiv .r2 .rs .ri{
 	width:50px;
@@ -628,7 +579,6 @@ Tags: nyaruko, acg
 	width: 100%;
 }
 .commitbgDiv #downdivD{
-	background-color:#fff;
 	box-sizing:border-box;
 	width: 100%;
 	max-height: 300px;
@@ -637,7 +587,7 @@ Tags: nyaruko, acg
 	word-break: break-all;
 	outline: none;
 	overflow-y: auto;
-	overflow-x: hidden;
+	overflow-x: auto;
 }
 .commitbgDiv #downimgD{
 	float:left;
@@ -645,7 +595,6 @@ Tags: nyaruko, acg
 	height:20px;
 	padding:2px;
 	border:1px solid #000;
-	background-color:#fff;
 }
 .commitbgDiv #downclickD{
 	margin-bottom:3px;

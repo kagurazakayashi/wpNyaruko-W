@@ -103,13 +103,17 @@ function comment($comment, $args, $depth) {
     // while(list($key,$val)= each($comment)) { 
     //   echo $key." : ".$val."<br/>"; 
     // }
-    $wpNyarukoOption = get_option('wpNyaruko_options');
+    echo "EEEEEE";
+    comment_reply_link(array_merge($args));
+    echo "GGGGGG";
+    comment_reply_link(array_merge($args, array('reply_text' => '回复','depth' => $depth, 'max_depth' => $args['max_depth'])));
     $chatme = "l";
     if ($comment->user_id == get_the_author_ID()) {
         $chatme = "r";
     }
 ?>
 <div class="<?php echo $chatme; ?>2">
+<div class="cellrep" onmousemove="cellmousemove($(this));" onmouseout="cellmouseout($(this));" onclick="cellclick($(this),"<?php comment_reply_link(array_merge($args, array('reply_text' => '回复','depth' => $depth, 'max_depth' => $args['max_depth']))); ?>");"></div>
     <div class="t<?php echo $chatme; ?>">
         <?php if ($chatme=="r") {
         echo '<div class="trRight">';

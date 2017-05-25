@@ -1,4 +1,13 @@
 <?php
+$wpNyarukoOption = get_option('wpNyaruko_options');
+if($wpNyarukoOption['wpNyarukoPHPDebug']!='') {
+  error_reporting(E_ALL);
+  ini_set('display_errors', '1');
+  echo "<!-- wpNyaruko DEBUG MODE -->";
+} else {
+  ini_set('display_errors', '0');
+}
+if ($wpNyarukoOption['wpNyarukoPHPDebug'])
 if(is_admin()) {
   require ('theme-options.php');
 }

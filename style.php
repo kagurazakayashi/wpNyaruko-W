@@ -16,19 +16,23 @@ body {
     }
     ?>
 	font-weight: extra-light,light,demi-light,medium;
-    <?php
+	<?php
+	echo "cursor: ";
     if ($wpNyarukoOption['wpNyarukoCursor'] && $wpNyarukoOption['wpNyarukoCursor'] != "") {
-        echo "cursor: url('".$wpNyarukoOption['wpNyarukoCursor']."'), auto;";
+        echo "url('".$wpNyarukoOption['wpNyarukoCursor']."'), ";
     }
+	echo "auto;";
     ?>
 }
 a:link {
 	color: #<?php echo $wpNyarukoOption['wpNyarukoColorH']; ?>;
 	text-decoration: none;
     <?php
+	echo "cursor: ";
     if ($wpNyarukoOption['wpNyarukoHandCursor'] && $wpNyarukoOption['wpNyarukoHandCursor'] != "") {
-        echo "cursor: url('".$wpNyarukoOption['wpNyarukoHandCursor']."'), auto;";
+        echo "url('".$wpNyarukoOption['wpNyarukoHandCursor']."'), ";
     }
+	echo "auto;";
     ?>
 }
 a:visited {
@@ -114,7 +118,13 @@ h4 {
     width: 64px;
     height: 64px;
     font-size: 15px;
-    cursor: pointer;
+    <?php
+	echo "cursor: ";
+    if ($wpNyarukoOption['wpNyarukoHandCursor'] && $wpNyarukoOption['wpNyarukoHandCursor'] != "") {
+        echo "url('".$wpNyarukoOption['wpNyarukoHandCursor']."'), ";
+    }
+	echo "pointer;";
+    ?>
 }
 #rightbottommenuboxf a:hover {
     background-color: #<?php echo $wpNyarukoOption['wpNyarukoColorH']; ?>;;
@@ -125,7 +135,13 @@ h4 {
     height: 64px;
     background-color: #<?php echo $wpNyarukoOption['wpNyarukoColor']; ?>;
     border-radius: 32px;
-    cursor: pointer;
+    <?php
+	echo "cursor: ";
+    if ($wpNyarukoOption['wpNyarukoHandCursor'] && $wpNyarukoOption['wpNyarukoHandCursor'] != "") {
+        echo "url('".$wpNyarukoOption['wpNyarukoHandCursor']."'), ";
+    }
+	echo "pointer;";
+    ?>
 }
 #rightbottommenuboxf #rightbottommenuswitch:hover {
     background-color: #<?php echo $wpNyarukoOption['wpNyarukoColorH']; ?>;
@@ -178,8 +194,14 @@ h4 {
 	border-radius: 4px;
 	overflow: hidden;
 	position:absolute;
-	cursor:pointer;
 	user-select: none;
+	<?php
+	echo "cursor: ";
+    if ($wpNyarukoOption['wpNyarukoHandCursor'] && $wpNyarukoOption['wpNyarukoHandCursor'] != "") {
+        echo "url('".$wpNyarukoOption['wpNyarukoHandCursor']."'), ";
+    }
+	echo "pointer;";
+    ?>
 }
 .blockbdiv:hover {
 	box-shadow:0px 3px 5px gray;
@@ -249,6 +271,76 @@ h4 {
 	background-color: #<?php echo $wpNyarukoOption['wpNyarukoColor']; ?>;
 	color: #fff;
 	float: left;
+}
+/*评论区*/
+.commitbgDiv .cellrep {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	border-radius: 50px;
+	line-height: 100%;
+	color: #FFF;
+	text-align: center;
+	user-select: none;
+	font-size: 20px;
+	<?php
+	echo "cursor: ";
+    if ($wpNyarukoOption['wpNyarukoHandCursor'] && $wpNyarukoOption['wpNyarukoHandCursor'] != "") {
+        echo "url('".$wpNyarukoOption['wpNyarukoHandCursor']."'), ";
+    }
+	echo "pointer;";
+    ?>
+}
+.commitbgDiv .tl{
+	height: 16px;
+	color:#<?php echo $wpNyarukoOption['wpNyarukoColorH']; ?>;
+	font-size:8px;
+	margin-left:73px;
+}
+.commitbgDiv .l2 .ls{
+	background-color:#<?php echo $wpNyarukoOption['wpNyarukoColorCommentBG']; ?>;
+	color:#<?php echo $wpNyarukoOption['wpNyarukoColorT']; ?>;
+	min-height:50px;
+	border-radius:5px;
+	padding:5px;
+	float:left;
+	margin-left:-1px;
+	/*box-shadow: 2px 2px 2px gray;*/
+}
+.commitbgDiv .l2 .ld{
+	float:left;
+	margin-top:7px;
+	width: 0;
+	height: 0;
+	border-top: 5px solid transparent;
+	border-right: 8px solid #<?php echo $wpNyarukoOption['wpNyarukoColorCommentBG']; ?>;
+	border-bottom: 5px solid transparent;
+}
+.commitbgDiv .tr{
+	height: 16px;
+	text-align:right;
+	color:#<?php echo $wpNyarukoOption['wpNyarukoColorH']; ?>;
+	font-size:8px;
+	margin-right:73px;
+}
+.commitbgDiv .r2 .rs{
+	background-color:#<?php echo $wpNyarukoOption['wpNyarukoColorCommentBG2']; ?>;
+	color:#<?php echo $wpNyarukoOption['wpNyarukoColorT']; ?>;
+	min-height:50px;
+	border-radius:5px;
+	padding:5px;
+	float:right;
+	/*box-shadow: -2px 2px 2px gray;*/
+}
+.commitbgDiv .r2 .rd{
+	float:right;
+	margin-top:7px;
+	width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-left: 8px solid #<?php echo $wpNyarukoOption['wpNyarukoColorCommentBG2']; ?>;
+    border-bottom: 5px solid transparent;
 }
 /*响应式布局*/
 @media screen and (max-width: <?php echo $wpNyarukoOption['wpNyarukoPad']; ?>px) {

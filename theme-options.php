@@ -15,6 +15,8 @@ function getOptions() {
         $options['wpNyarukoColorBG'] = 'FFFFFF';
         $options['wpNyarukoColorL'] = 'FFF0F5';
         $options['wpNyarukoColorLL'] = 'FFF0F5';
+        $options['wpNyarukoColorCommentBG'] = '#FFCCFF';
+        $options['wpNyarukoColorCommentBG2'] = '#FF99FF';
         $options['wpNyarukoCursor'] = '';
         $options['wpNyarukoHandCursor'] = '';
         $options['wpNyarukoMenuLeft'] = 'off';
@@ -29,9 +31,9 @@ function getOptions() {
         $options['wpNyarukoFontSize'] = '12';
         $options['wpNyarukoIndexKeywords'] = '';
         $options['wpNyarukoRSSArticle'] = 'on';
-        $options['wpNyarukoRSSComment'] = 'off';
+        $options['wpNyarukoRSSComment'] = '';
         $options['wpNyarukoJQ'] = '/lib/jQuery/jquery.min.js';
-        $options['wpNyarukoCommentMode'] = 'on';
+        $options['wpNyarukoCommentMode'] = '';
         $options['wpNyarukoGravatarProxyPage'] = '';
         $options['wpNyarukoGravatarProxy'] = '';
         $options['wpNyarukoCommentBox'] = '正在加载 Disqus 评论……';
@@ -39,6 +41,9 @@ function getOptions() {
         $options['wpNyarukoHeader'] = '<meta name="copyright" content="Copyright xxx, All rights Reserved.">';
         $options['wpNyarukoFooter'] = '版权所有 &copy; 。自豪地使用 <a rel="external" title="WordPress主页" target="_blank" class="link" href="http://wordpress.org/">WordPress</a> 。使用 <a title="开源是一种态度" target="_blank" href="https://github.com/kagurazakayashi/wpNyaruko-W">wpNyaruko-W</a> 作为本站主题。<!--备案号--><!--统计代码-->';
         $options['wpNyarukoScrollpic'] = '此处为自定义HTML，右侧是一个小工具区';
+        $options['wpNyarukoCommentSysIco'] = 'on';
+        $options['wpNyarukoCommentSysIcoInfo'] = 'on';
+        $options['wpNyarukoPHPDebug'] = '';
         update_option('wpNyaruko_options', $options);
         die('<div id="wpNyarukoInfo" style="text-align: center; width: 100%; height: 25px; line-height: 25px; border-radius: 0px 0px 5px 5px; overflow: hidden; background-color: yellow; box-shadow: 0px 0px 5px gray; font-size: 12px;">欢迎使用 wpNyaruko 主题，请先完成初始设定。<a href="themes.php?page=theme-options.php">现在开始</a></div>');
     }
@@ -51,43 +56,48 @@ function init() {
     }
     if(isset($_POST['input_save'])) {
         $options = getOptions();
-        $options['wpNyarukoTest'] = stripslashes($_POST['wpNyarukoTest']);
-        $options['wpNyarukoLogo'] = stripslashes($_POST['wpNyarukoLogo']);
-        $options['wpNyarukoColor'] = stripslashes($_POST['wpNyarukoColor']);
-        $options['wpNyarukoColorH'] = stripslashes($_POST['wpNyarukoColorH']);
-        $options['wpNyarukoColorT'] = stripslashes($_POST['wpNyarukoColorT']);
-        $options['wpNyarukoColorI'] = stripslashes($_POST['wpNyarukoColorI']);
-        $options['wpNyarukoColorH1'] = stripslashes($_POST['wpNyarukoColorH1']);
-        $options['wpNyarukoColorH2'] = stripslashes($_POST['wpNyarukoColorH2']);
-        $options['wpNyarukoColorH3'] = stripslashes($_POST['wpNyarukoColorH3']);
-        $options['wpNyarukoColorH4'] = stripslashes($_POST['wpNyarukoColorH4']);
-        $options['wpNyarukoColorBG'] = stripslashes($_POST['wpNyarukoColorBG']);
-        $options['wpNyarukoColorL'] = stripslashes($_POST['wpNyarukoColorL']);
-        $options['wpNyarukoColorLL'] = stripslashes($_POST['wpNyarukoColorLL']);
-        $options['wpNyarukoCursor'] = stripslashes($_POST['wpNyarukoCursor']);
-        $options['wpNyarukoHandCursor'] = stripslashes($_POST['wpNyarukoHandCursor']);
-        $options['wpNyarukoMenuLeft'] = stripslashes($_POST['wpNyarukoMenuLeft']);
-        $options['wpNyarukoMenuItemW'] = stripslashes($_POST['wpNyarukoMenuItemW']);
-        $options['wpNyarukoPad'] = stripslashes($_POST['wpNyarukoPad']);
-        $options['wpNyarukoPhone'] = stripslashes($_POST['wpNyarukoPhone']);
-        $options['wpNyarukoPicDir'] = stripslashes($_POST['wpNyarukoPicDir']);
-        $options['wpNyarukoTextTable'] = stripslashes($_POST['wpNyarukoTextTable']);
-        $options['wpNyarukoSearchName'] = stripslashes($_POST['wpNyarukoSearchName']);
-        $options['wpNyarukoSearchURL'] = stripslashes($_POST['wpNyarukoSearchURL']);
-        $options['wpNyarukoFont'] = stripslashes($_POST['wpNyarukoFont']);
-        $options['wpNyarukoFontSize'] = stripslashes($_POST['wpNyarukoFontSize']);
-        $options['wpNyarukoIndexKeywords'] = stripslashes($_POST['wpNyarukoIndexKeywords']);
-        $options['wpNyarukoRSSArticle'] = stripslashes($_POST['wpNyarukoRSSArticle']);
-        $options['wpNyarukoRSSComment'] = stripslashes($_POST['wpNyarukoRSSComment']);
-        $options['wpNyarukoJQ'] = stripslashes($_POST['wpNyarukoJQ']);
-        $options['wpNyarukoCommentMode'] = stripslashes($_POST['wpNyarukoCommentMode']);
-        $options['wpNyarukoCommentBox'] = stripslashes($_POST['wpNyarukoCommentBox']);
-        $options['wpNyarukoCommentTitle'] = stripslashes($_POST['wpNyarukoCommentTitle']);
-        $options['wpNyarukoHeader'] = stripslashes($_POST['wpNyarukoHeader']);
-        $options['wpNyarukoFooter'] = stripslashes($_POST['wpNyarukoFooter']);
-        $options['wpNyarukoScrollpic'] = stripslashes($_POST['wpNyarukoScrollpic']);
-        $options['wpNyarukoGravatarProxyPage'] = stripslashes($_POST['wpNyarukoGravatarProxyPage']);
-        $options['wpNyarukoGravatarProxy'] = stripslashes($_POST['wpNyarukoGravatarProxy']);
+        @$options['wpNyarukoTest'] = stripslashes($_POST['wpNyarukoTest']);
+        @$options['wpNyarukoLogo'] = stripslashes($_POST['wpNyarukoLogo']);
+        @$options['wpNyarukoColor'] = stripslashes($_POST['wpNyarukoColor']);
+        @$options['wpNyarukoColorH'] = stripslashes($_POST['wpNyarukoColorH']);
+        @$options['wpNyarukoColorT'] = stripslashes($_POST['wpNyarukoColorT']);
+        @$options['wpNyarukoColorI'] = stripslashes($_POST['wpNyarukoColorI']);
+        @$options['wpNyarukoColorH1'] = stripslashes($_POST['wpNyarukoColorH1']);
+        @$options['wpNyarukoColorH2'] = stripslashes($_POST['wpNyarukoColorH2']);
+        @$options['wpNyarukoColorH3'] = stripslashes($_POST['wpNyarukoColorH3']);
+        @$options['wpNyarukoColorH4'] = stripslashes($_POST['wpNyarukoColorH4']);
+        @$options['wpNyarukoColorBG'] = stripslashes($_POST['wpNyarukoColorBG']);
+        @$options['wpNyarukoColorL'] = stripslashes($_POST['wpNyarukoColorL']);
+        @$options['wpNyarukoColorLL'] = stripslashes($_POST['wpNyarukoColorLL']);
+        @$options['wpNyarukoCursor'] = stripslashes($_POST['wpNyarukoCursor']);
+        @$options['wpNyarukoHandCursor'] = stripslashes($_POST['wpNyarukoHandCursor']);
+        @$options['wpNyarukoMenuLeft'] = stripslashes($_POST['wpNyarukoMenuLeft']);
+        @$options['wpNyarukoMenuItemW'] = stripslashes($_POST['wpNyarukoMenuItemW']);
+        @$options['wpNyarukoPad'] = stripslashes($_POST['wpNyarukoPad']);
+        @$options['wpNyarukoPhone'] = stripslashes($_POST['wpNyarukoPhone']);
+        @$options['wpNyarukoPicDir'] = stripslashes($_POST['wpNyarukoPicDir']);
+        @$options['wpNyarukoTextTable'] = stripslashes($_POST['wpNyarukoTextTable']);
+        @$options['wpNyarukoSearchName'] = stripslashes($_POST['wpNyarukoSearchName']);
+        @$options['wpNyarukoSearchURL'] = stripslashes($_POST['wpNyarukoSearchURL']);
+        @$options['wpNyarukoFont'] = stripslashes($_POST['wpNyarukoFont']);
+        @$options['wpNyarukoFontSize'] = stripslashes($_POST['wpNyarukoFontSize']);
+        @$options['wpNyarukoIndexKeywords'] = stripslashes($_POST['wpNyarukoIndexKeywords']);
+        @$options['wpNyarukoRSSArticle'] = stripslashes($_POST['wpNyarukoRSSArticle']);
+        @$options['wpNyarukoRSSComment'] = stripslashes($_POST['wpNyarukoRSSComment']);
+        @$options['wpNyarukoJQ'] = stripslashes($_POST['wpNyarukoJQ']);
+        @$options['wpNyarukoCommentMode'] = stripslashes($_POST['wpNyarukoCommentMode']);
+        @$options['wpNyarukoCommentBox'] = stripslashes($_POST['wpNyarukoCommentBox']);
+        @$options['wpNyarukoCommentTitle'] = stripslashes($_POST['wpNyarukoCommentTitle']);
+        @$options['wpNyarukoHeader'] = stripslashes($_POST['wpNyarukoHeader']);
+        @$options['wpNyarukoFooter'] = stripslashes($_POST['wpNyarukoFooter']);
+        @$options['wpNyarukoScrollpic'] = stripslashes($_POST['wpNyarukoScrollpic']);
+        @$options['wpNyarukoGravatarProxyPage'] = stripslashes($_POST['wpNyarukoGravatarProxyPage']);
+        @$options['wpNyarukoGravatarProxy'] = stripslashes($_POST['wpNyarukoGravatarProxy']);
+        @$options['wpNyarukoCommentSysIco'] = stripslashes($_POST['wpNyarukoCommentSysIco']);
+        @$options['wpNyarukoCommentSysIcoInfo'] = stripslashes($_POST['wpNyarukoCommentSysIcoInfo']);
+        @$options['wpNyarukoPHPDebug'] = stripslashes($_POST['wpNyarukoPHPDebug']);
+        @$options['wpNyarukoColorCommentBG'] = stripslashes($_POST['wpNyarukoColorCommentBG']);
+        @$options['wpNyarukoColorCommentBG2'] = stripslashes($_POST['wpNyarukoColorCommentBG2']);
         update_option('wpNyaruko_options', $options);
     } else {
         getOptions();
@@ -137,6 +147,10 @@ if(!is_admin()) {
     <tr>
       <td>标题色</td>
       <td>一级：#<input name="wpNyarukoColorH1" type="text" id="wpNyarukoColorH1" value="<?php echo($options['wpNyarukoColorH1']); ?>" size="6" maxlength="6" />　二级：#<input name="wpNyarukoColorH2" type="text" id="wpNyarukoColorH2" value="<?php echo($options['wpNyarukoColorH2']); ?>" size="6" maxlength="6" />　三级：#<input name="wpNyarukoColorH3" type="text" id="wpNyarukoColorH3" value="<?php echo($options['wpNyarukoColorH3']); ?>" size="6" maxlength="6" />　四级：#<input name="wpNyarukoColorH4" type="text" id="wpNyarukoColorH4" value="<?php echo($options['wpNyarukoColorH4']); ?>" size="6" maxlength="6" /></td>
+    </tr>
+    <tr>
+      <td>评论色</td>
+      <td>评论：#<input name="wpNyarukoColorCommentBG" type="text" id="wpNyarukoColorCommentBG" value="<?php echo($options['wpNyarukoColorCommentBG']); ?>" size="6" maxlength="6" />　回复：#<input name="wpNyarukoColorCommentBG2" type="text" id="wpNyarukoColorCommentBG2" value="<?php echo($options['wpNyarukoColorCommentBG2']); ?>" size="6" maxlength="6" /></td>
     </tr>
     <tr>
       <td>自定义鼠标指针</td>
@@ -195,6 +209,10 @@ if(!is_admin()) {
       <td><input name="wpNyarukoGravatarProxy" type="text" id="wpNyarukoGravatarProxy" value="<?php echo($options['wpNyarukoGravatarProxy']); ?>" size="40" maxlength="100" />(http://proxyserver:host)<br/>留空为禁用(用户直连),只填"serverhost"字样为服务器直接中转(海外服推荐)</td>
     </tr>
     <tr>
+      <td>评论者信息显示</td>
+      <td><input name="wpNyarukoCommentSysIco" type="checkbox" id="v" <?php if($options['wpNyarukoCommentSysIco']!='')echo('checked'); ?> />在头像右下角显示系统图标　<input name="wpNyarukoCommentSysIcoInfo" type="checkbox" id="wpNyarukoCommentSysIcoInfo" <?php if($options['wpNyarukoCommentSysIcoInfo']!='')echo('checked'); ?> />鼠标移到系统图标上显示系统和浏览器版本</td>
+    </tr>
+    <tr>
       <td>评论方式</td>
       <td><input name="wpNyarukoCommentMode" type="checkbox" id="wpNyarukoCommentMode" <?php if($options['wpNyarukoCommentMode']!='')echo('checked'); ?> />使用第三方评论系统</td>
     </tr>
@@ -225,6 +243,10 @@ if(!is_admin()) {
     <tr>
       <td>使用自己的网页<br/>代替某个页面<br/>(例如主页)</td>
       <td>请创建一个写有目标网址的页面，<br/>网址包含在[GOTO][GOTO]中。<br/>然后为此页面使用「自定义列表」模板。<br/>例子：<br/><code>[GOTO]/home.html[GOTO]</code></td>
+    </tr>
+    <tr>
+      <td>PHP调试</td>
+      <td><input name="wpNyarukoPHPDebug" type="checkbox" id="wpNyarukoPHPDebug" <?php if($options['wpNyarukoPHPDebug']!='')echo('checked'); ?> />显示所有PHP警告和错误(display_errors,E_ALL),不建议在生产环境使用</td>
     </tr>
   </tbody>
     </table>

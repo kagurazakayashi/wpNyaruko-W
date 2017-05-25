@@ -42,5 +42,15 @@ function loadscreen(res = false) {
 			}
 		}
 	}
-
+}
+function cellmousemove($self) {
+	$self.html("<b>点击回复</b>");
+	$self.css({'background-color':'rgba(0, 0, 0, 0.5)','line-height':($self.height()+'px')});
+}
+function cellmouseout($self) {
+	$self.css('background-color','transparent');
+	$self.html("");
+}
+function cellclick($self,$url) {
+	console.log($url);
 }

@@ -6,7 +6,16 @@
 			<div id="singlerightdiv">
 				<span id="srdtop">
 					<div id="srdtitle"><?php the_title(); ?></div>
-					<div id="srddate"><?php the_time('Y年n月j日') ?> &bull; <?php $category = get_the_category(); echo '<a href="'.get_category_link($category[0]->term_id ).'">'.$category[0]->cat_name.'</a>'; ?><?php edit_post_link('编辑', ' &bull; ', ''); ?></div>
+					<div id="srddate"><?php the_time('Y年n月j日') ?> &bull; <?php
+					 $category = get_the_category();
+					 if (count($category) == 0) {
+						echo "页面";
+					 } else {
+						$category = $category[0];
+						echo '<a href="'.get_category_link($category->term_id ).'">'.$category->cat_name.'</a>';
+					 }
+					 edit_post_link('编辑', ' &bull; ', '');
+					 ?></div>
 				</span>
 				<div id="srdcontentbox"><div id="srdcontent"><?php the_content(); ?></div></div>
 			</div>
