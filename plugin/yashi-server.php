@@ -14,8 +14,8 @@ if (!class_exists("yashiserverc")) {
 	class yashiserverc {
 		// Ram using calc
 		public function MemCalcs() {
-			$memlimit = ini_get('memory_limit') ;
-			$memused = round(memory_get_usage() / 1024 / 1024, 2);
+			$memlimit = intval(ini_get('memory_limit')) ;
+			$memused = intval(round(memory_get_usage() / 1024 / 1024, 2));
 			$mem_use_percent = round($memused* 100 / $memlimit)."%";
 			$mem_using = "已分配".$memlimit."内存,已使用".$memused."M,占用".$mem_use_percent;
 			return $mem_using;
@@ -101,6 +101,8 @@ if (!class_exists("yashiserverc")) {
 
 		////获得访客真实ip
 		function Getip(){
+			$ip = null;
+			$ips = [];
 			if(!empty($_SERVER["HTTP_CLIENT_IP"])){
 				$ip = $_SERVER["HTTP_CLIENT_IP"];
 			}

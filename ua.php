@@ -10,8 +10,8 @@ function get_broswer($useragent){
         ["谷歌浏览器","Chrome","/Chrome\/([\d\.]+)/"],
         ["雅诗浏览器","YashiBrowser","/Chrome\/([\d\.]+)/"]
     ];
-    $broswerName = "非常用浏览器";
-    $broswerVersion = "未知版本号";
+    $broswerName = "默认浏览器";
+    $broswerVersion = "默认";
     for ($i= 0;$i< count($broswers); $i++){
         $broswer = $broswers[$i];
         if (stripos($useragent, $broswer[1]) > 0) {
@@ -55,6 +55,7 @@ function get_os($useragent) {
         ["offline","/offline/i",""],
         ["iOS","/iPad/i",""],
         ["iOS","/iPhone/i",""],
+        ["macOS","/Mac OS X/i",""],
         ["Android","/Android/i",""],
         ["Android","/Adr/i",""],
         ["Ubuntu","/ubuntu/i",""],
@@ -75,29 +76,34 @@ function get_os($useragent) {
     return $systemName;
 }
 function get_osico($useragent) {
+    $browser = get_broswer($useragent);
+    $browserName = $browser[0]." ( 版本 ".$browser[1]." )";
     $systemName = get_os($useragent);
+    if (preg_match("/Windows/i", $systemName)) {
+        $systemName = "Windows";
+    }
     $systemicos = [
-        ["/Windows/i","OS_Windows","00bcf2"],
-        ["/Linux/i","OS_Linux","de793b"],
-        ["/macOS/i","OS_macOS","a49f96"],
-        ["/iOS/i","OS_Apple","a49f96"],
-        ["/Android/i","OS_Android","97c03d"],
-        ["/PowerPC/i","OS_OSX","7dacec"],
-        ["/Ubuntu/i","OS_LinuxUbuntu","de4815"],
-        ["/RedHat/i","OS_LinuxRedhat","f60203"],
-        ["/微信小程序/i","CN_tencentwechat","51c332"],
-        ["/Yashi/i","POP_GP",'dd4b39']
+        ["Windows","OS_Windows","00bcf2"],
+        ["GNU/Linux","OS_Linux","de793b"],
+        ["macOS","OS_macOS","a49f96"],
+        ["iOS","OS_Apple","a49f96"],
+        ["Android","OS_Android","97c03d"],
+        ["PowerPC","OS_OSX","7dacec"],
+        ["Ubuntu","OS_LinuxUbuntu","de4815"],
+        ["RedHat","OS_LinuxRedhat","f60203"],
+        ["RedHat/CentOS","CN_tencentwechat","51c332"],
+        ["Yashi","POP_GP",'dd4b39']
     ];
     $systemColor = "000000";
     $systemImage = "";
     for ($i= 0;$i< count($systemicos); $i++) {
         $systemico = $systemicos[$i];
-        if (preg_match($systemico[0], $systemName)) {
+        if ($systemico[0] == $systemName) {
             $systemColor = $systemico[2];
             $systemImage = $systemico[1];
             break;
         }
     }
-    return [$systemImage,$systemColor];
+    return [$systemImage,$systemColor,$systemName,$browserName];
 }
 ?>

@@ -100,9 +100,9 @@ elseif ( get_option('comment_registration') && !is_user_logged_in() ) :
 </form>
 <?php endif; 
 function comment($comment, $args, $depth) {
-    while(list($key,$val)= each($comment)) { 
-      echo $key." : ".$val."<br/>"; 
-    }
+    // while(list($key,$val)= each($comment)) { 
+    //   echo $key." : ".$val."<br/>"; 
+    // }
     $wpNyarukoOption = get_option('wpNyaruko_options');
     $chatme = "l";
     if ($comment->user_id == get_the_author_ID()) {
@@ -128,14 +128,22 @@ function comment($comment, $args, $depth) {
     </div>
     <div class="t2">
         <div class="<?php echo $chatme; ?>i">
-            <img src=<?php
+            <img style="background:url(<?php bloginfo("template_url"); ?>/images/gravatar.png) no-repeat 100% 100%;" src=<?php
                 if ($wpNyarukoOption['wpNyarukoGravatarProxy'] && $wpNyarukoOption['wpNyarukoGravatarProxyPage'] && $wpNyarukoOption['wpNyarukoGravatarProxy'] != "" && $wpNyarukoOption['wpNyarukoGravatarProxyPage'] != "") {
                     echo ('"'.$wpNyarukoOption['wpNyarukoGravatarProxyPage'].'&mail='.$comment->comment_author_email.'&size=64"');
                 } else {
                     echo '"https://cn.gravatar.com/avatar/'.md5($comment->comment_author_email).'?s=64"';
                 }
-            ?> alt="<?php echo $comment->comment_author; ?>"/>
-			<div class="commiticon"></div>
+            ?> /><?php 
+            include_once("ua.php");
+            $userico = get_osico($comment->comment_agent);
+            if ($userico[0] != "") {
+                $usericoalt = $userico[2].' / '.$userico[3];
+                echo '<a title="'.$usericoalt.'"><div class="commiticon" style="background-color:#'.$userico[1].';"><embed src="'.get_bloginfo("template_url").'/images/'.$userico[0].'.svg" 
+type="image/svg+xml"
+pluginspage="http://www.adobe.com/svg/viewer/install/" /></div></a>';
+            }
+            ?>
         </div>
 		<div class="<?php echo $chatme; ?>d"></div>
         <span class="<?php echo $chatme; ?>s">
@@ -144,7 +152,7 @@ function comment($comment, $args, $depth) {
             </div>
         </span>
     </div>
-</div>
+</div><div class="cellline"></div>
 <?php
 }
 ?>

@@ -291,7 +291,6 @@ Tags: nyaruko, acg
 /*评论区*/
 #commentsbox {
 	padding: 20px;
-	overflow: scroll;
 }
 .commitbgDiv div {
 	/*overflow: auto;*/
@@ -384,14 +383,20 @@ Tags: nyaruko, acg
 	border-radius:64px;
 	}
 .commitbgDiv .commiticon{
-	width:20px;
-	height:20px;
+	width:15px;
+	height:15px;
 	bottom: 0px;
 	right: 0px;
 	border-radius:20px;
-	background-color: pink;
 	position: absolute;
+	padding: 5px;
 	}
+.commitbgDiv .commiticon embed {
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	user-select: none;
+}
 .commitbgDiv .l2 .ls{
 	background-color:#D8D8D8;
 	min-height:50px;
@@ -656,6 +661,11 @@ Tags: nyaruko, acg
 	width: 20px;
 	height: 20px;
 }
+}
+.cellline {
+	width: 100%;
+	height: 30px;
+	background: transparent;
 }
 /*评论区结束*/
 /*右下角按钮*/
