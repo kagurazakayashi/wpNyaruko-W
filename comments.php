@@ -98,22 +98,20 @@ elseif ( get_option('comment_registration') && !is_user_logged_in() ) :
     <?php comment_id_fields(); ?>
     <?php do_action('comment_form', $post->ID); ?>
 </form>
-<?php endif; 
+<?php endif;
 function comment($comment, $args, $depth) {
+    $wpNyarukoOption = get_option('wpNyaruko_options');
     // while(list($key,$val)= each($comment)) { 
     //   echo $key." : ".$val."<br/>"; 
     // }
-    echo "EEEEEE";
-    comment_reply_link(array_merge($args));
-    echo "GGGGGG";
-    comment_reply_link(array_merge($args, array('reply_text' => '回复','depth' => $depth, 'max_depth' => $args['max_depth'])));
     $chatme = "l";
     if ($comment->user_id == get_the_author_ID()) {
         $chatme = "r";
     }
 ?>
 <div class="<?php echo $chatme; ?>2">
-<div class="cellrep" onmousemove="cellmousemove($(this));" onmouseout="cellmouseout($(this));" onclick="cellclick($(this),"<?php comment_reply_link(array_merge($args, array('reply_text' => '回复','depth' => $depth, 'max_depth' => $args['max_depth']))); ?>");"></div>
+<?php $replyinfo = getreplyinfo(); ?>
+<div class="cellrep" onmousemove="cellmousemove($(this));" onmouseout="cellmouseout($(this));" onclick="to_reply('<?php echo $replyinfo[0]; ?>','<?php echo $replyinfo[1]; ?>');"></div>
     <div class="t<?php echo $chatme; ?>">
         <?php if ($chatme=="r") {
         echo '<div class="trRight">';

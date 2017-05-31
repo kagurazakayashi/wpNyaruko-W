@@ -219,4 +219,12 @@ function new_excerpt_more($more) {
     return '...[点击阅览全文]';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
+
+function to_reply() { 
+$raonclick = 'to_reply("<?php comment_ID() ?>", "<?php comment_author();?>")';
+echo "<a onclick='".$raonclick."' href='#respond' style='cursor:pointer;' />回复</a>";
+}
+function getreplyinfo() {
+  return [get_comment_ID(),get_comment_author()];
+}
 ?>
