@@ -58,7 +58,15 @@ else if ( isset($_GET['order']) && ($_GET['order']=='alpha') )
 			?>
 			<div id="blockbdiv<?php echo $indexint ?>" class="blockbdiv" onclick="blockbdivclick(<?php echo "'".$indexint."','"; the_permalink(); echo "'"; ?>)" onmouseover="blockbdivblur(<?php echo $indexint ?>)" onmouseout="blockbdivfocus(<?php echo $indexint ?>)">
 				<div name="blocktopdiv" id="blocktopdiv<?php echo $indexint ?>" class="blocktopdiv">
-					<img name="blocktopimg" id="blocktopimg<?php echo $indexint ?>" src="<?php echo catch_that_image() ?>" alt="<?php the_title(); ?>" />
+					<img name="blocktopimg" id="blocktopimg<?php echo $indexint ?>" src="<?php 
+					$itemimage = catch_that_image();
+					if ($itemimage == "") {
+						bloginfo("template_url");
+						echo "/images/default.jpg";
+					} else {
+						echo $itemimage;
+					}
+					?>" alt="<?php the_title(); ?>" />
 					<div class="topline"><?php the_time('Y-m-d') ?>&nbsp;</div>
 					<div class="toptags"><?php $category = get_the_category(); echo '<a href="'.get_category_link(end($category)->term_id ).'">'.end($category)->cat_name.'</a>'; ?></div>
 				</div>

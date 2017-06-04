@@ -20,7 +20,12 @@ foreach ($jsondata as $nowdata){
 <div id="blockbdiv<?php echo $indexint ?>" class="blockbdiv" onclick="blockbdivclick(<?php echo "'".$indexint."','"; echo $itemhref; echo "'"; ?>)" onmouseover="blockbdivblur(<?php echo $indexint ?>)" onmouseout="blockbdivfocus(<?php echo $indexint ?>)">
 			<div id="blockhiddendiv<?php echo $indexint ?>" class="blockhiddendiv"></div>
 				<div name="blocktopdiv" id="blocktopdiv<?php echo $indexint ?>" class="blocktopdiv">
-					<img name="blocktopimg" id="blocktopimg<?php echo $indexint; ?>" src="<?php echo $itemimage ?>" alt="<?php echo $itemtitle; ?>" />
+					<img name="blocktopimg" id="blocktopimg<?php echo $indexint; ?>" src="<?php if ($itemimage == "") {
+						bloginfo("template_url");
+						echo "/images/default.jpg";
+					} else {
+						echo $itemimage;
+					} ?>" alt="<?php echo $itemtitle; ?>" />
 					<div class="topline"><?php echo $itemdate; ?></div>
 					<div class="toptags"><?php echo $itemtype; ?></div>
 				</div>
