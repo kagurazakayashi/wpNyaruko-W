@@ -55,6 +55,7 @@
                             'reverse_children'=> false,
                             'callback'=>'comment'
                         ));
+                        echo "</div></div>";
                             }
                         ?>
 

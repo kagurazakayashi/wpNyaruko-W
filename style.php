@@ -342,6 +342,23 @@ h4 {
     border-left: 8px solid #<?php echo $wpNyarukoOption['wpNyarukoColorCommentBG2']; ?>;
     border-bottom: 5px solid transparent;
 }
+/*正文区域*/
+#srdcontentbox {
+	position:relative;
+	left: <?php echo $wpNyarukoOption['wpNyarukoMarginLR']; ?>%;
+	width: <?php echo (100 - (int)$wpNyarukoOption['wpNyarukoMarginLR'] * 2); ?>%;
+}
+#srdcontent{
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+	word-wrap: break-word;
+	padding-top: <?php echo $wpNyarukoOption['wpNyarukoMarginTB']; ?>px;
+	padding-bottom: <?php echo $wpNyarukoOption['wpNyarukoMarginTB']; ?>px;
+	color: #000;
+	text-align: left;
+	overflow: hidden;
+}
 /*响应式布局*/
 @media screen and (max-width: <?php echo $wpNyarukoOption['wpNyarukoPad']; ?>px) {
 	#bannerimg #mainmenubox {

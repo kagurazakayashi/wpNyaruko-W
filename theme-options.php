@@ -17,6 +17,8 @@ function getOptions() {
         $options['wpNyarukoColorLL'] = 'FFF0F5';
         $options['wpNyarukoColorCommentBG'] = '#FFCCFF';
         $options['wpNyarukoColorCommentBG2'] = '#FF99FF';
+        $options['wpNyarukoMarginTB'] = '80';
+        $options['wpNyarukoMarginLR'] = '10';
         $options['wpNyarukoCursor'] = '';
         $options['wpNyarukoHandCursor'] = '';
         $options['wpNyarukoMenuLeft'] = 'off';
@@ -44,6 +46,8 @@ function getOptions() {
         $options['wpNyarukoCommentSysIco'] = 'on';
         $options['wpNyarukoCommentSysIcoInfo'] = 'on';
         $options['wpNyarukoPHPDebug'] = '';
+        $options['wpNyarukoConsoleLog'] = '欢迎光临我的博客！页面生成用时：';
+        $options['wpNyarukoConsoleLogT'] = 'on';
         update_option('wpNyaruko_options', $options);
         die('<div id="wpNyarukoInfo" style="text-align: center; width: 100%; height: 25px; line-height: 25px; border-radius: 0px 0px 5px 5px; overflow: hidden; background-color: yellow; box-shadow: 0px 0px 5px gray; font-size: 12px;">欢迎使用 wpNyaruko 主题，请先完成初始设定。<a href="themes.php?page=theme-options.php">现在开始</a></div>');
     }
@@ -98,6 +102,10 @@ function init() {
         @$options['wpNyarukoPHPDebug'] = stripslashes($_POST['wpNyarukoPHPDebug']);
         @$options['wpNyarukoColorCommentBG'] = stripslashes($_POST['wpNyarukoColorCommentBG']);
         @$options['wpNyarukoColorCommentBG2'] = stripslashes($_POST['wpNyarukoColorCommentBG2']);
+        @$options['wpNyarukoMarginTB'] = stripslashes($_POST['wpNyarukoMarginTB']);
+        @$options['wpNyarukoMarginLR'] = stripslashes($_POST['wpNyarukoMarginLR']);
+        @$options['wpNyarukoConsoleLog'] = stripslashes($_POST['wpNyarukoConsoleLog']);
+        @$options['wpNyarukoConsoleLogT'] = stripslashes($_POST['wpNyarukoConsoleLogT']);
         update_option('wpNyaruko_options', $options);
     } else {
         getOptions();
@@ -151,6 +159,10 @@ if(!is_admin()) {
     <tr>
       <td>评论色</td>
       <td>评论：#<input name="wpNyarukoColorCommentBG" type="text" id="wpNyarukoColorCommentBG" value="<?php echo($options['wpNyarukoColorCommentBG']); ?>" size="6" maxlength="6" />　回复：#<input name="wpNyarukoColorCommentBG2" type="text" id="wpNyarukoColorCommentBG2" value="<?php echo($options['wpNyarukoColorCommentBG2']); ?>" size="6" maxlength="6" /></td>
+    </tr>
+    <tr>
+      <td>文章正文内边距</td>
+      <td>上下边距：<input name="wpNyarukoMarginTB" type="text" id="wpNyarukoMarginTB" value="<?php echo($options['wpNyarukoMarginTB']); ?>" size="4" maxlength="4" />px　左右边距：<input name="wpNyarukoMarginLR" type="text" id="wpNyarukoMarginLR" value="<?php echo($options['wpNyarukoMarginLR']); ?>" size="3" maxlength="3" />%</td>
     </tr>
     <tr>
       <td>自定义鼠标指针</td>
@@ -243,6 +255,10 @@ if(!is_admin()) {
     <tr>
       <td>使用自己的网页<br/>代替某个页面<br/>(例如主页)</td>
       <td>请创建一个写有目标网址的页面，<br/>网址包含在[GOTO][GOTO]中。<br/>然后为此页面使用「自定义列表」模板。<br/>例子：<br/><code>[GOTO]/home.html[GOTO]</code></td>
+    </tr>
+    <tr>
+      <td>在控制台输<br/>出一段内容</td>
+      <td><input name="wpNyarukoConsoleLog" type="text" id="wpNyarukoConsoleLog" value="<?php echo($options['wpNyarukoConsoleLog']); ?>" size="64" maxlength="512" /><br/><input name="wpNyarukoConsoleLogT" type="checkbox" id="wpNyarukoConsoleLogT" <?php if($options['wpNyarukoConsoleLogT']!='')echo('checked'); ?> />在输出的信息后面加入页面执行时间</td>
     </tr>
     <tr>
       <td>PHP调试</td>

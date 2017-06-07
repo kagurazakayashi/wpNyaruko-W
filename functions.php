@@ -1,4 +1,5 @@
 <?php
+$pagestime=microtime(true);
 $wpNyarukoOption = get_option('wpNyaruko_options');
 if($wpNyarukoOption['wpNyarukoPHPDebug']!='') {
   error_reporting(E_ALL);
@@ -228,5 +229,17 @@ echo "<a onclick='".$raonclick."' href='#respond' style='cursor:pointer;' />å›žå
 }
 function getreplyinfo() {
   return [get_comment_ID(),get_comment_author()];
+}
+$consolelog = "";
+if (isset($wpNyarukoOption['wpNyarukoConsoleLog']) && $wpNyarukoOption['wpNyarukoConsoleLog'] != "") {
+  $consolelog = $wpNyarukoOption['wpNyarukoConsoleLog'];
+}
+if($wpNyarukoOption['wpNyarukoConsoleLogT']!='') {
+  $pageetime=microtime(true);
+  $pagetotal=($pageetime-$pagestime)*1000;
+  $consolelog=$consolelog.' '.sprintf("%.4f", $pagetotal).' ms';
+}
+if ($consolelog != "") {
+  echo "<script>console.log('".$consolelog."');</script>";
 }
 ?>

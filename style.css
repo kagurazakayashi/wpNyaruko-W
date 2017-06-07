@@ -823,21 +823,6 @@ Tags: nyaruko, acg
 #srddate a {
 	color: #FFF;
 }
-#srdcontentbox {
-	position:relative;
-	left: 10%;
-	width: 80%;
-}
-#srdcontent{
-	width: 100%;
-	max-width: 100%;
-	height: auto;
-	word-wrap: break-word;
-	padding-top: 100px;
-	color: #000;
-	text-align: left;
-	overflow: hidden;
-}
 #commentform{
 	width: 80%;
 }

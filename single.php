@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 	
 	<div style="width: 100%;">
-    	<div id="scrolltextsingle"><?php get_sidebar(); ?></div>
+    	
 		<div id="scrollpic" class="singleleftbox">
 			<!-- Column 1 /Content -->
 			<?php if (have_posts()) : the_post(); update_post_caches($posts); ?>
@@ -21,7 +21,6 @@
 		        没有文章！
 		    </div>
 		    <?php endif; ?>
-		</div>
+		</div><div id="scrolltextsingle"><?php get_sidebar(); ?></div>
 	<?php get_footer(); ?>
 	</div>
-
