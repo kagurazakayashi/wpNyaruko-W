@@ -154,8 +154,8 @@ Tags: nyaruko, acg
 }
 /*头条列表*/
 #scrolltext, #scrolltextsingle {
-	width: 20%;
-	float: left;
+	width: calc(20% - 1px);
+	float: right;
 }
 /*主页面区域*/
 .page {
@@ -804,6 +804,7 @@ Tags: nyaruko, acg
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 	overflow: hidden;
+	float: left;
 }
 #srdtitle{
 	line-height: 60px;
@@ -836,5 +837,8 @@ Tags: nyaruko, acg
 	color: #000;
 	text-align: left;
 	overflow: hidden;
+}
+#commentform{
+	width: 80%;
 }
 /*single样式*/

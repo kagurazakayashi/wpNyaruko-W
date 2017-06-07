@@ -1,4 +1,8 @@
 <!-- Comment's List -->
+
+    <div class="commitinputDiv">
+    <div class="commitinputDiv">
+    <div class="commitinputDiv">
 <?php
     $wpNyarukoOption = get_option('wpNyaruko_options');
     if (isset($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME'])) {
@@ -57,7 +61,6 @@
                 </div>
             </div>
         </div>
-	<div class="commitinputDiv"></div>
     <?php } ?>
 <!-- Comment Form -->
 <?php 
@@ -158,3 +161,4 @@ pluginspage="http://www.adobe.com/svg/viewer/install/" /></div></a>';
 <?php
 }
 ?>
+</div>

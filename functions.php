@@ -108,7 +108,8 @@ function create_meta_box() {
 function save_postdata( $post_id ) {
   global $new_meta_boxes;
    
-  if ( !wp_verify_nonce( $_POST['ludou_metaboxes_nonce'], plugin_basename(__FILE__) ))
+   if (isset($_POST['ludou_metaboxes_nonce'])) {
+     if ( !wp_verify_nonce( $_POST['ludou_metaboxes_nonce'], plugin_basename(__FILE__) ))
     return;
    
   if ( !current_user_can( 'edit_posts', $post_id ))
@@ -121,6 +122,7 @@ function save_postdata( $post_id ) {
       delete_post_meta($post_id, $meta_box['name'].'_value', get_post_meta($post_id, $meta_box['name'].'_value', true));
     else
       update_post_meta($post_id, $meta_box['name'].'_value', $data);
+   }
    }
 }
 
