@@ -359,6 +359,22 @@ h4 {
 	text-align: left;
 	overflow: hidden;
 }
+/*评论区域*/
+#sentcomment {
+	width: 100px;
+	height: 50px;
+	border-radius:5px;
+	border-style: solid none none none;
+	border-top-color: #FFF;
+}
+#commentform input {
+	border-style: none none solid none;
+	border-bottom-color: #<?php echo $wpNyarukoOption['wpNyarukoColorCommentBG']; ?>;
+}
+#comment {
+	border-style: none;
+	background-color: #<?php echo $wpNyarukoOption['wpNyarukoColorCommentBG']; ?>;
+}
 /*响应式布局*/
 @media screen and (max-width: <?php echo $wpNyarukoOption['wpNyarukoPad']; ?>px) {
 	#bannerimg #mainmenubox {

@@ -2,13 +2,19 @@ $(document).ready(function() {
 	loadscreen();
 	// $(".commitbgDiv li").remove();
 	// $(".commitbgDiv ul").remove();
+	$("#comment").keydown(function() {
+	console.log("RRRRR");
+	commentresize();
+});
 });
 $(window).resize(function() {
 	loadscreen(true);
 });
 
+
 function to_reply(commentID,author) {
 	console.log("执行回复"+commentID+"给"+author);
+	//https://www.yoooooooooo.com/yashi/?page_id=5302&replytocom=195#respond
 	var nNd='@'+author+':';
 	var myField; 
 	if (document.getElementById('comment') && document.getElementById('comment').type == 'textarea') { 
@@ -75,6 +81,13 @@ function loadscreen(res = false) {
 			}
 		}
 	}
+	var newls = $("#newls");
+	// $("#comment").width(newls.width());
+	$("#newcellline").height(newls.height()+10);
+	$("#sentcommentbox").width(80+newls.width());
+}
+function commentresize() {
+	$("#sentcommentbox").width(80+$("#newls").width());
 }
 function cellmousemove(self) {
 	self.html("<b>点击回复</b>");

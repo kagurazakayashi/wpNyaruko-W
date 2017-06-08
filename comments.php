@@ -74,36 +74,62 @@ elseif ( get_option('comment_registration') && !is_user_logged_in() ) :
 <!-- Comment Form -->
 <form id="commentform" name="commentform" action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post">
     <h3>发表评论</h3>
-    <ul>
-        <?php if ( !is_user_logged_in() ) : ?>
-        <li class="clearfix">
-            <label for="name">昵称</label>
-            <input type="text" name="author" id="author" value="<?php echo $comment_author; ?>" size="23" tabindex="1" />
-        </li>
-        <li class="clearfix">
-            <label for="email">电子邮件</label>
-            <input type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" size="23" tabindex="2" />
-        </li>
-        <li class="clearfix">
-            <label for="email">网址(选填)</label>
-            <input type="text" name="url" id="url" value="<?php echo $comment_author_url; ?>" size="23" tabindex="3" />
-        </li>
-        <?php else : ?>
-        <li class="clearfix">您已登录:<a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="退出登录">退出 &raquo;</a></li>
-        <?php endif; ?>
-        <li class="clearfix">
-            <label for="message">评论内容</label>
-            <textarea id="message comment" name="comment" tabindex="4" rows="3" cols="40"></textarea>
-        </li>
-        <li class="clearfix">
-            <!-- Add Comment Button -->
-            <a href="javascript:void(0);" onClick="Javascript:document.forms['commentform'].submit()" class="button medium black right">发表评论</a> </li>
-    </ul>
-    <?php comment_id_fields(); ?>
-    <?php do_action('comment_form', $post->ID); ?>
-</form>
-<?php endif;
+<?php if ( !is_user_logged_in() ) : ?>
+<p><table border="0" cellspacing="10" cellpadding="0">
+  <tbody>
+    <tr>
+      <td width="100">昵称</td>
+      <td><input type="text" name="author" id="author" value="<?php echo $comment_author; ?>" size="15" maxlength="20" tabindex="1" /></td>
+    </tr>
+    <tr>
+      <td>电子邮件</td>
+      <td><input type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" size="15" maxlength="20" tabindex="2" /></td>
+    </tr>
+    <tr>
+      <td>网址(选填)</td>
+      <td><input type="text" name="url" id="url" value="<?php echo $comment_author_url; ?>" size="15" maxlength="20" tabindex="3" /></td>
+    </tr>
+  </tbody>
+</table></p>
+<?php else : ?>
+<a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>
+（<a href="<?php echo wp_logout_url(get_permalink()); ?>" title="退出登录">登出</a>）
+<?php endif; ?>
+<div class="commitbgDiv">
+<div class="l2">
+<?php $replyinfo = getreplyinfo(); ?>
+    <div class="t2">
+        <div class="li">
+            <img src="<?php bloginfo("template_url"); ?>/images/gravatar.png" /><?php 
+            include_once("ua.php");
+            $userico = get_osico($_SERVER['HTTP_USER_AGENT']);
+            if ($userico[0] != "") {
+                $usericoalt = $userico[2].' / '.$userico[3];
+                echo '<a title="'.$usericoalt.'"><div class="commiticon" style="background-color:#'.$userico[1].';"><embed src="'.get_bloginfo("template_url").'/images/'.$userico[0].'.svg" 
+type="image/svg+xml"
+pluginspage="http://www.adobe.com/svg/viewer/install/" /></div></a>';
+            }
+            ?>
+        </div>
+		<div class="ld"></div>
+        <span class="ls" id="newls">
+            <div class="ll">  
+                <!--<textarea id="comment" name="comment" tabindex="4" rows="3" cols="40"></textarea>-->
+                <div class="d2"><div id="comment" contenteditable="true" onresize="commentresize();"></div></div>
+            </div>
+        </span>
+    </div>
+</div>
+</div>
+<div id="newcellline"></div>
+<div id="sentcommentbox"><a href="javascript:void(0);" onClick="Javascript:document.forms['commentform'].submit()" id="sentcomment">发表评论</a></div>
+<?php
+    comment_id_fields();
+    do_action('comment_form', $post->ID);
+    endif;
+
 function comment($comment, $args, $depth) {
+    comment_reply_link();
     $wpNyarukoOption = get_option('wpNyaruko_options');
     // while(list($key,$val)= each($comment)) { 
     //   echo $key." : ".$val."<br/>"; 

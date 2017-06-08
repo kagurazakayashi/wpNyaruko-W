@@ -512,6 +512,10 @@ Tags: nyaruko, acg
 .commitbgDiv #downimgoption span img{
 	margin: 5px;
 }
+#sentcommentbox {
+	text-align: right;
+}
+/*
 @media only screen and (max-width: 518px){
 .commitbgDiv .d1{max-width:433px; word-break:break-all; word-wrap:break-word;}
 .commitbgDiv .d2{max-width:378px; word-break:break-all; word-wrap:break-word;}
@@ -572,10 +576,7 @@ Tags: nyaruko, acg
     border-left: 8px solid #5CE1B6;
     border-bottom: 5px solid transparent;
 }
-	
 .commitbgDiv #t3{
-	/*position:absolute;
-	bottom:0px;*/
 	width: 100%;
 }
 .commitbgDiv #downdivD{
@@ -610,11 +611,24 @@ Tags: nyaruko, acg
 	width: 20px;
 	height: 20px;
 }
-}
+}*/
 .cellline {
 	width: 100%;
 	height: 30px;
 	background: transparent;
+}
+#comment {
+	box-sizing:border-box;
+	width: 100%;
+	min-width: 200px;
+	max-height: 512px;
+	min-height: 60px;
+	float: left;
+	padding: 1px;
+	word-break: break-all;
+	outline: none;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 /*评论区结束*/
 /*右下角按钮*/
