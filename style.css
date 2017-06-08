@@ -617,10 +617,9 @@ Tags: nyaruko, acg
 	height: 30px;
 	background: transparent;
 }
-#comment {
+#commentd {
 	box-sizing:border-box;
 	width: 100%;
-	min-width: 200px;
 	max-height: 512px;
 	min-height: 60px;
 	float: left;
@@ -629,6 +628,7 @@ Tags: nyaruko, acg
 	outline: none;
 	overflow-y: auto;
 	overflow-x: hidden;
+	border-style: none;
 }
 /*评论区结束*/
 /*右下角按钮*/

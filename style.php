@@ -371,8 +371,7 @@ h4 {
 	border-style: none none solid none;
 	border-bottom-color: #<?php echo $wpNyarukoOption['wpNyarukoColorCommentBG']; ?>;
 }
-#comment {
-	border-style: none;
+#commentd {
 	background-color: #<?php echo $wpNyarukoOption['wpNyarukoColorCommentBG']; ?>;
 }
 /*响应式布局*/
@@ -423,6 +422,12 @@ h4 {
 		width: 100%;
 		display: none;
 	}
+	#commentd {
+		min-width: 130px;
+	}
+	#newls {
+		min-width: 130px;
+	}
 }
 @media screen and (min-width: <?php echo $wpNyarukoOption['wpNyarukoPhone']; ?>px) {
 	#rightbottommenubox {
@@ -430,6 +435,12 @@ h4 {
 	}
 	.page {
 		top: 600px;
+	}
+	#commentd {
+		min-width: 480px;
+	}
+	#newls {
+		min-width: 480px;
 	}
 }
 </style>

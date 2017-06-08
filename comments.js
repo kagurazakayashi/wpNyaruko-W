@@ -2,10 +2,15 @@ $(document).ready(function() {
 	loadscreen();
 	// $(".commitbgDiv li").remove();
 	// $(".commitbgDiv ul").remove();
-	$("#comment").keydown(function() {
-	console.log("RRRRR");
-	commentresize();
-});
+	$("#commentd").keydown(function() {
+		commentresize();
+		if (event.keyCode == 13 || event.charCode == 13) {
+			setTimeout(function(){
+				$("#commentd").text($("#commentd").text());
+				commentsubmit();
+			}, 100);
+		}
+	});
 });
 $(window).resize(function() {
 	loadscreen(true);
@@ -99,4 +104,35 @@ function cellmouseout(self) {
 }
 function cellclick(self,comment_ID,comment_author) {
 	console.log(comment_ID+"||"+comment_author);
+}
+function commentsubmit() {
+	var commentd = $("#commentd");
+	if (commentd.text() == "") {
+		return;
+	}
+	commentd.attr("contenteditable","false");
+	var commentstr = commentd.html().replace(/<div([^<>]*)>([^<>]*)<\/div>/gi, '<br/>$2');
+	$("#comment").val(commentstr);
+	document.forms['commentform'].submit();
+}
+function emailonblur() {
+	var email = $("#email").val();
+	if (email == undefined) {
+		return;
+	}
+	var comsimg = $("#comsimg");
+	var emailurl = "";
+	if (email == "") {
+		emailurl = comsimg.attr("none");
+		$("#comsimga").attr("href","");
+	} else {
+		$("#comsimga").attr("href","https://cn.gravatar.com/"+hex_md5(email));
+		var pxy = comsimg.attr("pxy");
+		if (pxy == "") {
+			emailurl = "https://cn.gravatar.com/avatar/"+hex_md5(email)+"?s=64";
+		} else {
+			emailurl = pxy+"&mail="+email+"&size=64";
+		}
+	}
+	comsimg.attr("src",emailurl);
 }

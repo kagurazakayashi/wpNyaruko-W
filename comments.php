@@ -42,6 +42,7 @@
             } else {
                 ?>
                 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/comments.js"></script>
+                <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/md5.js"></script>
                 <div class="commitbgDiv">
 	                <div class="commitDiv">
 					<div id="t2" width="100%">
@@ -83,7 +84,7 @@ elseif ( get_option('comment_registration') && !is_user_logged_in() ) :
     </tr>
     <tr>
       <td>电子邮件</td>
-      <td><input type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" size="15" maxlength="20" tabindex="2" /></td>
+      <td><input type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" size="15" maxlength="20" tabindex="2" onblur="emailonblur()" /></td>
     </tr>
     <tr>
       <td>网址(选填)</td>
@@ -97,10 +98,26 @@ elseif ( get_option('comment_registration') && !is_user_logged_in() ) :
 <?php endif; ?>
 <div class="commitbgDiv">
 <div class="l2">
-<?php $replyinfo = getreplyinfo(); ?>
+<?php $replyinfo = getreplyinfo();
+$current_user = get_currentuserinfo();
+?>
     <div class="t2">
         <div class="li">
-            <img src="<?php bloginfo("template_url"); ?>/images/gravatar.png" /><?php 
+            <a id="comsimga" title="请先填写邮箱，然后点击空白处，再点击这里可以修改头像和信息。" href="<?php if (is_user_logged_in()) echo "https://cn.gravatar.com/".md5($current_user->user_email); ?>" target="_blank"><img id="comsimg" src="<?php 
+            if ( is_user_logged_in() ) {
+                if (usepxy($wpNyarukoOption)) {
+                    echo ($wpNyarukoOption['wpNyarukoGravatarProxyPage'].'&mail='.$current_user->user_email.'&size=64');
+                } else {
+                    echo 'https://cn.gravatar.com/avatar/'.md5($current_user->user_email).'?s=64';
+                }
+            } else {
+                echo bloginfo("template_url")."/images/gravatar.png";
+            }
+?>" none="<?php bloginfo("template_url"); ?>/images/gravatar.png" pxy="<?php
+    if (usepxy($wpNyarukoOption)) {
+        echo $wpNyarukoOption['wpNyarukoGravatarProxyPage'];
+    }
+?>" /></a><?php 
             include_once("ua.php");
             $userico = get_osico($_SERVER['HTTP_USER_AGENT']);
             if ($userico[0] != "") {
@@ -114,15 +131,15 @@ pluginspage="http://www.adobe.com/svg/viewer/install/" /></div></a>';
 		<div class="ld"></div>
         <span class="ls" id="newls">
             <div class="ll">  
-                <!--<textarea id="comment" name="comment" tabindex="4" rows="3" cols="40"></textarea>-->
-                <div class="d2"><div id="comment" contenteditable="true" onresize="commentresize();"></div></div>
+                <input type="hidden" id="comment" name="comment" value=""></input>
+                <div class="d2"><div id="commentd" tabindex="4" contenteditable="true" onfocus="emailonblur()"></div></div>
             </div>
         </span>
     </div>
 </div>
 </div>
 <div id="newcellline"></div>
-<div id="sentcommentbox"><a href="javascript:void(0);" onClick="Javascript:document.forms['commentform'].submit()" id="sentcomment">发表评论</a></div>
+<div id="sentcommentbox"><a href="javascript:void(0);" onClick="commentsubmit()" id="sentcomment">按Enter键或点此发送</a></div>
 <?php
     comment_id_fields();
     do_action('comment_form', $post->ID);
@@ -160,13 +177,13 @@ function comment($comment, $args, $depth) {
     </div>
     <div class="t2">
         <div class="<?php echo $chatme; ?>i">
-            <img style="background:url(<?php bloginfo("template_url"); ?>/images/gravatar.png) no-repeat 100% 100%;" src=<?php
-                if ($wpNyarukoOption['wpNyarukoGravatarProxy'] && $wpNyarukoOption['wpNyarukoGravatarProxyPage'] && $wpNyarukoOption['wpNyarukoGravatarProxy'] != "" && $wpNyarukoOption['wpNyarukoGravatarProxyPage'] != "") {
+            <a href="<?php echo $comment->comment_author_url; ?>" title="<?php echo $comment->comment_author_url; ?>" target="_blank"><img style="background:url(<?php bloginfo("template_url"); ?>/images/gravatar.png) no-repeat 100% 100%;" src=<?php
+                if (usepxy($wpNyarukoOption)) {
                     echo ('"'.$wpNyarukoOption['wpNyarukoGravatarProxyPage'].'&mail='.$comment->comment_author_email.'&size=64"');
                 } else {
                     echo '"https://cn.gravatar.com/avatar/'.md5($comment->comment_author_email).'?s=64"';
                 }
-            ?> /><?php 
+            ?> /></a><?php 
             include_once("ua.php");
             $userico = get_osico($comment->comment_agent);
             if ($userico[0] != "") {
@@ -189,3 +206,13 @@ pluginspage="http://www.adobe.com/svg/viewer/install/" /></div></a>';
 }
 ?>
 </div>
+
+<?php 
+function usepxy($wpNyarukoOption)
+{
+    if ($wpNyarukoOption['wpNyarukoGravatarProxy'] && $wpNyarukoOption['wpNyarukoGravatarProxyPage'] && $wpNyarukoOption['wpNyarukoGravatarProxy'] != "" && $wpNyarukoOption['wpNyarukoGravatarProxyPage'] != "") {
+        return true;
+    }
+    return false;
+}
+?>
