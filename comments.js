@@ -20,6 +20,9 @@ $(window).resize(function() {
 function to_reply(commentID,author) {
 	console.log("执行回复"+commentID+"给"+author);
 	//https://www.yoooooooooo.com/yashi/?page_id=5302&replytocom=195#respond
+	$("#commentoneto").val(commentID);
+	document.forms['commentone'].submit();
+
 	var nNd='@'+author+':';
 	var myField; 
 	if (document.getElementById('comment') && document.getElementById('comment').type == 'textarea') { 

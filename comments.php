@@ -68,7 +68,7 @@ elseif ( get_option('comment_registration') && !is_user_logged_in() ) :
 <?php else  : ?>
 <!-- Comment Form -->
 <form id="commentform" name="commentform" action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post">
-    <h3>发表评论</h3>
+<a name="respond"></a><h3>发表评论</h3>
 <?php if ( !is_user_logged_in() ) : ?>
 <p><table border="0" cellspacing="10" cellpadding="0">
   <tbody>
@@ -134,6 +134,22 @@ pluginspage="http://www.adobe.com/svg/viewer/install/" /></div></a>';
 </div>
 <div id="newcellline"></div>
 <div id="sentcommentbox"><a href="javascript:void(0);" onClick="commentsubmit()" id="sentcomment">按Enter键或点此发送</a></div>
+</form>
+<form id="commentone" name="commentone" action="<?php echo $_SERVER['PHP_SELF']; ?>#respond" method="get">
+<input id="commentoneid" type="hidden" name="<?php
+$pidval = "";
+if (isset($_GET["page_id"])) {
+    $pidval = $_GET["page_id"];
+    echo "page_id";
+} else if (isset($_GET["p"])) {
+    $pidval = $_GET["p"];
+    echo "p";
+} else {
+    echo "nocommentid";
+}
+?>" value="<?php echo $pidval; ?>">
+<input id="commentoneto" type="hidden" name="replytocom" value="value">
+</form>
 <?php
     comment_id_fields();
     do_action('comment_form', $post->ID);
