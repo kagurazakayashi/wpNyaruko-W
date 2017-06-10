@@ -23,25 +23,18 @@
             // if there's a password
             // and it doesn't match the cookie
         ?>
-        <li class="decmt-box">
             <p><a href="#addcomment">请输入密码再查看评论内容.</a></p>
-        </li>
         <?php 
             } else if ( !comments_open() ) {
         ?>
-        <li class="decmt-box">
             <p><a href="#addcomment">评论功能已经关闭!</a></p>
-        </li>
         <?php 
             } else if ( !have_comments() ) { 
         ?>
-        <li class="decmt-box">
             <p><a href="#addcomment">还没有任何评论，你来说两句吧</a></p>
-        </li>
         <?php 
             } else {
                 ?>
-                <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/comments.js"></script>
                 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/md5.js"></script>
                 <div class="commitbgDiv">
 	                <div class="commitDiv">
@@ -64,6 +57,7 @@
             </div>
         </div>
     <?php } ?>
+<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/comments.js"></script>
 <!-- Comment Form -->
 <?php 
 if ( !comments_open() || $wpNyarukoCommentMode) :
@@ -98,7 +92,7 @@ elseif ( get_option('comment_registration') && !is_user_logged_in() ) :
 <?php endif; ?>
 <div class="commitbgDiv">
 <div class="l2">
-<?php $replyinfo = getreplyinfo();
+<?php $replyinfo = @getreplyinfo();
 $current_user = get_currentuserinfo();
 ?>
     <div class="t2">
