@@ -17,10 +17,10 @@ $(window).resize(function() {
 });
 
 
-function to_reply(commentID,author) {
-	console.log("执行回复"+commentID+"给"+author);
+function to_reply(commentID,author,author64) {
 	//https://www.yoooooooooo.com/yashi/?page_id=5302&replytocom=195#respond
 	$("#commentoneto").val(commentID);
+	$("#commentonename").val(author64);
 	document.forms['commentone'].submit();
 
 	var nNd='@'+author+':';

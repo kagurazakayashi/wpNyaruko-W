@@ -89,7 +89,15 @@ elseif ( get_option('comment_registration') && !is_user_logged_in() ) :
 <?php else : ?>
 <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>
 （<a href="<?php echo wp_logout_url(get_permalink()); ?>" title="退出登录">登出</a>）
-<?php endif; ?>
+<?php endif; 
+if (isset($_GET["replytoname"])) {
+    $commenttoname = base64_decode($_GET["replytoname"]); ?>
+    <div id="committodiv"><a title="点此取消回复 <?php echo $commenttoname; ?> 的评论，改为回复文章作者。" href="<?php
+    echo $_SERVER['PHP_SELF'].'?';
+    $pidval = gpage();
+    echo "=".$pidval;
+    ?>#respond">@ <?php echo $commenttoname; ?> :</a></div>
+<?php } ?>
 <div class="commitbgDiv">
 <div class="l2">
 <?php $replyinfo = @getreplyinfo();
@@ -97,7 +105,7 @@ $current_user = get_currentuserinfo();
 ?>
     <div class="t2">
         <div class="li">
-            <a id="comsimga" title="请先填写邮箱，然后点击空白处，再点击这里可以修改头像和信息。" href="<?php if (is_user_logged_in()) echo "https://cn.gravatar.com/".md5($current_user->user_email); ?>" target="_blank"><img id="comsimg" src="<?php 
+            <a id="comsimga" title="请先填写邮箱，然后点击空白处，再点击这里可以修改头像和信息。" href="<?php if (is_user_logged_in()) echo "https://cn.gravatar.com/".md5($current_user->user_email); ?>" target="_blank"><img class="comsimg" src="<?php 
             if ( is_user_logged_in() ) {
                 if (usepxy($wpNyarukoOption)) {
                     echo ($wpNyarukoOption['wpNyarukoGravatarProxyPage'].'&mail='.$current_user->user_email.'&size=64');
@@ -116,9 +124,14 @@ $current_user = get_currentuserinfo();
             $userico = get_osico($_SERVER['HTTP_USER_AGENT']);
             if ($userico[0] != "") {
                 $usericoalt = $userico[2].' / '.$userico[3];
-                echo '<a title="'.$usericoalt.'"><div class="commiticon" style="background-color:#'.$userico[1].';"><embed src="'.get_bloginfo("template_url").'/images/'.$userico[0].'.svg" 
+                $svgsrc = get_bloginfo("template_url").'/images/'.$userico[0].".svg";
+                echo '<a title="'.$usericoalt.'"><div class="commiticon" style="background-color:#'.$userico[1].';"><img class="commiticonimg" src="'.$svgsrc.'" alt="'.$usericoalt.'" /></div></a>';
+                /*
+<img src="'.$svgsrc.'" alt="'.$usericoalt.'" />
+<embed src="'.$svgsrc.'" 
 type="image/svg+xml"
-pluginspage="http://www.adobe.com/svg/viewer/install/" /></div></a>';
+pluginspage="http://www.adobe.com/svg/viewer/install/" />
+*/
             }
             ?>
         </div>
@@ -133,28 +146,31 @@ pluginspage="http://www.adobe.com/svg/viewer/install/" /></div></a>';
 </div>
 </div>
 <div id="newcellline"></div>
+<?php 
+    comment_id_fields();
+    do_action('comment_form', $post->ID);
+?>
 <div id="sentcommentbox"><a href="javascript:void(0);" onClick="commentsubmit()" id="sentcomment">按Enter键或点此发送</a></div>
 </form>
 <form id="commentone" name="commentone" action="<?php echo $_SERVER['PHP_SELF']; ?>#respond" method="get">
-<input id="commentoneid" type="hidden" name="<?php
-$pidval = "";
-if (isset($_GET["page_id"])) {
-    $pidval = $_GET["page_id"];
-    echo "page_id";
-} else if (isset($_GET["p"])) {
-    $pidval = $_GET["p"];
-    echo "p";
-} else {
-    echo "nocommentid";
-}
-?>" value="<?php echo $pidval; ?>">
-<input id="commentoneto" type="hidden" name="replytocom" value="value">
+<input id="commentoneid" type="hidden" name="<?php $pidval = gpage(); ?>" value="<?php echo $pidval; ?>">
+<input id="commentoneto" type="hidden" name="replytocom" value="">
+<input id="commentonename" type="hidden" name="replytoname" value="">
 </form>
 <?php
-    comment_id_fields();
-    do_action('comment_form', $post->ID);
     endif;
-
+function gpage() {
+    if (isset($_GET["page_id"])) {
+        echo "page_id";
+        return $_GET["page_id"];
+    } else if (isset($_GET["p"])) {
+        echo "p";
+        return $_GET["p"];
+    } else {
+        echo "noid";
+    }
+    return "";
+}
 function comment($comment, $args, $depth) {
     comment_reply_link();
     $wpNyarukoOption = get_option('wpNyaruko_options');
@@ -166,9 +182,10 @@ function comment($comment, $args, $depth) {
         $chatme = "r";
     }
 ?>
+<a name="comment<?php echo $comment->comment_ID; ?>"></a>
 <div class="<?php echo $chatme; ?>2">
 <?php $replyinfo = getreplyinfo(); ?>
-<div class="cellrep" onmousemove="cellmousemove($(this));" onmouseout="cellmouseout($(this));" onclick="to_reply('<?php echo $replyinfo[0]; ?>','<?php echo $replyinfo[1]; ?>');"></div>
+<div class="cellrep" onmousemove="cellmousemove($(this));" onmouseout="cellmouseout($(this));" onclick="to_reply('<?php echo $replyinfo[0]; ?>','<?php echo $replyinfo[1]; ?>','<?php echo $replyinfo[2]; ?>');"></div>
     <div class="t<?php echo $chatme; ?>">
         <?php if ($chatme=="r") {
         echo '<div class="trRight">';
@@ -187,7 +204,7 @@ function comment($comment, $args, $depth) {
     </div>
     <div class="t2">
         <div class="<?php echo $chatme; ?>i">
-            <a href="<?php echo $comment->comment_author_url; ?>" title="<?php echo $comment->comment_author_url; ?>" target="_blank"><img style="background:url(<?php bloginfo("template_url"); ?>/images/gravatar.png) no-repeat 100% 100%;" src=<?php
+            <a href="<?php echo $comment->comment_author_url; ?>" title="<?php echo $comment->comment_author_url; ?>" target="_blank"><img class="comsimg" style="background:url(<?php bloginfo("template_url"); ?>/images/gravatar.png) no-repeat 100% 100%;" src=<?php
                 if (usepxy($wpNyarukoOption)) {
                     echo ('"'.$wpNyarukoOption['wpNyarukoGravatarProxyPage'].'&mail='.$comment->comment_author_email.'&size=64"');
                 } else {
@@ -198,9 +215,8 @@ function comment($comment, $args, $depth) {
             $userico = get_osico($comment->comment_agent);
             if ($userico[0] != "") {
                 $usericoalt = $userico[2].' / '.$userico[3];
-                echo '<a title="'.$usericoalt.'"><div class="commiticon" style="background-color:#'.$userico[1].';"><embed src="'.get_bloginfo("template_url").'/images/'.$userico[0].'.svg" 
-type="image/svg+xml"
-pluginspage="http://www.adobe.com/svg/viewer/install/" /></div></a>';
+                $svgsrc = get_bloginfo("template_url").'/images/'.$userico[0].".svg";
+                echo '<a title="'.$usericoalt.'"><div class="commiticon" style="background-color:#'.$userico[1].';"><img class="commiticonimg" src="'.$svgsrc.'" alt="'.$usericoalt.'" /></div></a>';
             }
             ?>
         </div>

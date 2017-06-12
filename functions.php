@@ -228,7 +228,7 @@ $raonclick = 'to_reply("<?php comment_ID() ?>", "<?php comment_author();?>")';
 echo "<a onclick='".$raonclick."' href='#respond' style='cursor:pointer;' />回复</a>";
 }
 function getreplyinfo() {
-  return [get_comment_ID(),get_comment_author()];
+  return [get_comment_ID(),get_comment_author(),base64_encode(get_comment_author())];
 }
 $consolelog = "";
 if (isset($wpNyarukoOption['wpNyarukoConsoleLog']) && $wpNyarukoOption['wpNyarukoConsoleLog'] != "") {

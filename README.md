@@ -1,8 +1,9 @@
 # wpNyaruko-W
 
 - 雅诗的个人网站中使用的 WordPress 主题 wpNyaruko-W 。
-- 继承于由 kagurazakayashi(神楽坂雅詩) 和 0wew0 共同开发的「wpNyaruko」主题，「W」版本为雅诗个人维护的分支。
-- 该主题为定制向主题，不保证在其他网站上可以正确运行，也不提供支持。
+  - 继承于由 雅诗 和 0wew0 共同开发的 wpNyaruko 主题。
+  - W 版本为雅诗个人维护的分支，拥有更多的自定义选项和可扩展功能，以及更早的版本进度。
+  - 该主题仍为定制向主题，不保证在其他网站上可以正确运行。
 - 这是[雅诗个人网站项目](https://github.com/kagurazakayashi/kagurazakayashi.github.com)的一部分。
 
 ## 功能
