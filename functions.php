@@ -8,7 +8,13 @@ if($wpNyarukoOption['wpNyarukoPHPDebug']!='') {
 } else {
   ini_set('display_errors', '0');
 }
-if ($wpNyarukoOption['wpNyarukoPHPDebug'])
+if($wpNyarukoOption['wpNyarukoBanBrowser']!='') {
+  $broswerck = broswerchk();
+  if ($broswerck != "") {
+    // die("抱歉，您的浏览器（ ".$broswerck." ）不受支持。".$_SERVER["HTTP_USER_AGENT"]);
+    die('抱歉，您的浏览器（ '.$broswerck.' ）不受支持。<script language="javascript" type="text/javascript">window.location.href="'.$wpNyarukoOption['wpNyarukoBanBrowser'].'";</script>');
+  }
+}
 if(is_admin()) {
   require ('theme-options.php');
 }
@@ -80,7 +86,43 @@ array(
     "std" => "",
     "title" => "uuumoe1:")
 );
-
+function broswerchk() {
+  include_once("ua.php");
+  $ua = $_SERVER["HTTP_USER_AGENT"];
+  $broswer = get_broswer($ua);
+  $os = get_os($ua);
+  $broswerName = $broswer[0];
+  $broswerVersion = $broswer[1];
+  if ($broswerVersion == "") {
+    $broswerMainVersion = 0;
+  } else {
+    $broswerMainVersion = (int)explode(".",$broswerVersion)[0];
+  }
+  $isOK = false;
+  if ($broswerName == "火狐浏览器" && $broswerMainVersion >= 4) {
+    $isOK = true;
+  }
+  else if ($broswerName == "谷歌浏览器" && $broswerMainVersion >= 6) {
+    $isOK = true;
+  }
+  else if ($broswerName == "欧朋浏览器" && $broswerMainVersion >= 11) {
+    $isOK = true;
+  }
+  else if ($broswerName == "Edge浏览器" || $broswerName == "雅诗浏览器") {
+    $isOK = true;
+  }
+  else if ($os == "Android" || $os == "iOS" || $os == "微信小程序" || $os == "Yashi") {
+    $isOK = true;
+  }
+  if ($broswerMainVersion == 0) {
+    $broswerMainVersion = "";
+  }
+  if ($isOK) {
+    return "";
+  } else {
+    return "#".$broswerName."#".$broswerMainVersion."#".$os;
+  }
+}
 function new_meta_boxes() {
   global $post, $new_meta_boxes;
 
@@ -131,10 +173,6 @@ add_action('admin_menu', 'create_meta_box');
 add_action('save_post', 'save_postdata');
 
 // 添加自定义字段面板
-
-
-
-
 
 
 function aurelius_comment($comment, $args, $depth) 
@@ -215,11 +253,13 @@ function annointed_admin_bar_remove() {
 add_action('wp_before_admin_bar_render', 'annointed_admin_bar_remove', 0);
 
 function new_excerpt_length($length) {
-    return 195;
+    $wpNyarukoOption = get_option('wpNyaruko_options');
+    return $wpNyarukoOption['wpNyarukoWordlimit'];
 }
 add_filter('excerpt_length', 'new_excerpt_length');
 function new_excerpt_more($more) {
-    return '...[点击阅览全文]';
+    $wpNyarukoOption = get_option('wpNyaruko_options');
+    return $wpNyarukoOption['wpNyarukoWLInfo'];
 }
 add_filter('excerpt_more', 'new_excerpt_more');
 

@@ -4,20 +4,22 @@ function get_broswer($useragent){
     $broswers = [
         ["火狐浏览器","Firefox/","/Firefox\/([^;)]+)+/i"],
         ["傲游浏览器","Maxthon","/Maxthon\/([\d\.]+)/"],
-        ["Internet Explorer","MSIE","/MSIE\s+([^;)]+)+/i"],
+        ["Internet Explorer","MSIE","/msie ([\d.]+)/"],
+        ["Internet Explorer","Trident","/rv:([\d.]+)\) like gecko/"],
         ["欧朋浏览器","OPR","/OPR\/([\d\.]+)/"],
         ["Edge浏览器","Edge","/Edge\/([\d\.]+)/"],
         ["谷歌浏览器","Chrome","/Chrome\/([\d\.]+)/"],
-        ["雅诗浏览器","YashiBrowser","/Chrome\/([\d\.]+)/"]
+        ["Safari","Safari","/Safari\/([\d\.]+)/"],
+        ["雅诗浏览器","Yashi","/Yashi\/([\d\.]+)/"]
     ];
-    $broswerName = "默认浏览器";
-    $broswerVersion = "默认";
+    $broswerName = "系统自带浏览器";
+    $broswerVersion = "";
     for ($i= 0;$i< count($broswers); $i++){
         $broswer = $broswers[$i];
         if (stripos($useragent, $broswer[1]) > 0) {
             preg_match($broswer[2], $useragent, $broswerInfo);
             $broswerName = $broswer[0];
-            $broswerVersion = $broswerInfo[1];
+            $broswerVersion = isset($broswerInfo[1]) ? $broswerInfo[1] : "";
             break;
         }
     }

@@ -124,7 +124,11 @@ $current_user = get_currentuserinfo();
             $userico = get_osico($_SERVER['HTTP_USER_AGENT']);
             if ($userico[0] != "") {
                 $usericoalt = $userico[2].' / '.$userico[3];
-                $svgsrc = get_bloginfo("template_url").'/images/'.$userico[0].".svg";
+                $svgtype = ".png";
+                if($wpNyarukoOption['wpNyarukoSVG']!='') {
+                    $svgtype = ".svg";
+                }
+                $svgsrc = get_bloginfo("template_url").'/images/'.$userico[0].$svgtype;
                 echo '<a title="'.$usericoalt.'"><div class="commiticon" style="background-color:#'.$userico[1].';"><img class="commiticonimg" src="'.$svgsrc.'" alt="'.$usericoalt.'" /></div></a>';
                 /*
 <img src="'.$svgsrc.'" alt="'.$usericoalt.'" />
@@ -215,7 +219,11 @@ function comment($comment, $args, $depth) {
             $userico = get_osico($comment->comment_agent);
             if ($userico[0] != "") {
                 $usericoalt = $userico[2].' / '.$userico[3];
-                $svgsrc = get_bloginfo("template_url").'/images/'.$userico[0].".svg";
+                $svgtype = ".png";
+                if($wpNyarukoOption['wpNyarukoSVG']!='') {
+                    $svgtype = ".svg";
+                }
+                $svgsrc = get_bloginfo("template_url").'/images/'.$userico[0].$svgtype;
                 echo '<a title="'.$usericoalt.'"><div class="commiticon" style="background-color:#'.$userico[1].';"><img class="commiticonimg" src="'.$svgsrc.'" alt="'.$usericoalt.'" /></div></a>';
             }
             ?>
