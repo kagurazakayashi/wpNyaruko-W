@@ -139,3 +139,20 @@ function emailonblur() {
 	}
 	comsimg.attr("src",emailurl);
 }
+//type=1-40;errorcorrection=L,M,Q,H;mode=Numeric,Alphanumeric,Byte,Kanji;imgtype=tab,svg,img
+//<div id="qrview" class="qrview"></div><script type="text/javascript">qr();</script>
+function qr(text=window.location.href,innerid="qrview",imgtype="tab",type="10",errorcorrection="L",mode="Byte") {
+	var qrgen = qrcode(type, errorcorrection);
+	qrgen.addData(text, mode);
+	qrgen.make();
+	var innerdiv = document.getElementById(innerid);
+	if (imgtype == "tab") {
+		innerdiv.innerHTML = qrgen.createTableTag();
+	}
+	if (imgtype == "svg") {
+		innerdiv.innerHTML = qrgen.createSvgTag();
+	}
+	if (imgtype == "img") {
+		innerdiv.innerHTML = qrgen.createImgTag();
+	}
+}

@@ -281,7 +281,7 @@ h4 {
 	color: #FFF;
 	text-align: center;
 	user-select: none;
-	font-size: 20pt;
+	font-size: 15pt;
 	<?php
 	echo "cursor: ";
     if ($wpNyarukoOption['wpNyarukoHandCursor'] && $wpNyarukoOption['wpNyarukoHandCursor'] != "") {

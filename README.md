@@ -35,6 +35,7 @@
 - 主题设置中提供多处可自由插入HTML的位置。
 - 可以设定预览保留字数和查看全文提示语。
 - 使用了 svg 矢量图形，并且可以从设置中改回使用 png 。
+- 可以在指定位置显示当前网页二维码。
 - 评论可以指定为第三方评论系统而不加载本地评论，并可在载入前显示自定义信息。
 - 评论输入邮箱后会实时显示头像。
 - 可以让 Gravatar 头像走服务器转发或自定义代理，加速用户访问。
@@ -61,6 +62,44 @@
 - 要正常使用，浏览器必须开启 JavaScript 。
 - 要保存个性化设置，浏览器需要开启 Cookie 。
 
+## 自定义功能
+
+### 自定义列表
+
+自定义列表项，代替自动生成的文章列表
+
+1. 创建一个页面。
+2. 定义每个块显示的内容，包含在`[JSON][JSON]`对中。
+3. 为此页面使用「自定义列表」模板。
+
+例子：
+
+`[JSON][["分类","日期","标题","正文","图片","链接"],["type","date","title","txt","img","goto"]][JSON]`
+
+### 自定义静态网页页面
+
+使用自己的网页代替某个页面(例如主页)
+
+1. 创建一个写有目标网址的页面。
+2. 网址包含在`[GOTO][GOTO]`对中。
+3. 为此页面使用「自定义列表」模板。
+
+例子：
+
+`[GOTO]/home.html[GOTO]`
+
+### 二维码
+
+要获得当前网页的二维码，直接插入以下代码到需要的地方即可：
+
+`<div id="qrview" class="qrview"></div><script type="text/javascript">qr();</script>`
+
+`qr()` 可以输入以下参数：
+- type（类型） = 1-40（默认值：10）
+- errorcorrection（容错级别） = L,M,Q,H（默认值：L）
+- mode（内容模式） = Numeric,Alphanumeric,Byte,Kanji（默认值：Byte）
+- imgtype（输出格式） = tab（表格）,svg（矢量图）,img（普通图片）（默认值：tab）
+
 ## 截图
 WP主题显示图：
 ![WP主题显示图](screenshot.png)
@@ -70,6 +109,11 @@ WP主题显示图：
 ![文章和页面截图](ScreenShot/screenshot3.jpg)
 主题设置：
 ![主题设置](ScreenShot/screenshot1.jpg)
+
+## 使用的第三方软件
+
+- [jquery](https://github.com/jquery) / [jQuery](https://github.com/jquery/jquery)
+- [kazuhikoarase](https://github.com/kazuhikoarase) / [qrcode-generator](https://github.com/kazuhikoarase/qrcode-generator/tree/master/js)
 
 ## 许可协议
 MIT License.

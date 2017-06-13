@@ -800,6 +800,13 @@ Tags: nyaruko, acg
 	max-height:226px;
 	padding:5px;
 }
+/*正文区域*/
+#srdcontent span {
+	line-height: 20px;
+}
+#srdcontent img {
+	max-width: 100%;
+}
 /*single样式*/
 /*.singleleftbox{
 	margin-top: 5px;
@@ -837,4 +844,7 @@ Tags: nyaruko, acg
 #commentform{
 	width: 80%;
 }
-/*single样式*/
+/*二维码*/
+.qrview {
+	align-items: center;
+}
