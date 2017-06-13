@@ -30,7 +30,7 @@ function getOptions() {
         $options['wpNyarukoSearchName'] = '百度';
         $options['wpNyarukoSearchURL'] = 'https://www.baidu.com/s?ie=UTF-8&wd=';
         $options['wpNyarukoFont'] = '思源黑体,Source Han Sans,苹方黑体,PingFang SC,冬青黑体,Hiragino Sans GB,微软雅黑,Microsoft YaHei,Hiragino Sans GB,STHeiti Light,SimHei';
-        $options['wpNyarukoFontSize'] = '12';
+        $options['wpNyarukoFontSize'] = '13';
         $options['wpNyarukoIndexKeywords'] = '';
         $options['wpNyarukoRSSArticle'] = 'on';
         $options['wpNyarukoRSSComment'] = '';
@@ -50,7 +50,7 @@ function getOptions() {
         $options['wpNyarukoConsoleLogT'] = 'on';
         $options['wpNyarukoSVG'] = 'on';
         $options['wpNyarukoBanBrowser'] = '';
-        $options['wpNyarukoWordlimit'] = '195';
+        $options['wpNyarukoWordlimit'] = '85';
         $options['wpNyarukoWLInfo'] = '...[点击阅览全文]';
         update_option('wpNyaruko_options', $options);
         die('<div id="wpNyarukoInfo" style="text-align: center; width: 100%; height: 25px; line-height: 25px; border-radius: 0px 0px 5px 5px; overflow: hidden; background-color: yellow; box-shadow: 0px 0px 5px gray; font-size: 12px;">欢迎使用 wpNyaruko 主题，请先完成初始设定。<a href="themes.php?page=theme-options.php">现在开始</a></div>');

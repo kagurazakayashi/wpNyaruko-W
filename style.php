@@ -12,7 +12,7 @@ body {
         echo "font-family: '".str_replace(",","','",$wpNyarukoOption['wpNyarukoFont'])."';";
     }
     if ($wpNyarukoOption['wpNyarukoFontSize'] && $wpNyarukoOption['wpNyarukoFontSize'] != "") {
-        echo "font-size: ".$wpNyarukoOption['wpNyarukoFontSize']."px;";
+        echo "font-size: ".$wpNyarukoOption['wpNyarukoFontSize']."pt;";
     }
     ?>
 	font-weight: extra-light,light,demi-light,medium;
@@ -117,7 +117,7 @@ h4 {
     border-radius: 32px;
     width: 64px;
     height: 64px;
-    font-size: 15px;
+    font-size: 15pt;
     <?php
 	echo "cursor: ";
     if ($wpNyarukoOption['wpNyarukoHandCursor'] && $wpNyarukoOption['wpNyarukoHandCursor'] != "") {
@@ -157,7 +157,6 @@ h4 {
     text-shadow:#FFF 1px 0 0,#FFF 0 1px 0,#FFF -1px 0 0,#FFF 0 -1px 0;
     text-align: right;
     background-color: transparent;
-    echo "font-size: ".$wpNyarukoOption['wpNyarukoFontSize']."px;";
 }
 #bannerimg #sentence:hover {
     text-shadow: none;
@@ -178,7 +177,7 @@ h4 {
 	line-height:30px;
 	text-align:center;
 	margin-left:20px;
-	font-size:14px;
+	font-size:14pt;
 	color:#fff;
 	border-radius:0px 0px 5px 5px;
 }
@@ -215,7 +214,7 @@ h4 {
 	position:absolute;
 	top:0;
 	text-align:right;
-	font-size:6px;
+	font-size:6pt;
 	color:#fff;
 }
 .blocktopdiv .toptags{
@@ -225,7 +224,7 @@ h4 {
 	line-height:30px;
 	text-align:center;
 	margin-left:10px;
-	font-size:14px;
+	font-size:10pt;
 	border-radius:0px 0px 5px 5px;
 	position:absolute;
 	top:5px;
@@ -238,7 +237,7 @@ h4 {
 	width:300px;
 	max-width:310px;
 	text-align:center;
-	font-size:20px;
+	font-size:15pt;
 	font-weight:bold;
 	text-overflow:ellipsis;
 	white-space:nowrap;
@@ -250,7 +249,6 @@ h4 {
 	height:193px;
 	word-break:break-all;
 	overflow:hidden;
-	font-size:13px;
 	color: #<?php echo $wpNyarukoOption['wpNyarukoColorT']; ?>;
 }
 #singleleftdiv{
@@ -283,7 +281,7 @@ h4 {
 	color: #FFF;
 	text-align: center;
 	user-select: none;
-	font-size: 20px;
+	font-size: 20pt;
 	<?php
 	echo "cursor: ";
     if ($wpNyarukoOption['wpNyarukoHandCursor'] && $wpNyarukoOption['wpNyarukoHandCursor'] != "") {
@@ -295,7 +293,7 @@ h4 {
 .commitbgDiv .tl{
 	height: 16px;
 	color:#<?php echo $wpNyarukoOption['wpNyarukoColorH']; ?>;
-	font-size:8px;
+	font-size:8pt;
 	margin-left:73px;
 }
 .commitbgDiv .l2 .ls{
@@ -321,7 +319,7 @@ h4 {
 	height: 16px;
 	text-align:right;
 	color:#<?php echo $wpNyarukoOption['wpNyarukoColorH']; ?>;
-	font-size:8px;
+	font-size:8pt;
 	margin-right:73px;
 }
 .commitbgDiv .r2 .rs{
@@ -358,6 +356,11 @@ h4 {
 	color: #000;
 	text-align: left;
 	overflow: hidden;
+	<?php if ($wpNyarukoOption['wpNyarukoFontSize'] && $wpNyarukoOption['wpNyarukoFontSize'] != "") {
+        echo "line-height: ".($wpNyarukoOption['wpNyarukoFontSize']*4)."px;";
+    } else {
+		echo "line-height: 50px;";
+	} ?>
 }
 /*评论区域*/
 #sentcomment {

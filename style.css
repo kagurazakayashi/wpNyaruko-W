@@ -76,7 +76,7 @@ Tags: nyaruko, acg
     position:absolute;
     list-style:none;
     top: -18px;
-    font-size: 18px;
+    font-size: 15pt;
     align-content: center;
 	width: 100%;
 	width: calc(100% - 300px);
@@ -105,7 +105,7 @@ Tags: nyaruko, acg
     background-position: bottom center;
     overflow: hidden;
     color: #666;
-    font-size: 10px;
+    font-size: 10pt;
 }
 /*页脚内容框架*/
 #foot #footbox {
@@ -240,7 +240,7 @@ Tags: nyaruko, acg
 /*文章标题*/
 .post .title {
 	color:#393939;
-	font-size:20px;
+	font-size:20pt;
 }
 .post .title a {
 	color:#393939;
@@ -252,7 +252,7 @@ Tags: nyaruko, acg
 /*文章标题下方内容*/
 .post .sub {
 	position: absolute;
-	font-size:12px;
+	font-size:12pt;
 	color:#9d9d9d;
 	top:0px;
 	right: 30px;
@@ -273,7 +273,7 @@ Tags: nyaruko, acg
 	line-height:30px;
 	text-align:center;
 	margin-left:0px;
-	font-size:14px;
+	font-size:14pt;
 	color:#fff;
 	border-radius:0px 0px 5px 5px;
 }
@@ -718,7 +718,7 @@ Tags: nyaruko, acg
 	width:200px;
 	height:10px;
 	line-height:10px;
-	font-size:9px;
+	font-size:9pt;
 	color:#fff;
 }
 .lancenterdiv{
@@ -730,7 +730,7 @@ Tags: nyaruko, acg
 	text-align:left;
 	margin-left: 20px;
 	margin-top: 10px;
-	font-size:18px;
+	font-size:15pt;
 	font-weight:bold;
 	text-overflow:ellipsis;
 	white-space:nowrap;
@@ -742,7 +742,7 @@ Tags: nyaruko, acg
 	height:120px;
 	word-break:break-all;
 	overflow:hidden;
-	font-size: 13px;
+	font-size: 13pt;
 	color: #000;
 	min-width: 390px;
 }
@@ -823,14 +823,14 @@ Tags: nyaruko, acg
 }
 #srdtitle{
 	line-height: 60px;
-	font-size: 26px;
+	font-size: 18pt;
 	font-weight: bold;
 	float: left;
 	word-wrap: break-word;
 }
 #srddate{
 	line-height: 30px;
-	font-size: 12px;
+	font-size: 12pt;
 	float: right;
 	margin-left: 90px;
 	color: #FFF;

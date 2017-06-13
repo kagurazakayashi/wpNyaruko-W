@@ -12,7 +12,7 @@ if($wpNyarukoOption['wpNyarukoBanBrowser']!='') {
   $broswerck = broswerchk();
   if ($broswerck != "") {
     // die("抱歉，您的浏览器（ ".$broswerck." ）不受支持。".$_SERVER["HTTP_USER_AGENT"]);
-    die('抱歉，您的浏览器（ '.$broswerck.' ）不受支持。<script language="javascript" type="text/javascript">window.location.href="'.$wpNyarukoOption['wpNyarukoBanBrowser'].'";</script>');
+    die('抱歉，您的浏览器（ '.$broswerck.' ）不受支持。<script language="javascript" type="text/javascript">window.location.href="'.$wpNyarukoOption['wpNyarukoBanBrowser'].$broswerck.'";</script>');
   }
 }
 if(is_admin()) {
@@ -269,17 +269,5 @@ echo "<a onclick='".$raonclick."' href='#respond' style='cursor:pointer;' />回�
 }
 function getreplyinfo() {
   return [get_comment_ID(),get_comment_author(),base64_encode(get_comment_author())];
-}
-$consolelog = "";
-if (isset($wpNyarukoOption['wpNyarukoConsoleLog']) && $wpNyarukoOption['wpNyarukoConsoleLog'] != "") {
-  $consolelog = $wpNyarukoOption['wpNyarukoConsoleLog'];
-}
-if($wpNyarukoOption['wpNyarukoConsoleLogT']!='') {
-  $pageetime=microtime(true);
-  $pagetotal=($pageetime-$pagestime)*1000;
-  $consolelog=$consolelog.' '.sprintf("%.4f", $pagetotal).' ms';
-}
-if ($consolelog != "") {
-  echo "<script>console.log('".$consolelog."');</script>";
 }
 ?>

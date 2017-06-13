@@ -67,6 +67,8 @@ function GetOs(){
     }else{return "未知";}
 }
 function Getip(){
+    $ip = false;
+    $ips = false;
     if(!empty($_SERVER["HTTP_CLIENT_IP"])){
         $ip = $_SERVER["HTTP_CLIENT_IP"];
     }
