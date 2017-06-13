@@ -23,15 +23,15 @@
             // if there's a password
             // and it doesn't match the cookie
         ?>
-            <p><a href="#addcomment">请输入密码再查看评论内容.</a></p>
+            <div><p><a href="#addcomment">请输入密码再查看评论内容.</a></p>
         <?php 
             } else if ( !comments_open() ) {
         ?>
-            <p><a href="#addcomment">评论功能已经关闭!</a></p>
+            <div><p><a href="#addcomment">评论功能已经关闭!</a></p>
         <?php 
-            } else if ( !have_comments() ) { 
+            } else if ( !have_comments() ) {
         ?>
-            <p><a href="#addcomment">还没有任何评论，你来说两句吧</a></p>
+            <div><p><a href="#addcomment">还没有任何评论，你来说两句吧</a></p>
         <?php 
             } else {
                 ?>
@@ -58,6 +58,7 @@
         </div>
     <?php } ?>
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/comments.js"></script>
+<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/qrcode.js"></script>
 <!-- Comment Form -->
 <?php 
 if ( !comments_open() || $wpNyarukoCommentMode) :

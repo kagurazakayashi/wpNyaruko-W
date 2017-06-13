@@ -1,5 +1,5 @@
     <!-- Column 2 / Sidebar -->
-    <div class="sidebars">
+    <div class="sidebarsbox">
         
     <?php if ( !function_exists('dynamic_sidebar') 
                         || !dynamic_sidebar('侧边栏1') ) : ?>

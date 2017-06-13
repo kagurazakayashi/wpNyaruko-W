@@ -154,7 +154,8 @@ Tags: nyaruko, acg
 }
 /*头条列表*/
 #scrolltext, #scrolltextsingle {
-	width: calc(20% - 1px);
+	width: 20%;
+	/*width: calc(20% - 1px);*/
 	float: right;
 }
 /*主页面区域*/
@@ -190,18 +191,13 @@ Tags: nyaruko, acg
 	width:100%;
 	height:auto;
 	float:right;
-	/*background:green;*/
-	padding-top: 20px;
-	padding-right: 20px;
+	align-self: center;
 }
-.sidebars li{
+.sidebarsbox li{
 	margin-top: 5px;
 	text-overflow:ellipsis;
 	white-space:nowrap;
 	overflow: hidden;
-}
-.sidebars a{
-	color: #FE99CC;
 }
 /*文章列表框架*/
 .postlist {
