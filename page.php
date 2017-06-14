@@ -21,7 +21,7 @@
 			</div>
 		</div>
 		<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/single.js"></script>
-		<div id="commentsbox"><p><?php echo $wpNyarukoOption['wpNyarukoCommentTitle'] ?></p><?php comments_template(); ?></div>
+		<div id="commentsbox"><p><?php echo @$wpNyarukoOption['wpNyarukoCommentTitle'] ?></p><?php comments_template(); ?></div>
 	    <?php else : ?>
 	    <div class="errorbox">
 	        没有文章！

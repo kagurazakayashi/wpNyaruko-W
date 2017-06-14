@@ -6,7 +6,7 @@ $wpNyarukoOption = get_option('wpNyaruko_options'); ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php include_once("KagurazakaYashi.php"); ?>
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<?php echo $wpNyarukoOption['wpNyarukoHeader']; ?>
+<?php echo @$wpNyarukoOption['wpNyarukoHeader']; ?>
 <title>
 <?php if ( is_home() ) {
         bloginfo('name'); echo " - "; bloginfo('description');
@@ -27,12 +27,12 @@ $wpNyarukoOption = get_option('wpNyaruko_options'); ?>
 <?php include_once("style.php");
 wpNyarukoGCSS($wpNyarukoOption); ?>
 <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-<?php if($wpNyarukoOption['wpNyarukoRSSArticle']!='') { ?>
+<?php if(@$wpNyarukoOption['wpNyarukoRSSArticle']!='') { ?>
 <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有文章" href="<?php echo get_bloginfo('rss2_url'); ?>" />
-<?php } if($wpNyarukoOption['wpNyarukoRSSComment']!='') { ?>
+<?php } if(@$wpNyarukoOption['wpNyarukoRSSComment']!='') { ?>
 <link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有评论" href="<?php bloginfo('comments_rss2_url'); ?>" />
 <?php } ?>
-<script type="text/javascript" src="<?php echo $wpNyarukoOption['wpNyarukoJQ']; ?>"></script>
+<script type="text/javascript" src="<?php echo @$wpNyarukoOption['wpNyarukoJQ']; ?>"></script>
 <script type="text/javascript" src="<?php bloginfo("template_url"); ?>/script.js"></script>
 <?php
 $description = '';
@@ -128,7 +128,7 @@ if ($wpNyarukoOption['wpNyarukoTextTable'] && $wpNyarukoOption['wpNyarukoTextTab
       <div id="bannertw"></div>
       <div id="bannerdw"></div>
       <a title="返回<?php bloginfo('name'); ?>主页" href="<?php echo get_option('home'); ?>/">
-      <img id="title" src="<?php echo $wpNyarukoOption['wpNyarukoLogo']; ?>" alt=<?php bloginfo('name'); ?> name=<?php bloginfo('name'); ?> />
+      <img id="title" src="<?php echo @$wpNyarukoOption['wpNyarukoLogo']; ?>" alt=<?php bloginfo('name'); ?> name=<?php bloginfo('name'); ?> />
       </a>
       <div id="sentence"><?=$nowsentence?></div>
       <div id="mainmenubox">

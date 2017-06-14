@@ -9,13 +9,13 @@
         die ('Please do not load this page directly. Thanks!');
     }
     $wpNyarukoCommentMode = false;
-    if($wpNyarukoOption['wpNyarukoCommentMode']!='') {
+    if(@$wpNyarukoOption['wpNyarukoCommentMode']!='') {
         $wpNyarukoCommentMode = true;
     }
 ?>
     <?php if($wpNyarukoCommentMode) { ?>
 	<li class="decmt-box">
-        <p><?php echo $wpNyarukoOption['wpNyarukoCommentBox'] ?></a></p>
+        <p><?php echo @$wpNyarukoOption['wpNyarukoCommentBox'] ?></a></p>
     </li>
     <?php } else { ?>
         <?php 
@@ -118,7 +118,7 @@ $current_user = get_currentuserinfo();
             }
 ?>" none="<?php bloginfo("template_url"); ?>/images/gravatar.png" pxy="<?php
     if (usepxy($wpNyarukoOption)) {
-        echo $wpNyarukoOption['wpNyarukoGravatarProxyPage'];
+        echo @$wpNyarukoOption['wpNyarukoGravatarProxyPage'];
     }
 ?>" /></a><?php 
             include_once("ua.php");
@@ -126,7 +126,7 @@ $current_user = get_currentuserinfo();
             if ($userico[0] != "") {
                 $usericoalt = $userico[2].' / '.$userico[3];
                 $svgtype = ".png";
-                if($wpNyarukoOption['wpNyarukoSVG']!='') {
+                if(@$wpNyarukoOption['wpNyarukoSVG']!='') {
                     $svgtype = ".svg";
                 }
                 $svgsrc = get_bloginfo("template_url").'/images/'.$userico[0].$svgtype;
@@ -221,7 +221,7 @@ function comment($comment, $args, $depth) {
             if ($userico[0] != "") {
                 $usericoalt = $userico[2].' / '.$userico[3];
                 $svgtype = ".png";
-                if($wpNyarukoOption['wpNyarukoSVG']!='') {
+                if(@$wpNyarukoOption['wpNyarukoSVG']!='') {
                     $svgtype = ".svg";
                 }
                 $svgsrc = get_bloginfo("template_url").'/images/'.$userico[0].$svgtype;

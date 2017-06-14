@@ -4,7 +4,7 @@
 	<div id="foot" class="bannerimgs">
       <div id="bannertw"></div>
       <div id="footbox">
-				<p><?php echo $wpNyarukoOption['wpNyarukoFooter']; ?></p>
+				<p><?php echo @$wpNyarukoOption['wpNyarukoFooter']; ?></p>
       </div>
   </div>
 </div>
@@ -14,7 +14,7 @@ $consolelog = "";
 if (isset($wpNyarukoOption['wpNyarukoConsoleLog']) && $wpNyarukoOption['wpNyarukoConsoleLog'] != "") {
   $consolelog = $wpNyarukoOption['wpNyarukoConsoleLog'];
 }
-if($wpNyarukoOption['wpNyarukoConsoleLogT']!='') {
+if(@$wpNyarukoOption['wpNyarukoConsoleLogT']!='') {
   $pageetime=microtime(true);
   $pagetotal=($pageetime-$GLOBALS['pagestime'])*1000;
   $consolelog=$consolelog.' '.sprintf("%.4f", $pagetotal).' ms';

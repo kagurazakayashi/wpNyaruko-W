@@ -1,14 +1,14 @@
 <?php
 $pagestime=microtime(true);
 $wpNyarukoOption = get_option('wpNyaruko_options');
-if($wpNyarukoOption['wpNyarukoPHPDebug']!='') {
+if(@$wpNyarukoOption['wpNyarukoPHPDebug']!='') {
   error_reporting(E_ALL);
   ini_set('display_errors', '1');
   echo "<!-- wpNyaruko DEBUG MODE -->";
 } else {
   ini_set('display_errors', '0');
 }
-if($wpNyarukoOption['wpNyarukoBanBrowser']!='') {
+if(@$wpNyarukoOption['wpNyarukoBanBrowser']!='') {
   $broswerck = broswerchk();
   if ($broswerck != "") {
     // die("抱歉，您的浏览器（ ".$broswerck." ）不受支持。".$_SERVER["HTTP_USER_AGENT"]);
@@ -79,12 +79,7 @@ array(
   "keywords" => array(
     "name" => "_keywords",
     "std" => "这里填默认的网页关键字",
-    "title" => "关键字:"),
-
-  "uuumoe1" => array(
-    "name" => "_uuumoe1",
-    "std" => "",
-    "title" => "uuumoe1:")
+    "title" => "关键字:")
 );
 function broswerchk() {
   include_once("ua.php");

@@ -5,8 +5,8 @@ body {
 	margin: 0px;
 	background-repeat: no-repeat;
     background-size: 100px 100px;
-    background-color: #<?php echo $wpNyarukoOption['wpNyarukoColorBG']; ?>;
-    color: #<?php echo $wpNyarukoOption['wpNyarukoColorT']; ?>;
+    background-color: #<?php echo @$wpNyarukoOption['wpNyarukoColorBG']; ?>;
+    color: #<?php echo @$wpNyarukoOption['wpNyarukoColorT']; ?>;
     <?php 
     if ($wpNyarukoOption['wpNyarukoFont'] && $wpNyarukoOption['wpNyarukoFont'] != "") {
         echo "font-family: '".str_replace(",","','",$wpNyarukoOption['wpNyarukoFont'])."';";
@@ -25,7 +25,7 @@ body {
     ?>
 }
 a:link {
-	color: #<?php echo $wpNyarukoOption['wpNyarukoColorH']; ?>;
+	color: #<?php echo @$wpNyarukoOption['wpNyarukoColorH']; ?>;
 	text-decoration: none;
     <?php
 	echo "cursor: ";
@@ -37,27 +37,27 @@ a:link {
 }
 a:visited {
 	text-decoration: none;
-	color: #<?php echo $wpNyarukoOption['wpNyarukoColorH']; ?>;
+	color: #<?php echo @$wpNyarukoOption['wpNyarukoColorH']; ?>;
 }
 a:hover {
 	text-decoration: none;
-	color: #<?php echo $wpNyarukoOption['wpNyarukoColorH']; ?>;
+	color: #<?php echo @$wpNyarukoOption['wpNyarukoColorH']; ?>;
 }
 a:active {
 	text-decoration: none;
-	color: #<?php echo $wpNyarukoOption['wpNyarukoColorH']; ?>;
+	color: #<?php echo @$wpNyarukoOption['wpNyarukoColorH']; ?>;
 }
 h1 {
-	color: #<?php echo $wpNyarukoOption['wpNyarukoColorH1']; ?>;
+	color: #<?php echo @$wpNyarukoOption['wpNyarukoColorH1']; ?>;
 }
 h2 {
-	color: #<?php echo $wpNyarukoOption['wpNyarukoColorH2']; ?>;
+	color: #<?php echo @$wpNyarukoOption['wpNyarukoColorH2']; ?>;
 }
 h3 {
-	color: #<?php echo $wpNyarukoOption['wpNyarukoColorH3']; ?>;
+	color: #<?php echo @$wpNyarukoOption['wpNyarukoColorH3']; ?>;
 }
 h4 {
-	color: #<?php echo $wpNyarukoOption['wpNyarukoColorH4']; ?>;
+	color: #<?php echo @$wpNyarukoOption['wpNyarukoColorH4']; ?>;
 }
 /*顶端大图片*/
 #bannerimg {
@@ -65,7 +65,7 @@ h4 {
     background-size: cover;
     width: 100%;
     height: 600px;
-    background-color: #<?php echo $wpNyarukoOption['wpNyarukoColorBG']; ?>;
+    background-color: #<?php echo @$wpNyarukoOption['wpNyarukoColorBG']; ?>;
 	overflow: hidden;
 }
 /*顶端大图片下端渐变*/
@@ -75,11 +75,11 @@ h4 {
     bottom: 0px;
     width: 100%;
     height: 30%;
-    background: linear-gradient(to bottom,rgba(255, 255, 255, 0) 0%,#<?php echo $wpNyarukoOption['wpNyarukoColorBG']; ?> 100%);
+    background: linear-gradient(to bottom,rgba(255, 255, 255, 0) 0%,#<?php echo @$wpNyarukoOption['wpNyarukoColorBG']; ?> 100%);
 }
 #bannerimg #mainmenubox li{
     float:left;
-	width: <?php echo $wpNyarukoOption['wpNyarukoMenuItemW']; ?>px;
+	width: <?php echo @$wpNyarukoOption['wpNyarukoMenuItemW']; ?>px;
     <?php
     if (!$wpNyarukoOption['wpNyarukoMenuLeft'] || $wpNyarukoOption['wpNyarukoMenuLeft'] == "") {
 		$mainmenu = wp_nav_menu(array(
@@ -102,17 +102,17 @@ h4 {
     color:#000;
     font-weight:bold;
     text-decoration:none;
-    border-bottom: 5px solid #<?php echo $wpNyarukoOption['wpNyarukoColor']; ?>;
+    border-bottom: 5px solid #<?php echo @$wpNyarukoOption['wpNyarukoColor']; ?>;
 }
 #rightbottommenuboxff .current-menu-item a {
-	border-bottom: 5px solid #<?php echo $wpNyarukoOption['wpNyarukoColor']; ?>;
+	border-bottom: 5px solid #<?php echo @$wpNyarukoOption['wpNyarukoColor']; ?>;
 }
 #rightbottommenuboxf a {
     display: block;
     line-height: 64px;
     text-align: center;
     text-decoration: none;
-    background-color: #<?php echo $wpNyarukoOption['wpNyarukoColor']; ?>;
+    background-color: #<?php echo @$wpNyarukoOption['wpNyarukoColor']; ?>;
     color: #FFF;
     border-radius: 32px;
     width: 64px;
@@ -127,13 +127,13 @@ h4 {
     ?>
 }
 #rightbottommenuboxf a:hover {
-    background-color: #<?php echo $wpNyarukoOption['wpNyarukoColorH']; ?>;;
+    background-color: #<?php echo @$wpNyarukoOption['wpNyarukoColorH']; ?>;;
 }
 #rightbottommenuboxf #rightbottommenuswitch {
     display: block;
     width: 64px;
     height: 64px;
-    background-color: #<?php echo $wpNyarukoOption['wpNyarukoColor']; ?>;
+    background-color: #<?php echo @$wpNyarukoOption['wpNyarukoColor']; ?>;
     border-radius: 32px;
     <?php
 	echo "cursor: ";
@@ -144,7 +144,7 @@ h4 {
     ?>
 }
 #rightbottommenuboxf #rightbottommenuswitch:hover {
-    background-color: #<?php echo $wpNyarukoOption['wpNyarukoColorH']; ?>;
+    background-color: #<?php echo @$wpNyarukoOption['wpNyarukoColorH']; ?>;
 }
 /*右上随机文字*/
 #bannerimg #sentence {
@@ -164,14 +164,14 @@ h4 {
 }
 
 .lanleftdiv{
-	background-color: #<?php echo $wpNyarukoOption['wpNyarukoColor']; ?>;
+	background-color: #<?php echo @$wpNyarukoOption['wpNyarukoColor']; ?>;
 	width:10px;
 	height:200px;
 	position:relative;
 	float:left;
 }
 .lancenterdiv .lcdtop{
-	background-color: #<?php echo $wpNyarukoOption['wpNyarukoColor']; ?>;
+	background-color: #<?php echo @$wpNyarukoOption['wpNyarukoColor']; ?>;
 	width:70px;
 	height:30px;
 	line-height:30px;
@@ -188,7 +188,7 @@ h4 {
 .blockbdiv{
 	width:310px;
 	height:400px;
-	background: #<?php echo $wpNyarukoOption['wpNyarukoColorL']; ?>;
+	background: #<?php echo @$wpNyarukoOption['wpNyarukoColorL']; ?>;
 	box-shadow:0px 3px 5px lightgray;
 	border-radius: 4px;
 	overflow: hidden;
@@ -204,13 +204,13 @@ h4 {
 }
 .blockbdiv:hover {
 	box-shadow:0px 3px 5px gray;
-	background: #<?php echo $wpNyarukoOption['wpNyarukoColorLL']; ?>;
+	background: #<?php echo @$wpNyarukoOption['wpNyarukoColorLL']; ?>;
 }
 .blocktopdiv .topline{
 	width:100%;
 	height:10px;
 	line-height: 10px;
-	background-color: #<?php echo $wpNyarukoOption['wpNyarukoColor']; ?>;
+	background-color: #<?php echo @$wpNyarukoOption['wpNyarukoColor']; ?>;
 	position:absolute;
 	top:0;
 	text-align:right;
@@ -218,7 +218,7 @@ h4 {
 	color:#fff;
 }
 .blocktopdiv .toptags{
-	background-color: #<?php echo $wpNyarukoOption['wpNyarukoColor']; ?>;
+	background-color: #<?php echo @$wpNyarukoOption['wpNyarukoColor']; ?>;
 	width:70px;
 	height:30px;
 	line-height:30px;
@@ -242,31 +242,31 @@ h4 {
 	text-overflow:ellipsis;
 	white-space:nowrap;
 	overflow: hidden;
-	color: #<?php echo $wpNyarukoOption['wpNyarukoColorH1']; ?>;
+	color: #<?php echo @$wpNyarukoOption['wpNyarukoColorH1']; ?>;
 }
 .blockbottomdiv .bottomcontent{
 	width:300px;
 	height:193px;
 	word-break:break-all;
 	overflow:hidden;
-	color: #<?php echo $wpNyarukoOption['wpNyarukoColorT']; ?>;
+	color: #<?php echo @$wpNyarukoOption['wpNyarukoColorT']; ?>;
 }
 #singleleftdiv{
 	width: 10px;
 	min-height: 90px;
-	background-color: #<?php echo $wpNyarukoOption['wpNyarukoColor']; ?>;
+	background-color: #<?php echo @$wpNyarukoOption['wpNyarukoColor']; ?>;
 	float: left;
 }
 
 #singlerightdiv{
-	border-left: 10px solid #<?php echo $wpNyarukoOption['wpNyarukoColor']; ?>;
+	border-left: 10px solid #<?php echo @$wpNyarukoOption['wpNyarukoColor']; ?>;
 	height: 100%;
 }
 #srdtop{
 	padding-left: 5px;
 	padding-right: 5px;
 	border-radius: 0px 10px 10px 0px;
-	background-color: #<?php echo $wpNyarukoOption['wpNyarukoColor']; ?>;
+	background-color: #<?php echo @$wpNyarukoOption['wpNyarukoColor']; ?>;
 	color: #fff;
 	float: left;
 }
@@ -292,13 +292,13 @@ h4 {
 }
 .commitbgDiv .tl{
 	height: 16px;
-	color:#<?php echo $wpNyarukoOption['wpNyarukoColorH']; ?>;
+	color:#<?php echo @$wpNyarukoOption['wpNyarukoColorH']; ?>;
 	font-size:8pt;
 	margin-left:73px;
 }
 .commitbgDiv .l2 .ls{
-	background-color:#<?php echo $wpNyarukoOption['wpNyarukoColorCommentBG']; ?>;
-	color:#<?php echo $wpNyarukoOption['wpNyarukoColorT']; ?>;
+	background-color:#<?php echo @$wpNyarukoOption['wpNyarukoColorCommentBG']; ?>;
+	color:#<?php echo @$wpNyarukoOption['wpNyarukoColorT']; ?>;
 	min-height:50px;
 	border-radius:5px;
 	padding:5px;
@@ -312,19 +312,19 @@ h4 {
 	width: 0;
 	height: 0;
 	border-top: 5px solid transparent;
-	border-right: 8px solid #<?php echo $wpNyarukoOption['wpNyarukoColorCommentBG']; ?>;
+	border-right: 8px solid #<?php echo @$wpNyarukoOption['wpNyarukoColorCommentBG']; ?>;
 	border-bottom: 5px solid transparent;
 }
 .commitbgDiv .tr{
 	height: 16px;
 	text-align:right;
-	color:#<?php echo $wpNyarukoOption['wpNyarukoColorH']; ?>;
+	color:#<?php echo @$wpNyarukoOption['wpNyarukoColorH']; ?>;
 	font-size:8pt;
 	margin-right:73px;
 }
 .commitbgDiv .r2 .rs{
-	background-color:#<?php echo $wpNyarukoOption['wpNyarukoColorCommentBG2']; ?>;
-	color:#<?php echo $wpNyarukoOption['wpNyarukoColorT']; ?>;
+	background-color:#<?php echo @$wpNyarukoOption['wpNyarukoColorCommentBG2']; ?>;
+	color:#<?php echo @$wpNyarukoOption['wpNyarukoColorT']; ?>;
 	min-height:50px;
 	border-radius:5px;
 	padding:5px;
@@ -337,13 +337,13 @@ h4 {
 	width: 0;
     height: 0;
     border-top: 5px solid transparent;
-    border-left: 8px solid #<?php echo $wpNyarukoOption['wpNyarukoColorCommentBG2']; ?>;
+    border-left: 8px solid #<?php echo @$wpNyarukoOption['wpNyarukoColorCommentBG2']; ?>;
     border-bottom: 5px solid transparent;
 }
 /*正文区域*/
 #srdcontentbox {
 	position:relative;
-	left: <?php echo $wpNyarukoOption['wpNyarukoMarginLR']; ?>%;
+	left: <?php echo @$wpNyarukoOption['wpNyarukoMarginLR']; ?>%;
 	width: <?php echo (100 - (int)$wpNyarukoOption['wpNyarukoMarginLR'] * 2); ?>%;
 }
 #srdcontent{
@@ -351,8 +351,8 @@ h4 {
 	max-width: 100%;
 	height: auto;
 	word-wrap: break-word;
-	padding-top: <?php echo $wpNyarukoOption['wpNyarukoMarginTB']; ?>px;
-	padding-bottom: <?php echo $wpNyarukoOption['wpNyarukoMarginTB']; ?>px;
+	padding-top: <?php echo @$wpNyarukoOption['wpNyarukoMarginTB']; ?>px;
+	padding-bottom: <?php echo @$wpNyarukoOption['wpNyarukoMarginTB']; ?>px;
 	color: #000;
 	text-align: left;
 	overflow: hidden;
@@ -372,13 +372,13 @@ h4 {
 }
 #commentform input {
 	border-style: none none solid none;
-	border-bottom-color: #<?php echo $wpNyarukoOption['wpNyarukoColorCommentBG']; ?>;
+	border-bottom-color: #<?php echo @$wpNyarukoOption['wpNyarukoColorCommentBG']; ?>;
 }
 #commentd {
-	background-color: #<?php echo $wpNyarukoOption['wpNyarukoColorCommentBG']; ?>;
+	background-color: #<?php echo @$wpNyarukoOption['wpNyarukoColorCommentBG']; ?>;
 }
 /*响应式布局*/
-@media screen and (max-width: <?php echo $wpNyarukoOption['wpNyarukoPad']; ?>px) {
+@media screen and (max-width: <?php echo @$wpNyarukoOption['wpNyarukoPad']; ?>px) {
 	#bannerimg #mainmenubox {
 		width: 100%;
 		border-top-left-radius: 0px;
@@ -401,7 +401,7 @@ h4 {
 		border-top-right-radius: 0px;
 	}
 }
-@media screen and (max-width: <?php echo $wpNyarukoOption['wpNyarukoPhone']; ?>px) {
+@media screen and (max-width: <?php echo @$wpNyarukoOption['wpNyarukoPhone']; ?>px) {
 	#bannerimg #mainmenubox {
 		visibility: hidden;
 	}
@@ -432,7 +432,7 @@ h4 {
 		min-width: 130px;
 	}
 }
-@media screen and (min-width: <?php echo $wpNyarukoOption['wpNyarukoPhone']; ?>px) {
+@media screen and (min-width: <?php echo @$wpNyarukoOption['wpNyarukoPhone']; ?>px) {
 	#rightbottommenubox {
 		visibility: hidden;
 	}
