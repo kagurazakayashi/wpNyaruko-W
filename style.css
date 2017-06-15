@@ -152,6 +152,11 @@ Tags: nyaruko, acg
 	width: 80%;
 	float: left;
 }
+/*主页大图+边栏区域*/
+#indexinfoshow {
+	width: 100%;
+	overflow: auto;
+}
 /*头条列表*/
 #scrolltext, #scrolltextsingle {
 	width: 20%;

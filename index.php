@@ -2,7 +2,7 @@
 echo "<script>var max_num_pages=".$wp_query->max_num_pages.";var now_num_pages=1;</script>";
 if (!isset($_GET["data"])) { get_header(); ?>
 	<?php if(@$wpNyarukoOption['wpNyarukoScrollpic'] && $wpNyarukoOption['wpNyarukoScrollpic']!="") { ?>
-	<div style="width: 100%;">
+	<div id="indexinfoshow">
 		<div id="scrollpic"><?php
 		$wpNyarukoScrollpic = @$wpNyarukoOption['wpNyarukoScrollpic'];
 		if(@$wpNyarukoOption['wpNyarukoScrollpicSC']!='') {

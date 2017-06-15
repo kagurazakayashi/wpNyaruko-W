@@ -52,18 +52,6 @@
 - 控制台输出的欢迎语可以附带输出页面的处理时长。
 - 以及很多来自友链页「YashiLink」中的效果。
 
-## 兼容性
-
-- 欢迎使用最新版 Chrome 浏览器，这是该主题的开发环境。
-- 支持其他带有最新版 webkit 内核浏览器。
-- 可以适配最新版 Firefox 浏览器。
-- IE 去死。
-- 欢迎使用最新版 iOS 里的 Safari ，这是该主题的开发环境。
-- Android 请使用最新版 Chrome 浏览器。
-- WP IE 去死。
-- 要正常使用，浏览器必须开启 JavaScript 。
-- 要保存个性化设置，浏览器需要开启 Cookie 。
-
 ## 自定义功能
 
 ### 自定义列表
@@ -113,14 +101,30 @@
 - imgtype（输出格式） = tab（表格）,svg（矢量图）,img（普通图片）（默认值：tab）
 
 ## 截图
+
 WP主题显示图：
 ![WP主题显示图](screenshot.png)
+
 文章列表截图：
 ![文章列表截图](ScreenShot/screenshot2.jpg)
+
 文章和页面截图：
 ![文章和页面截图](ScreenShot/screenshot3.jpg)
+
 主题设置：
 ![主题设置](ScreenShot/screenshot1.jpg)
+
+## 兼容性
+
+- 欢迎使用最新版 Chrome 浏览器，这是该主题的开发环境。
+- 支持其他带有最新版 webkit 内核浏览器。
+- 可以适配最新版 Firefox 浏览器。
+- IE 去死。
+- 欢迎使用最新版 iOS 里的 Safari ，这是该主题的开发环境。
+- Android 请使用最新版 Chrome 浏览器。
+- WP IE 去死。
+- 要正常使用，浏览器必须开启 JavaScript 。
+- 要保存个性化设置，浏览器需要开启 Cookie 。
 
 ## 使用的第三方软件
 
