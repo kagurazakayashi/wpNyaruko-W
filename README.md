@@ -1,14 +1,15 @@
 # wpNyaruko-W
 
 - 雅诗的个人网站中使用的 WordPress 主题 wpNyaruko-W 。
-  - 继承于由 kagurazakayashi(神楽坂雅詩) 和 0wew0 共同开发的「wpNyaruko」主题。
-  - W 版本为雅诗个人维护的分支，拥有更多的自定义选项和可扩展功能，以及更早的版本进度。
-  - 该主题仍为定制向主题，不保证在其他网站上可以正确运行。
+  - 分支于由 kagurazakayashi(神楽坂雅詩) 和 0wew0 共同开发的「wpNyaruko」主题。
+  - W 分支为雅诗个人维护的分支，拥有更多的自定义选项和可扩展功能。更新比源分支新，新增的功能成熟后会反馈回源分支。
+  - 此分支虽然提供了很多自定义设置，但仍然主要是以自己个人网站为目标开发的，因此不保证在其他网站上可以正确运行。
 - 这是[雅诗个人网站项目](https://github.com/kagurazakayashi/kagurazakayashi.github.com)的一部分。
+  - 这是雅诗制作的第一个 WordPress 主题。（自己的网站终于是自己手打的代码啦，也借此学会了怎么做主题~）
 
 ## 功能
 
-主题具有 响应式布局，动态加载文章，随机主题元素，特殊页面 等功能。
+主题具有 响应式布局，动态加载文章，随机主题元素，特殊页面 等功能。所有的个性化选项功能只在此 W 版本中提供。
 
 - 大头图布局。
 - 菜单栏和底部版权栏为相对半伸出布局。
@@ -132,7 +133,8 @@ WP主题显示图：
 - [kazuhikoarase](https://github.com/kazuhikoarase) / [qrcode-generator](https://github.com/kazuhikoarase/qrcode-generator/tree/master/js)
 
 ## 许可协议
-MIT License.
+wpNyaruko-W（本仓库）： MIT License.
+wpNyaruko： 定制服务，商业授权。
 
 ```
                    ,;;77;

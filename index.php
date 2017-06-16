@@ -11,7 +11,7 @@ if (!isset($_GET["data"])) { get_header(); ?>
 			echo $wpNyarukoScrollpic;
 		}
 		?></div>
-		<div id="scrolltext"><?php get_sidebar(); ?></div>
+		<div id="scrolltext"><?php get_sidebar('index'); ?></div>
 	</div>
 	<?php } ?>
 	<!-- Column 1 /Content -->

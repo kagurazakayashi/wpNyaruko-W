@@ -21,6 +21,6 @@
 		        没有文章！
 		    </div>
 		    <?php endif; ?>
-		</div><div id="scrolltextsingle"><?php get_sidebar(); ?></div>
+		</div><div id="scrolltextsingle"><?php get_sidebar('page'); ?></div>
 	<?php get_footer(); ?>
 	</div>

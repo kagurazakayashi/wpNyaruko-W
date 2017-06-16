@@ -20,8 +20,16 @@ if(is_admin()) {
 /** widgets */
 if( function_exists('register_sidebar') ) {
 	register_sidebar(array(
-		'name' => '侧边栏1',
-		'id'  => 'sidebar-1',
+		'name' => '主页右上菜单区域',
+		'id'  => 'index',
+		'before_widget' => '',
+		'after_widget' => '',
+		'before_title' => '<h4>',
+		'after_title' => '</h4>'
+	));
+  register_sidebar(array(
+		'name' => '文章右侧边栏区域',
+		'id'  => 'page',
 		'before_widget' => '',
 		'after_widget' => '',
 		'before_title' => '<h4>',

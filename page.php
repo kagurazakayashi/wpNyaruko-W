@@ -28,5 +28,5 @@
 	    </div>
 	    <?php endif; ?>
 	</div>
-    <div id="scrolltextsingle"><?php get_sidebar(); ?></div>
+    <div id="scrolltextsingle"><?php get_sidebar('page'); ?></div>
 	<?php get_footer(); ?>
