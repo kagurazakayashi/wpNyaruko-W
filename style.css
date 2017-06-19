@@ -281,6 +281,18 @@ Tags: nyaruko, acg
 .titletypebox a {
 	color:#fff;
 }
+/*文章作者简介*/
+#srdcontentbox #authorimg {
+	border-radius:64px;
+	overflow: hidden;
+	pointer-events: none;
+	user-select: none;
+}
+#srdcontentbox hr {
+	height: 1px;
+	border: none;
+	border-top: 1px dashed gray;
+}
 /*文章右侧广告*/
 .pagead {
 	position: relative;

@@ -19,6 +19,8 @@ function getOptions() {
         $wpNyarukoOption['wpNyarukoColorCommentBG2'] = '#FF99FF';
         $wpNyarukoOption['wpNyarukoMarginTB'] = '80';
         $wpNyarukoOption['wpNyarukoMarginLR'] = '10';
+        $wpNyarukoOption['wpNyarukoAuthorSingle'] = '';
+        $wpNyarukoOption['wpNyarukoAuthorPage'] = '';
         $wpNyarukoOption['wpNyarukoCursor'] = '';
         $wpNyarukoOption['wpNyarukoHandCursor'] = '';
         $wpNyarukoOption['wpNyarukoMenuLeft'] = 'off';
@@ -116,6 +118,8 @@ function init() {
         @$wpNyarukoOption['wpNyarukoWordlimit'] = stripslashes($_POST['wpNyarukoWordlimit']);
         @$wpNyarukoOption['wpNyarukoWLInfo'] = stripslashes($_POST['wpNyarukoWLInfo']);
         @$wpNyarukoOption['wpNyarukoScrollpicSC'] = stripslashes($_POST['wpNyarukoScrollpicSC']);
+        @$wpNyarukoOption['wpNyarukoAuthorSingle'] = stripslashes($_POST['wpNyarukoAuthorSingle']);
+        @$wpNyarukoOption['wpNyarukoAuthorPage'] = stripslashes($_POST['wpNyarukoAuthorPage']);
         update_option('wpNyaruko_options', $wpNyarukoOption);
     } else {
         getOptions();
@@ -177,6 +181,10 @@ if(!is_admin()) {
     <tr>
       <td>文章概览</td>
       <td>文章列表中只预览前<input name="wpNyarukoWordlimit" type="text" id="wpNyarukoWordlimit" value="<?php echo(@$wpNyarukoOption['wpNyarukoWordlimit']); ?>" size="3" maxlength="3" />个字，并在后面添加<input name="wpNyarukoWLInfo" type="text" id="wpNyarukoWLInfo" value="<?php echo(@$wpNyarukoOption['wpNyarukoWLInfo']); ?>" size="20" maxlength="20" /></td>
+    </tr>
+    <tr>
+      <td>显示作者简介</td>
+      <td><input name="wpNyarukoAuthorSingle" type="checkbox" id="wpNyarukoAuthorSingle" <?php if(@$wpNyarukoOption['wpNyarukoAuthorSingle']!='')echo('checked'); ?> />在文章顶部　<input name="wpNyarukoAuthorPage" type="checkbox" id="wpNyarukoAuthorPage" <?php if(@$wpNyarukoOption['wpNyarukoAuthorPage']!='')echo('checked'); ?> />在页面顶部　(如果当前作者没写简介则不显示)</td>
     </tr>
     <tr>
       <td>文章正文内边距</td>

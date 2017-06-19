@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php get_header(); $wpNyarukoOption = get_option('wpNyaruko_options'); ?>
 	<div id="scrollpic" class="singleleftbox">
 		<!-- Column 1 /Content -->
 		<?php if (have_posts()) : the_post(); update_post_caches($posts); ?>
@@ -17,7 +17,30 @@
 					 edit_post_link('编辑', ' &bull; ', '');
 					 ?></div>
 				</span>
-				<div id="srdcontentbox"><div id="srdcontent"><?php the_content(); ?></div></div>
+				<div id="srdcontentbox"><div id="srdcontent">
+					<?php if (@$wpNyarukoOption['wpNyarukoAuthorPage']!='' && get_the_author_description() != "") { ?>
+					<hr><table id="authorinfo" width="100%" border="0" cellspacing="0" cellpadding="10px">
+						<tbody>
+							<tr>
+							<td width="128px" align="center" valign="middle">
+								<div id="authorimg"><a title="<?php the_author(); ?>" href="<?php the_author_url(); ?>" ><img class="comsimg" style="background:url(<?php bloginfo("template_url"); ?>/images/gravatar.png) no-repeat 100% 100%;" src=<?php
+									if (usepxy($wpNyarukoOption)) {
+										echo ('"'.$wpNyarukoOption['wpNyarukoGravatarProxyPage'].'&mail='.get_the_author_email().'&size=128"');
+									} else {
+										echo '"https://cn.gravatar.com/avatar/'.md5(get_the_author_email()).'?s=128"';
+									}
+								?> alt="<?php the_author(); ?>" /></a></div>
+							</td>
+							<td><span>
+								<p><a title="<?php the_author_url(); ?>" href="<?php the_author_url(); ?>" ><?php the_author(); ?></a></p>
+								<p><?php the_author_description(); ?></p>
+							</span></td>
+							</tr>
+						</tbody>
+					</table><hr>
+					<?php } ?>
+					<?php the_content(); ?>
+				</div></div>
 			</div>
 		</div>
 		<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/single.js"></script>
@@ -30,3 +53,12 @@
 	</div>
     <div id="scrolltextsingle"><?php get_sidebar('page'); ?></div>
 	<?php get_footer(); ?>
+	<?php 
+	function usepxy($wpNyarukoOption)
+	{
+		if ($wpNyarukoOption['wpNyarukoGravatarProxy'] && $wpNyarukoOption['wpNyarukoGravatarProxyPage'] && $wpNyarukoOption['wpNyarukoGravatarProxy'] != "" && $wpNyarukoOption['wpNyarukoGravatarProxyPage'] != "") {
+			return true;
+		}
+		return false;
+	}
+	?>

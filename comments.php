@@ -241,13 +241,3 @@ function comment($comment, $args, $depth) {
 }
 ?>
 </div>
-
-<?php 
-function usepxy($wpNyarukoOption)
-{
-    if ($wpNyarukoOption['wpNyarukoGravatarProxy'] && $wpNyarukoOption['wpNyarukoGravatarProxyPage'] && $wpNyarukoOption['wpNyarukoGravatarProxy'] != "" && $wpNyarukoOption['wpNyarukoGravatarProxyPage'] != "") {
-        return true;
-    }
-    return false;
-}
-?>
