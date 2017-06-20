@@ -38,8 +38,9 @@
 							</tr>
 						</tbody>
 					</table><hr>
-					<?php } ?>
-					<?php the_content(); ?>
+					<?php }
+					echo "<span><p>&nbsp;</p></span>";
+					the_content(); ?>
 				</div></div>
 			</div>
 		</div>

@@ -54,7 +54,7 @@ elseif (is_single()) {
    $description = $description1 ? $description1 : $description2;
 
    // 填写自定义字段keywords时显示自定义字段的内容，否则使用文章tags作为关键词
-   $keywords = get_post_meta($post->ID, "keywords", true);
+   $keywords = get_post_meta($post->ID, "_keywords_value", true);
    if($keywords == '') {
       $tags = wp_get_post_tags($post->ID);
       foreach ($tags as $tag ) {

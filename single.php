@@ -38,8 +38,22 @@
 							</tr>
 						</tbody>
 					</table><hr>
-					<?php } ?>
-					<?php the_content(); ?>
+					<?php } 
+					if(@$wpNyarukoOption['wpNyarukoOR']!='') {
+						$reproducedinfo = get_post_meta(get_the_ID(),"_reproduced_value",true);
+						$wpNyarukoOriginal = @$wpNyarukoOption['wpNyarukoOriginal'];
+						$wpNyarukoReproduced = @$wpNyarukoOption['wpNyarukoReproduced'];
+						if ($reproducedinfo == "" && $wpNyarukoOriginal != "") {
+							$rinfoarr = explode(",",$reproducedinfo);
+							echo "<center>".str_replace('[URL]','<a href="'.home_url(add_query_arg(array())).'">'.get_bloginfo('name').'</a>' ,$wpNyarukoOriginal)."</center><hr>";
+						}
+						if ($reproducedinfo != "" && $wpNyarukoReproduced != "") {
+							$rinfoarr = explode(",",$reproducedinfo);
+							echo "<center>".str_replace('[URL]','<a href="'.$rinfoarr[1].'">'.$rinfoarr[0].'</a>' ,$wpNyarukoReproduced)."</center><hr>";
+						}
+					}
+					echo "<span><p>&nbsp;</p></span>";
+					the_content(); ?>
 				</div></div>
 			</div>
 		</div>

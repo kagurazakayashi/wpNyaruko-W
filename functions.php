@@ -78,14 +78,17 @@ return $first_img;
 // 添加自定义字段面板
 $new_meta_boxes =
 array(
+  "reproduced" => array(
+    "name" => "_reproduced",
+    "std" => "",
+    "title" => "转载自: (如果是转载的文章，请在此填写来源网站和链接，用英文逗号分隔。例如「XX网,http://xx」，留空视为原创)"),
   "description" => array(
     "name" => "_description",
-    "std" => "这里填默认的网页描述",
+    "std" => "",
     "title" => "网页描述:"),
-
   "keywords" => array(
     "name" => "_keywords",
-    "std" => "这里填默认的网页关键字",
+    "std" => "",
     "title" => "关键字:")
 );
 function broswerchk() {

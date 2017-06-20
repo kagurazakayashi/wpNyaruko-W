@@ -21,6 +21,9 @@ function getOptions() {
         $wpNyarukoOption['wpNyarukoMarginLR'] = '10';
         $wpNyarukoOption['wpNyarukoAuthorSingle'] = '';
         $wpNyarukoOption['wpNyarukoAuthorPage'] = '';
+        $wpNyarukoOption['wpNyarukoOriginal'] = '这是一篇原创文章，转载请注明来自[URL]。';
+        $wpNyarukoOption['wpNyarukoReproduced'] = '本文章转自[URL]，版权归原创者所有。如果侵犯了你的权益，请通知我及时删除。';
+        $wpNyarukoOption['wpNyarukoOR'] = '';
         $wpNyarukoOption['wpNyarukoCursor'] = '';
         $wpNyarukoOption['wpNyarukoHandCursor'] = '';
         $wpNyarukoOption['wpNyarukoMenuLeft'] = 'off';
@@ -120,6 +123,9 @@ function init() {
         @$wpNyarukoOption['wpNyarukoScrollpicSC'] = stripslashes($_POST['wpNyarukoScrollpicSC']);
         @$wpNyarukoOption['wpNyarukoAuthorSingle'] = stripslashes($_POST['wpNyarukoAuthorSingle']);
         @$wpNyarukoOption['wpNyarukoAuthorPage'] = stripslashes($_POST['wpNyarukoAuthorPage']);
+        @$wpNyarukoOption['wpNyarukoOriginal'] = stripslashes($_POST['wpNyarukoOriginal']);
+        @$wpNyarukoOption['wpNyarukoReproduced'] = stripslashes($_POST['wpNyarukoReproduced']);
+        @$wpNyarukoOption['wpNyarukoOR'] = stripslashes($_POST['wpNyarukoOR']);
         update_option('wpNyaruko_options', $wpNyarukoOption);
     } else {
         getOptions();
@@ -185,6 +191,10 @@ if(!is_admin()) {
     <tr>
       <td>显示作者简介</td>
       <td><input name="wpNyarukoAuthorSingle" type="checkbox" id="wpNyarukoAuthorSingle" <?php if(@$wpNyarukoOption['wpNyarukoAuthorSingle']!='')echo('checked'); ?> />在文章顶部　<input name="wpNyarukoAuthorPage" type="checkbox" id="wpNyarukoAuthorPage" <?php if(@$wpNyarukoOption['wpNyarukoAuthorPage']!='')echo('checked'); ?> />在页面顶部　(如果当前作者没写简介则不显示)</td>
+    </tr>
+    <tr>
+      <td>原创和转载提示</td>
+      <td><input name="wpNyarukoOR" type="checkbox" id="wpNyarukoOR" <?php if(@$wpNyarukoOption['wpNyarukoOR']!='')echo('checked'); ?> />如果文章在编辑时填写了原创/转载信息，则会显示下面的内容：<br/>如果这篇文章是原创，显示：(使用<code>[URL]</code>插入链接,留空不显示)<br/><input name="wpNyarukoOriginal" type="text" id="wpNyarukoOriginal" value="<?php echo(@$wpNyarukoOption['wpNyarukoOriginal']); ?>" size="64" maxlength="512" /><br/>如果这篇文章是转载，显示：(使用<code>[URL]</code>插入链接,留空不显示)<br/><input name="wpNyarukoReproduced" type="text" id="wpNyarukoReproduced" value="<?php echo(@$wpNyarukoOption['wpNyarukoReproduced']); ?>" size="64" maxlength="512" /></td>
     </tr>
     <tr>
       <td>文章正文内边距</td>
