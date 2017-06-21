@@ -36,12 +36,18 @@ if( function_exists('register_sidebar') ) {
 		'after_title' => '</h4>'
 	));
 }
-
 if (function_exists('register_nav_menus')){
 	register_nav_menus(array(
 	//主键key调用nav时使用，值value为后台菜单显示名称
 		'primary' => 'Primary Navigation'
 	));
+}
+if (function_exists('register_sidebar_widget')){
+  register_sidebar_widget("wpNyaruko:当前页面二维码","b_qr");
+}
+add_action( 'widgets_admin_page', 'b_qr_admin' );
+function b_qr_admin() {
+	echo '<p style="clear:both;">添加你想要的内容哦</p>';
 }
 // function delete_menu_more_class($var) {
 // return is_array($var) ? array() : '';
@@ -50,7 +56,10 @@ if (function_exists('register_nav_menus')){
 // add_filter('nav_menu_item_id', 'delete_menu_more_class', 100, 1);
 // add_filter('page_css_class', 'delete_menu_more_class', 100, 1);
 
-
+// 小工具
+function b_qr() {
+  include(TEMPLATEPATH . '/b_qr.php');
+}
 /*获取图片开始*/
 function catch_that_image() {
 global $post, $posts;

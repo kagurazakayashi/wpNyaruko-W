@@ -141,7 +141,28 @@ function emailonblur() {
 }
 //type=1-40;errorcorrection=L,M,Q,H;mode=Numeric,Alphanumeric,Byte,Kanji;imgtype=tab,svg,img
 //<div id="qrview" class="qrview"></div><script type="text/javascript">qr();</script>
-function qr(text=window.location.href,innerid="qrview",imgtype="tab",type="10",errorcorrection="L",mode="Byte") {
+
+function qr(text="",innerid="qrview",imgtype="",type="",errorcorrection="",mode="") {
+	if (text == "") {
+		text = window.location.href;
+	}
+	if (qrdef.length > 0) {
+		if (imgtype == "") {
+			imgtype = qrdef[4];
+		}
+		if (type == "") {
+			type = qrdef[0];
+		}
+		if (errorcorrection == "") {
+			errorcorrection = qrdef[1];
+		}
+		if (mode == "") {
+			mode = qrdef[2];
+		}
+	}
+	if (imgtype == "" || type == "" || errorcorrection == "" || mode == "") {
+		return;
+	}
 	var qrgen = qrcode(type, errorcorrection);
 	qrgen.addData(text, mode);
 	qrgen.make();

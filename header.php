@@ -101,6 +101,22 @@ $keywords = trim(strip_tags($keywords));
 //   }
 $sentences = "";
 $nowsentence = "";
+//QRdef
+if ($wpNyarukoOption['wpNyarukoQRtype'] && $wpNyarukoOption['wpNyarukoQRtype'] != "" &&
+$wpNyarukoOption['wpNyarukoQRecorrection'] && $wpNyarukoOption['wpNyarukoQRecorrection'] != "" &&
+$wpNyarukoOption['wpNyarukoQRmode'] && $wpNyarukoOption['wpNyarukoQRmode'] != "" &&
+$wpNyarukoOption['wpNyarukoQRecode'] && $wpNyarukoOption['wpNyarukoQRecode'] != "" &&
+$wpNyarukoOption['wpNyarukoQRimgtype'] && $wpNyarukoOption['wpNyarukoQRimgtype'] != ""
+) {
+    echo '<script type="text/javascript">var qrdef = [';
+    echo $wpNyarukoOption['wpNyarukoQRtype'].',';
+    echo '"'.$wpNyarukoOption['wpNyarukoQRecorrection'].'",';
+    echo '"'.$wpNyarukoOption['wpNyarukoQRmode'].'",';
+    echo '"'.$wpNyarukoOption['wpNyarukoQRecode'].'",';
+    echo '"'.$wpNyarukoOption['wpNyarukoQRimgtype'].'"];</script>';
+} else {
+    echo '<script type="text/javascript">var qrdef = [];</script>';
+}
 if ($wpNyarukoOption['wpNyarukoTextTable'] && $wpNyarukoOption['wpNyarukoTextTable'] != "") {
     $sentences = $wpdb->get_results("select * from ".$wpNyarukoOption['wpNyarukoTextTable']." order by rand() limit 1;")[0];
     if ($sentences && $sentences != null) {

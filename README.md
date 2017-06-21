@@ -93,15 +93,19 @@
 
 ### 二维码
 
-要获得当前网页的二维码，直接插入以下代码到需要的地方即可：
+要获得当前文章/页面的二维码，使用主题内置小工具「当前页面二维码」即可。
 
-`<div id="qrview" class="qrview"></div><script type="text/javascript">qr();</script>`
+或者，直接插入以下代码到需要的地方：
+
+`<div id="qrview"></div><script type="text/javascript">qr();</script>`
 
 `qr()` 可以输入以下参数：
 - type（类型） = 1-40（默认值：10）
 - errorcorrection（容错级别） = L,M,Q,H（默认值：L）
 - mode（内容模式） = Numeric,Alphanumeric,Byte,Kanji（默认值：Byte）
 - imgtype（输出格式） = tab（表格）,svg（矢量图）,img（普通图片）（默认值：tab）
+
+小工具和插入代码的参数默认值可以在主题设定中修改。
 
 ### 原创与转载提示文本
 
@@ -149,8 +153,10 @@ WP主题显示图：
 - [kazuhikoarase](https://github.com/kazuhikoarase) / [qrcode-generator](https://github.com/kazuhikoarase/qrcode-generator/tree/master/js)
 
 ## 许可协议
-wpNyaruko-W（本仓库）： MIT License.
-wpNyaruko： 定制服务，商业授权。
+- wpNyaruko-W（本仓库）
+  - MIT License.
+- wpNyaruko
+  - 定制服务，商业授权。
 
 ```
                    ,;;77;

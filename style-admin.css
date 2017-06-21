@@ -29,7 +29,7 @@
     text-shadow: 0px 0px 5px #fff;
     color: #000;
 }
-#optionbox table input,#optionbox table textarea {
+#optionbox table input,#optionbox table textarea,#optionbox table select,#optionbox table option {
     background-color: transparent;
     font-family: monospace;
     border-left: dotted gray 1px;
@@ -39,7 +39,7 @@
     color: 000;
     font-size: 14px;
 }
-#optionbox table input:focus,#optionbox table textarea:focus {
+#optionbox table input:focus,#optionbox table textarea:focus,#optionbox table select:focus,#optionbox table option:focus {
     background-color: #FFF;
     font-family: monospace;
     border-left: dotted #FE99CC 2px;

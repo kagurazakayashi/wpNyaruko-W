@@ -58,6 +58,11 @@ function getOptions() {
         $wpNyarukoOption['wpNyarukoBanBrowser'] = '';
         $wpNyarukoOption['wpNyarukoWordlimit'] = '85';
         $wpNyarukoOption['wpNyarukoWLInfo'] = '...[点击阅览全文]';
+        $wpNyarukoOption['wpNyarukoQRtype'] = 10;
+        $wpNyarukoOption['wpNyarukoQRecorrection'] = 'L';
+        $wpNyarukoOption['wpNyarukoQRmode'] = 'Byte';
+        $wpNyarukoOption['wpNyarukoQRecode'] = 'UTF-8';
+        $wpNyarukoOption['wpNyarukoQRimgtype'] = 'tab';
         update_option('wpNyaruko_options', $wpNyarukoOption);
         die('<div id="wpNyarukoInfo" style="text-align: center; width: 100%; height: 25px; line-height: 25px; border-radius: 0px 0px 5px 5px; overflow: hidden; background-color: yellow; box-shadow: 0px 0px 5px gray; font-size: 12px;">欢迎使用 wpNyaruko 主题，请先完成初始设定。<a href="themes.php?page=theme-options.php">现在开始</a></div>');
     }
@@ -126,6 +131,11 @@ function init() {
         @$wpNyarukoOption['wpNyarukoOriginal'] = stripslashes($_POST['wpNyarukoOriginal']);
         @$wpNyarukoOption['wpNyarukoReproduced'] = stripslashes($_POST['wpNyarukoReproduced']);
         @$wpNyarukoOption['wpNyarukoOR'] = stripslashes($_POST['wpNyarukoOR']);
+        @$wpNyarukoOption['wpNyarukoQRtype'] = stripslashes($_POST['wpNyarukoQRtype']);
+        @$wpNyarukoOption['wpNyarukoQRecorrection'] = stripslashes($_POST['wpNyarukoQRecorrection']);
+        @$wpNyarukoOption['wpNyarukoQRmode'] = stripslashes($_POST['wpNyarukoQRmode']);
+        @$wpNyarukoOption['wpNyarukoQRecode'] = stripslashes($_POST['wpNyarukoQRecode']);
+        @$wpNyarukoOption['wpNyarukoQRimgtype'] = stripslashes($_POST['wpNyarukoQRimgtype']);
         update_option('wpNyaruko_options', $wpNyarukoOption);
     } else {
         getOptions();
@@ -294,7 +304,79 @@ if(!is_admin()) {
     </tr>
     <tr>
       <td>获得当前网<br/>页的二维码</td>
-      <td>直接插入以下代码到需要的地方即可（二维码选项见README.md）：<br/><code>&lt;div id="qrview" class="qrview"&gt;&lt;/div&gt;&lt;script type="text/javascript"&gt;qr();&lt;/script&gt;</code></td>
+      <td>直接插入以下代码到需要的地方即可（二维码选项见README.md）：<br/><code>&lt;div id="qrview" class="qrview"&gt;&lt;/div&gt;&lt;script type="text/javascript"&gt;qr();&lt;/script&gt;</code><br/>也可以直接使用本主题提供的「当前页面二维码」小工具。</td>
+    </tr>
+    <tr>
+      <td>二维码<br/>默认样式</td>
+      <td>
+      尺寸：
+      <select name="wpNyarukoQRtype">
+      <?php 
+      $selected = ' selected="selected"';
+      $wpNyarukoQRtype = 10;
+      if(@$wpNyarukoOption['wpNyarukoQRtype']!='') {
+        $wpNyarukoQRtype = (int)($wpNyarukoOption['wpNyarukoQRtype']);
+      }
+      for ($i=1; $i <= 40; $i++) {
+        if ($i != $wpNyarukoQRtype) {
+          echo '<option value="'.$i.'">'.$i.'</option>';
+        } else {
+          echo '<option value="'.$wpNyarukoQRtype.'" selected="selected">'.$wpNyarukoQRtype.'</option>';
+        }
+      }
+      ?>
+      </select>
+      容错：
+      <?php 
+      $wpNyarukoQRecorrection = "L";
+      if(@$wpNyarukoOption['wpNyarukoQRecorrection']!='') {
+        $wpNyarukoQRecorrection = $wpNyarukoOption['wpNyarukoQRecorrection'];
+      }
+      ?>
+      <select name="wpNyarukoQRecorrection">
+        <option value="L"<?php if($wpNyarukoQRecorrection=="L") echo $selected; ?>>弱(7%)</option>
+        <option value="M"<?php if($wpNyarukoQRecorrection=="M") echo $selected; ?>>标(15%)</option>
+        <option value="Q"<?php if($wpNyarukoQRecorrection=="Q") echo $selected; ?>>中(25%)</option>
+        <option value="H"<?php if($wpNyarukoQRecorrection=="H") echo $selected; ?>>强(30%)</option>
+      </select>
+      模式：
+      <?php 
+      $wpNyarukoQRmode = "Byte";
+      if(@$wpNyarukoOption['wpNyarukoQRmode']!='') {
+        $wpNyarukoQRmode = $wpNyarukoOption['wpNyarukoQRmode'];
+      }
+      ?>
+      <select name="wpNyarukoQRmode">
+        <option value="Numeric"<?php if($wpNyarukoQRmode=="Numeric") echo $selected; ?>>数字</option>
+        <option value="Alphanumeric"<?php if($wpNyarukoQRmode=="Alphanumeric") echo $selected; ?>>字母数字</option>
+        <option value="Byte"<?php if($wpNyarukoQRmode=="Byte") echo $selected; ?>>字节</option>
+        <option value="Kanji"<?php if($wpNyarukoQRmode=="Kanji") echo $selected; ?>>汉字</option>
+      </select>
+      编码：
+      <?php 
+      $wpNyarukoQRecode = "UTF-8";
+      if(@$wpNyarukoOption['wpNyarukoQRecode']!='') {
+        $wpNyarukoQRecode = $wpNyarukoOption['wpNyarukoQRecode'];
+      }
+      ?>
+      <select name="wpNyarukoQRecode">
+        <!--<option value="default"<?php if($wpNyarukoQRecode=="default") echo $selected; ?>>默认编码</option>
+        <option value="SJIS"<?php if($wpNyarukoQRecode=="SJIS") echo $selected; ?>>日文SJIS</option>-->
+        <option value="UTF-8"<?php if($wpNyarukoQRecode=="UTF-8") echo $selected; ?>>通用UTF-8</option>
+      </select>
+      <br>输出：
+      <?php 
+      $wpNyarukoQRimgtype = "UTF-8";
+      if(@$wpNyarukoOption['wpNyarukoQRimgtype']!='') {
+        $wpNyarukoQRimgtype = $wpNyarukoOption['wpNyarukoQRimgtype'];
+      }
+      ?>
+      <select name="wpNyarukoQRimgtype">
+        <option value="tab"<?php if($wpNyarukoQRimgtype=="tab") echo $selected; ?>>创建一个填充表格(矢量并且清晰,但不能像图片一样处理)</option>
+        <option value="svg"<?php if($wpNyarukoQRimgtype=="svg") echo $selected; ?>>SVG图形(矢量并且清晰,可像图片一样处理,但不是所有浏览器都支持)</option>
+        <option value="img"<?php if($wpNyarukoQRimgtype=="img") echo $selected; ?>>标准图片(生成一张标准的图片,兼容性最佳,可以图片另存为等操作)</option>
+      </select>
+      </td>
     </tr>
     <tr>
       <td>在控制台输<br/>出一段内容</td>
