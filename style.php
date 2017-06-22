@@ -346,7 +346,7 @@ h4 {
 	left: <?php echo @$wpNyarukoOption['wpNyarukoMarginLR']; ?>%;
 	width: <?php echo (100 - (int)$wpNyarukoOption['wpNyarukoMarginLR'] * 2); ?>%;
 }
-#srdcontent{
+#srdcontent {
 	width: 100%;
 	max-width: 100%;
 	height: auto;
@@ -356,11 +356,10 @@ h4 {
 	color: #000;
 	text-align: left;
 	overflow: hidden;
-	<?php if ($wpNyarukoOption['wpNyarukoFontSize'] && $wpNyarukoOption['wpNyarukoFontSize'] != "") {
-        echo "line-height: ".($wpNyarukoOption['wpNyarukoFontSize']*4)."px;";
-    } else {
-		echo "line-height: 50px;";
-	} ?>
+	line-height: <?php echo @$wpNyarukoOption['wpNyarukoSpace']; ?>px;
+}
+#srdcontent p {
+	text-indent: <?php echo @$wpNyarukoOption['wpNyarukoIndent']; ?>px;
 }
 /*评论区域*/
 #sentcomment {
