@@ -18,7 +18,7 @@
 					 ?></div>
 				</span>
 				<div id="srdcontentbox"><div id="srdcontent">
-					<?php if (@$wpNyarukoOption['wpNyarukoAuthorSingle']!='' && get_the_author_description() != "") { ?>
+					<?php if (@$wpNyarukoOption['wpNyarukoAuthorSingle']!='' && get_the_author_description() != "" && !isset($_GET['attachment_id'])) { ?>
 					<hr><table id="authorinfo" width="100%" border="0" cellspacing="0" cellpadding="10px">
 						<tbody>
 							<tr>
@@ -39,7 +39,10 @@
 						</tbody>
 					</table><hr>
 					<?php } 
-					if(@$wpNyarukoOption['wpNyarukoOR']!='') {
+					if (isset($_GET['attachment_id'])) {
+						echo "图片浏览<hr>";
+					}
+					else if (@$wpNyarukoOption['wpNyarukoOR']!='') {
 						$reproducedinfo = get_post_meta(get_the_ID(),"_reproduced_value",true);
 						$wpNyarukoOriginal = @$wpNyarukoOption['wpNyarukoOriginal'];
 						$wpNyarukoReproduced = @$wpNyarukoOption['wpNyarukoReproduced'];

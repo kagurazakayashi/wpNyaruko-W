@@ -18,7 +18,7 @@
 					 ?></div>
 				</span>
 				<div id="srdcontentbox"><div id="srdcontent">
-					<?php if (@$wpNyarukoOption['wpNyarukoAuthorPage']!='' && get_the_author_description() != "") { ?>
+					<?php if (@$wpNyarukoOption['wpNyarukoAuthorPage']!='' && get_the_author_description() != "" && !isset($_GET['attachment_id'])) { ?>
 					<hr><table id="authorinfo" width="100%" border="0" cellspacing="0" cellpadding="10px">
 						<tbody>
 							<tr>

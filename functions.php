@@ -69,7 +69,7 @@ ob_end_clean();
 $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
  
 //获取文章中第一张图片的路径并输出
-$first_img = $matches [1] [0];
+$first_img = @$matches[1][0];
  
 //如果文章无图片，获取自定义图片
  
