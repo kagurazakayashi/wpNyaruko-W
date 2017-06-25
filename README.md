@@ -81,6 +81,21 @@
 
 `[GOTO]/home.html[GOTO]`
 
+### 使用自定义代码作为页面内容
+
+将一个 html 文件导入到正文区域，适用于制作互动型页面。
+
+1. 创建一个写有要导入的HTML网址的页面。
+2. 如果只导入目标网页中的其中一个div，请加入英文逗号分隔，分隔后面写「.class名」或「#id名」或「元素名」。
+3. 网址包含在`[IMP][IMP]`对中。
+4. 为此页面使用「导入HTML文章」模板。
+
+例子：
+
+`[IMP]about.html[IMP]`
+`[IMP]about.html,body[IMP]`
+`[IMP]about.html,#homediv[IMP]`
+
 ### 使插件作为首页顶部左侧模块
 
 在主题设置中的「首页顶部左侧模块自定义HTML」中，可以填入 HTML 代码，也可以填入 Wordpress 短代码。
@@ -100,10 +115,12 @@
 `<div id="qrview"></div><script type="text/javascript">qr();</script>`
 
 `qr()` 可以输入以下参数：
+- text（要编码的文字） = ""（默认值为当前页面网址）
+- divid（要填入div的ID） = ""（默认值为"qrview"）
+- imgtype（输出格式） = tab（表格）,svg（矢量图）,img（普通图片）（默认值：tab）
 - type（类型） = 1-40（默认值：10）
 - errorcorrection（容错级别） = L,M,Q,H（默认值：L）
 - mode（内容模式） = Numeric,Alphanumeric,Byte,Kanji（默认值：Byte）
-- imgtype（输出格式） = tab（表格）,svg（矢量图）,img（普通图片）（默认值：tab）
 
 小工具和插入代码的参数默认值可以在主题设定中修改。
 
