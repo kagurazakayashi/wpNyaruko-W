@@ -2,6 +2,11 @@
 /*
 Template Name: 跳转页
 */
+$wpNyarukoOption = get_option('wpNyaruko_options');
+if(@$wpNyarukoOption['wpNyarukoBanBrowser']!='') {
+  include_once("broswerchk.php");
+  broswerchkto($wpNyarukoOption['wpNyarukoBanBrowser']);
+}
 if (have_posts()) : the_post(); update_post_caches($posts);
 echo '<!doctype html><!--yashigoto--><head><meta charset="utf-8"><title>';
 bloginfo('name');

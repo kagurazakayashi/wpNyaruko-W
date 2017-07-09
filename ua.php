@@ -10,7 +10,9 @@ function get_broswer($useragent){
         ["Edge浏览器","Edge","/Edge\/([\d\.]+)/"],
         ["谷歌浏览器","Chrome","/Chrome\/([\d\.]+)/"],
         ["Safari","Safari","/Safari\/([\d\.]+)/"],
-        ["雅诗浏览器","Yashi","/Yashi\/([\d\.]+)/"]
+        ["雅诗浏览器","Yashi","/Yashi\/([\d\.]+)/"],
+        ["其他 Gecko 内核浏览器","Gecko","/Gecko\/([\d\.]+)/"],
+        ["其他 Webkit 内核浏览器","Webkit","/Webkit\/([\d\.]+)/"]
     ];
     $broswerName = "系统自带浏览器";
     $broswerVersion = "";

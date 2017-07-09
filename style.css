@@ -656,7 +656,7 @@ Tags: nyaruko, acg
     overflow: hidden;
 }
 #rightbottommenuboxf {
-    position: absolute;
+    position: fixed;
     /*background-color:yellow;*/
     width: 64px;
     bottom: 20px;
