@@ -1,7 +1,5 @@
 <?php echo "<script>var max_num_pages=".$wp_query->max_num_pages.";var now_num_pages=1;</script>";
 if (!isset($_GET["data"])) { get_header(); ?>
-	<!-- Column 1 /Content -->
-	
 <?php
 global $wp_query;
 

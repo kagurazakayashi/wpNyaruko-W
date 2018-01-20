@@ -2,7 +2,7 @@
 Theme Name: wpNyaruko
 Theme URI: https://github.com/kagurazakayashi/wpNyaruko-W
 Description: 该主题为定制向主题，不保证在其他网站上可以正确运行。
-Version: 1.2
+Version: 1.3
 Author: yashi
 Author URI: https://github.com/kagurazakayashi/wpNyaruko-W
 Tags: nyaruko, acg
@@ -45,6 +45,7 @@ Tags: nyaruko, acg
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
     text-align:center;
+    color:#666;
 }
 #bannerimg #mainmenubox:hover {
 	background-color: rgba(255, 255, 255, 0.9);
@@ -93,6 +94,9 @@ Tags: nyaruko, acg
 #bannerimg #mainmenubox a:visited{
     color:#666;
     text-decoration:underline;
+}
+.hidden {
+	display: none;
 }
 /*页脚*/
 #foot {
@@ -529,103 +533,6 @@ Tags: nyaruko, acg
 #sentcommentbox {
 	text-align: right;
 }
-/*
-@media only screen and (max-width: 518px){
-.commitbgDiv .d1{max-width:433px; word-break:break-all; word-wrap:break-word;}
-.commitbgDiv .d2{max-width:378px; word-break:break-all; word-wrap:break-word;}
-.commitbgDiv #backDiv{width:500px; height:438px;}
-.commitbgDiv #t2backDiv{overflow-y:auto; width:500px; height:100%;}
-
-.commitbgDiv .tl{color:#BDBDBD; font-size:8px; margin-left:73;}
-.commitbgDiv .tr{text-align:right; color:#BDBDBD; font-size:8px; margin-right:73;}
-
-.commitbgDiv #t2{width:483px;}
-.commitbgDiv .l2 .li{
-	width:64px;
-	height:64px;
-	float:left;
-	}
-.commitbgDiv .l2 .li img{
-	width: 64px;
-	height: 64px;
-	border-radius:64px;
-}
-
-.commitbgDiv .l2 .ls .li{
-	width:50px;
-	float:left;
-	margin-right:3px;
-	}
-.commitbgDiv .l2 .ls .ll{
-	float:left;
-	max-width: 373px;
-	}
-.commitbgDiv .r2{
-	text-align: right;
-}
-.commitbgDiv .r2 .ri{
-	width:64px;
-	height:64px;
-	float:right;
-}
-.commitbgDiv .r2 .ri img{
-	width:64px;
-	height:64px;
-	border-radius:64px;
-}
-.commitbgDiv .r2 .rs .ri{
-	width:50px;
-	float:right;
-	margin-left:3px;
-}
-.commitbgDiv .r2 .rs .rl{
-	float:right;
-}
-.commitbgDiv .r2 .rd{
-	float:right;
-	margin-top:7px;
-	width: 0;
-    height: 0;
-    border-top: 5px solid transparent;
-    border-left: 8px solid #5CE1B6;
-    border-bottom: 5px solid transparent;
-}
-.commitbgDiv #t3{
-	width: 100%;
-}
-.commitbgDiv #downdivD{
-	box-sizing:border-box;
-	width: 100%;
-	max-height: 300px;
-	float: left;
-	padding: 1px;
-	word-break: break-all;
-	outline: none;
-	overflow-y: auto;
-	overflow-x: auto;
-}
-.commitbgDiv #downimgD{
-	float:left;
-	width:20px;
-	height:20px;
-	padding:2px;
-	border:1px solid #000;
-}
-.commitbgDiv #downclickD{
-	margin-bottom:3px;
-	margin-right:3px;
-	float:right;
-	width: 20px;
-	height: 20px;
-	text-align:center;
-	padding:2px;
-
-}
-.commitbgDiv #downclickD img{
-	width: 20px;
-	height: 20px;
-}
-}*/
 .cellline {
 	width: 100%;
 	height: 30px;

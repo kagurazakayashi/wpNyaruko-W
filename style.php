@@ -96,6 +96,11 @@ h4 {
 		));
         echo "width: calc(100% / ".substr_count($mainmenu,'<li').");";
     }
+	echo "cursor: ";
+    if ($wpNyarukoOption['wpNyarukoHandCursor'] && $wpNyarukoOption['wpNyarukoHandCursor'] != "") {
+        echo "url('".$wpNyarukoOption['wpNyarukoHandCursor']."'), ";
+    }
+	echo "auto;";
     ?>
 }
 #bannerimg #mainmenubox a:hover{
@@ -145,6 +150,19 @@ h4 {
 }
 #rightbottommenuboxf #rightbottommenuswitch:hover {
     background-color: #<?php echo @$wpNyarukoOption['wpNyarukoColorH']; ?>;
+}
+.mainmenupageicon {
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	background-size: 18px 18px;
+	color: #666;
+}
+.mainmenupagenext {
+	background: transparent url(<?php bloginfo("template_url"); ?>/images/ic_navigate_next_24px.svg) no-repeat left center;
+}
+.mainmenupageprev {
+	background: transparent url(<?php bloginfo("template_url"); ?>/images/ic_navigate_before_24px.svg) no-repeat right center;
 }
 /*右上随机文字*/
 #bannerimg #sentence {

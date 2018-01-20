@@ -49,10 +49,8 @@ if (is_home() || is_page()) {
 elseif (is_single()) {
    $description1 = get_post_meta($post->ID, "description", true);
    $description2 = str_replace("\n","",mb_strimwidth(strip_tags($post->post_content), 0, 200, "…", 'utf-8'));
-
-   // 填写自定义字段description时显示自定义字段的内容，否则使用文章内容前200字作为描述
+   // 填写自定义字段description时显示自定义字段的内容，否则使用文章内容前?字作为描述
    $description = $description1 ? $description1 : $description2;
-
    // 填写自定义字段keywords时显示自定义字段的内容，否则使用文章tags作为关键词
    $keywords = get_post_meta($post->ID, "_keywords_value", true);
    if($keywords == '') {
@@ -64,12 +62,10 @@ elseif (is_single()) {
    }
 }
 elseif (is_category()) {
-   // 分类的description可以到后台 - 文章 -分类目录，修改分类的描述
    $description = category_description();
    $keywords = single_cat_title('', false);
 }
 elseif (is_tag()){
-   // 标签的description可以到后台 - 文章 - 标签，修改标签的描述
    $description = tag_description();
    $keywords = single_tag_title('', false);
 }
@@ -88,20 +84,9 @@ $keywords = trim(strip_tags($keywords));
   $wpuploaddirs = wp_upload_dir();
   $wallpapers = scandir($wpuploaddirs["basedir"]."/".$wpNyarukoOption['wpNyarukoPicDir']."/");
   $wallpaperid = rand(0,count($wallpapers)-3)+2;
-//   $sentencedir = $wpuploaddirs["basedir"]."/sentence/";
-//   $sentences = scandir($sentencedir);
-//   $sentenceid = rand(0,count($sentences)-3)+2;
   echo '<style>.bannerimgs {background-image: url('.$wpuploaddirs['baseurl'].'/'.$wpNyarukoOption['wpNyarukoPicDir'].'/'.$wallpapers[$wallpaperid].');}</style>';
-//   $nowsentence = $sentencedir.$sentences[$sentenceid];
-//   if(file_exists($nowsentence)){
-//       $nowsentence = file_get_contents($nowsentence);
-//       $nowsentence = str_replace("\n","<br />",$nowsentence);
-//   } else {
-//       $nowsentence = "ERROR:".$nowsentence;
-//   }
 $sentences = "";
 $nowsentence = "";
-//QRdef
 if ($wpNyarukoOption['wpNyarukoQRtype'] && $wpNyarukoOption['wpNyarukoQRtype'] != "" &&
 $wpNyarukoOption['wpNyarukoQRecorrection'] && $wpNyarukoOption['wpNyarukoQRecorrection'] != "" &&
 $wpNyarukoOption['wpNyarukoQRmode'] && $wpNyarukoOption['wpNyarukoQRmode'] != "" &&
@@ -126,6 +111,7 @@ if ($wpNyarukoOption['wpNyarukoTextTable'] && $wpNyarukoOption['wpNyarukoTextTab
   ?>
   <div id="rightbottommenubox" value="0">
       <div id="rightbottommenuboxf">
+        <div id="mainmenuwpbox2">
           <?php wp_nav_menu(array(
               'container_id' => 'rightbottommenuboxff',
               'theme_location' => 'primary',
@@ -138,6 +124,21 @@ if ($wpNyarukoOption['wpNyarukoTextTable'] && $wpNyarukoOption['wpNyarukoTextTab
               'link_after' => '',
               'depth' => 1
               ));?>
+        </div>
+        <div class="hidden" id="mainmenuwpbox2b">
+          <?php wp_nav_menu(array(
+              'container_id' => 'rightbottommenuboxff',
+              'theme_location' => 'primary2',
+              'header-menu' => 'header-menu',
+              'menu_id' => 'header-menu',
+              'echo' => true,
+              'before' => '',
+              'after' => '',
+              'link_before' => '',
+              'link_after' => '',
+              'depth' => 1
+              ));?>
+        </div>
           <span id="rightbottommenuswitch">
               <span id="rightbottommenuswitch1"></span>
               <span id="rightbottommenuswitch2"></span>
@@ -152,9 +153,24 @@ if ($wpNyarukoOption['wpNyarukoTextTable'] && $wpNyarukoOption['wpNyarukoTextTab
       </a>
       <div id="sentence"><?=$nowsentence?></div>
       <div id="mainmenubox">
+      <div id="mainmenuwpbox1">
+        <?php wp_nav_menu(array(
+            'container_id' => 'rightbottommenuboxff',
+            'theme_location' => 'primary',
+            'header-menu' => 'header-menu',
+            'menu_id' => 'header-menu',
+            'echo' => true,
+            'before' => '',
+            'after' => '',
+            'link_before' => '',
+            'link_after' => '',
+            'depth' => 1
+            ));?>
+      </div>
+      <div class="hidden" id="mainmenuwpbox1b">
           <?php wp_nav_menu(array(
               'container_id' => 'rightbottommenuboxff',
-              'theme_location' => 'primary',
+              'theme_location' => 'primary2',
               'header-menu' => 'header-menu',
               'menu_id' => 'header-menu',
               'echo' => true,
@@ -164,12 +180,10 @@ if ($wpNyarukoOption['wpNyarukoTextTable'] && $wpNyarukoOption['wpNyarukoTextTab
               'link_after' => '',
               'depth' => 1
               ));?>
+        </div>
           <div id="searchbox">
               <?php get_search_form(); ?>
           </div>
       </div>
-      <!--<input type="text" name="keyword" id="keyword" onkeydown="entersearch()"/>-->
   </div>
   <div id="wrapper" class="page">
-  <!--<div id="wrapper2" class="page2">-->
-<!-- <?php bloginfo('description'); ?> -->

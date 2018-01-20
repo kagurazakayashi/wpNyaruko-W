@@ -36,7 +36,8 @@ if( function_exists('register_sidebar') ) {
 if (function_exists('register_nav_menus')){
 	register_nav_menus(array(
 	//主键key调用nav时使用，值value为后台菜单显示名称
-		'primary' => 'Primary Navigation'
+    'primary' => '主菜单第一页',
+    'primary2' => '主菜单第二页'
 	));
 }
 if (function_exists('register_sidebar_widget')){
@@ -147,8 +148,6 @@ add_action('admin_menu', 'create_meta_box');
 add_action('save_post', 'save_postdata');
 
 // 添加自定义字段面板
-
-
 function aurelius_comment($comment, $args, $depth) 
 {
    $GLOBALS['comment'] = $comment; ?>
@@ -221,7 +220,6 @@ add_filter("the_title", "search_word_replace", 200);
 // 移除Wordpress后台顶部左上角的W图标
 function annointed_admin_bar_remove() {
   global $wp_admin_bar;
-  /* Remove their stuff */
   $wp_admin_bar->remove_menu('wp-logo');
 }
 add_action('wp_before_admin_bar_render', 'annointed_admin_bar_remove', 0);
