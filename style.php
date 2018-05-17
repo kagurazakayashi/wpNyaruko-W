@@ -380,7 +380,7 @@ h4 {
     display: inline-block;
     background-color: transparent;
     height: 1px;
-	text-indent: <?php echo @$wpNyarukoOption['wpNyarukoIndent']; ?>px;
+	width: <?php echo @$wpNyarukoOption['wpNyarukoIndent']; ?>px;
 }
 /*评论区域*/
 #sentcomment {

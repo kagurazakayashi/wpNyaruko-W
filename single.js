@@ -1,5 +1,5 @@
 $(window).resize(function() {
-	singleload();
+	// singleload();
 });
 
 function singleload() {
@@ -21,7 +21,7 @@ function singleload() {
 		"height": singlebdiv.height() + "px"
 	});
 }
-singleload();
+// singleload();
 
 function contentformat() {
     var texts = $("#pagetext");
@@ -39,26 +39,42 @@ function contentformat() {
     }
     if (!isnoformat) {
         for (let line = 0; line < textlines.length; line++) {
-			var nowlinetype = nowline.replace(/(^\s*)|(\s*$)/g, "").substr(0,2);
-            if (nowlinetype == "<p") {
-                var nowlinesplit = nowline.split('>');
-                var nowlinetype2 = nowlinesplit[1];
-                if (nowlinetype2.length > 4) {
-                    if (nowlinetype2.substr(0,4) != "<img") {
-                        textlines[line] = nowlinesplit[0] + ">" + spacespan + nowlinetype2 + ">";
-                    }
-                }
-            } else if (nowlinetype != "" && nowlinetype.substr(0,1) != "<") {
-                textlines[line] = spacespan + nowline;
-            }
+			var nowline = textlines[line];
+			var nowlinetext = $(nowline).text();
+			if (nowlinetext == "" || nowlinetext == " " || nowlinetext == "　") {
+				//本行没有正文
+			} else {
+				var nowlinetype = nowline.replace(/(^\s*)|(\s*$)/g, "").substr(0,2);
+				if (nowlinetype == "<p") {
+					var nowlinesplit = nowline.split('>');
+					var newline = nowlinesplit[0] + '>' + spacespan;
+					for (let nlsi = 1; nlsi < nowlinesplit.length; nlsi++) {
+						var nowlinespliti = nowlinesplit[nlsi];
+						newline += nowlinespliti;
+						if (nlsi < nowlinesplit.length-1) newline += '>';
+					}
+					textlines[line] = newline;
+				} else {
+					textlines[line] = spacespan + textlines[line];
+				}
+			}
+			// var nowlinetype = nowline.replace(/(^\s*)|(\s*$)/g, "").substr(0,2);
+            // if (nowlinetype == "<p") {
+            //     var nowlinesplit = nowline.split('>');
+            //     var nowlinetype2 = nowlinesplit[1];
+            //     if (nowlinetype2.length > 4) {
+            //         if (nowlinetype2.substr(0,4) != "<img") {
+            //             textlines[line] = nowlinesplit[0] + ">" + spacespan + nowlinetype2 + ">";
+            //         }
+            //     }
+            // } else if (nowlinetype != "" && nowlinetype.substr(0,1) != "<") {
+            //     textlines[line] = spacespan + nowline;
+            // }
         }
         newhtml = textlines.join('\n');
         newhtml = newhtml.replace(/\n\n/g, '<br/>');
 	}
 	// console.log(newhtml);
     texts.html(newhtml);
-}
-function onlyimg(inhtml) {
-
 }
 contentformat();
