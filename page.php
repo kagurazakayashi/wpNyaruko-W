@@ -39,8 +39,10 @@
 						</tbody>
 					</table><hr>
 					<?php }
-					echo "<span><p>&nbsp;</p></span>";
-					the_content(); ?>
+					echo '<span><p>&nbsp;</p></span><div id="pagetext">';
+					the_content();
+					echo "</div>";
+					?>
 				</div></div>
 			</div>
 		</div>

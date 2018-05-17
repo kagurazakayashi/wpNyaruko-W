@@ -55,8 +55,10 @@
 							echo "<center>".str_replace('[URL]','<a href="'.$rinfoarr[1].'">'.$rinfoarr[0].'</a>' ,$wpNyarukoReproduced)."</center><hr>";
 						}
 					}
-					echo "<span><p>&nbsp;</p></span>";
-					the_content(); ?>
+					echo '<span><p>&nbsp;</p></span><div id="pagetext">';
+					the_content();
+					echo "</div>";
+					?>
 				</div></div>
 			</div>
 		</div>

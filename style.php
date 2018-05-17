@@ -376,7 +376,10 @@ h4 {
 	overflow: hidden;
 	line-height: <?php echo @$wpNyarukoOption['wpNyarukoSpace']; ?>px;
 }
-#srdcontent p {
+.pagetextindent {
+    display: inline-block;
+    background-color: transparent;
+    height: 1px;
 	text-indent: <?php echo @$wpNyarukoOption['wpNyarukoIndent']; ?>px;
 }
 /*评论区域*/
