@@ -79,11 +79,11 @@ elseif ( get_option('comment_registration') && !is_user_logged_in() ) :
     </tr>
     <tr>
       <td>电子邮件</td>
-      <td><input type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" size="15" maxlength="20" tabindex="2" onblur="emailonblur()" /></td>
+      <td><input type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" size="15" maxlength="50" tabindex="2" onblur="emailonblur()" /></td>
     </tr>
     <tr>
       <td>网址(选填)</td>
-      <td><input type="text" name="url" id="url" value="<?php echo $comment_author_url; ?>" size="15" maxlength="20" tabindex="3" /></td>
+      <td><input type="text" name="url" id="url" value="<?php echo $comment_author_url; ?>" size="15" maxlength="50" tabindex="3" /></td>
     </tr>
   </tbody>
 </table></p>

@@ -1,5 +1,6 @@
 $(window).resize(function() {
 	// singleload();
+	imgresize();
 });
 
 function singleload() {
@@ -78,3 +79,24 @@ function contentformat() {
     texts.html(newhtml);
 }
 contentformat();
+
+function imgresize() {
+	var viewwidth = $("#pagetext").width();
+	$("#pagetext img").each(function(){
+		var thisimg = $(this);
+		var thiswidth = 0;
+		var owidth = thisimg.attr("owidth");
+		if (typeof(owidth) == "undefined") {
+			thiswidth = thisimg.width();
+			thisimg.attr("owidth",thiswidth);
+		} else {
+			thiswidth = owidth;
+		}
+		if (thiswidth > viewwidth) {
+			thisimg.attr({"width":"100%","height":"auto"});
+		} else if (thiswidth < viewwidth) {
+			thisimg.attr({"width":thiswidth,"height":"auto"});
+		}
+	});
+}
+imgresize();
