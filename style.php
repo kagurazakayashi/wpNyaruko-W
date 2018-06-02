@@ -382,6 +382,17 @@ h4 {
     height: 1px;
 	width: <?php echo @$wpNyarukoOption['wpNyarukoIndent']; ?>px;
 }
+.pagetext_autosizeimg {
+	padding-left: <?php 
+	$wpNyarukoPageImgWidthM = intval(@$wpNyarukoOption['wpNyarukoPageImgWidthM']);
+	$singleimgpadd = (100-$wpNyarukoPageImgWidthM)/2; echo $singleimgpadd;
+	?>% !important;
+	padding-right: <?php echo $singleimgpadd; ?>% !important;
+	width: <?php echo $wpNyarukoPageImgWidthM; ?>% !important;
+	height: auto !important;
+	padding-top: 20px !important;
+	padding-bottom: 20px !important;
+}
 /*评论区域*/
 #sentcomment {
 	width: 100px;
@@ -465,6 +476,18 @@ h4 {
 	#newls {
 		min-width: 480px;
 	}
+	.pagetext_autosizeimg {
+		padding-left: <?php 
+		$wpNyarukoPageImgWidthM = intval(@$wpNyarukoOption['wpNyarukoPageImgWidth']);
+		$racingsingleimgpadd = (100-$wpNyarukoPageImgWidthM)/2;
+		echo $racingsingleimgpadd;
+		?>% !important;
+		padding-right: <?php echo $racingsingleimgpadd; ?>% !important;
+		width: 80% !important;
+		height: auto !important;
+		padding-top: 20px !important;
+		padding-bottom: 20px !important;
+    }
 }
 </style>
 <?php } ?>

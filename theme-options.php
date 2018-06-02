@@ -65,6 +65,8 @@ function getOptions() {
         $wpNyarukoOption['wpNyarukoQRimgtype'] = 'tab';
         $wpNyarukoOption['wpNyarukoIndent'] = '28';
         $wpNyarukoOption['wpNyarukoSpace'] = '52';
+        $wpNyarukoOption['wpNyarukoPageImgWidth'] = '80';
+        $wpNyarukoOption['wpNyarukoPageImgWidthM'] = '100';
         update_option('wpNyaruko_options', $wpNyarukoOption);
         die('<div id="wpNyarukoInfo" style="text-align: center; width: 100%; height: 25px; line-height: 25px; border-radius: 0px 0px 5px 5px; overflow: hidden; background-color: yellow; box-shadow: 0px 0px 5px gray; font-size: 12px;">欢迎使用 wpNyaruko 主题，请先完成初始设定。<a href="themes.php?page=theme-options.php">现在开始</a></div>');
     }
@@ -75,6 +77,7 @@ function init() {
     if(isset($_GET['reset'])) {
       delete_option('wpNyaruko_options');
     }
+    //保存设置
     if(isset($_POST['input_save'])) {
         $wpNyarukoOption = getOptions();
         @$wpNyarukoOption['wpNyarukoTest'] = stripslashes($_POST['wpNyarukoTest']);
@@ -140,6 +143,8 @@ function init() {
         @$wpNyarukoOption['wpNyarukoQRimgtype'] = stripslashes($_POST['wpNyarukoQRimgtype']);
         @$wpNyarukoOption['wpNyarukoIndent'] = stripslashes($_POST['wpNyarukoIndent']);
         @$wpNyarukoOption['wpNyarukoSpace'] = stripslashes($_POST['wpNyarukoSpace']);
+        @$wpNyarukoOption['wpNyarukoPageImgWidth'] = stripslashes($_POST['wpNyarukoPageImgWidth']);
+        @$wpNyarukoOption['wpNyarukoPageImgWidthM'] = stripslashes($_POST['wpNyarukoPageImgWidthM']);
         update_option('wpNyaruko_options', $wpNyarukoOption);
     } else {
         getOptions();
@@ -215,8 +220,8 @@ if(!is_admin()) {
       <td>上下边距：<input name="wpNyarukoMarginTB" type="text" id="wpNyarukoMarginTB" value="<?php echo(@$wpNyarukoOption['wpNyarukoMarginTB']); ?>" size="4" maxlength="4" />像素　左右边距：<input name="wpNyarukoMarginLR" type="text" id="wpNyarukoMarginLR" value="<?php echo(@$wpNyarukoOption['wpNyarukoMarginLR']); ?>" size="3" maxlength="3" />%</td>
     </tr>
     <tr>
-      <td>文章正文格式</td>
-      <td>首行缩进：<input name="wpNyarukoIndent" type="text" id="wpNyarukoIndent" value="<?php echo(@$wpNyarukoOption['wpNyarukoIndent']); ?>" size="3" maxlength="3" />像素　行距：<input name="wpNyarukoSpace" type="text" id="wpNyarukoSpace" value="<?php echo(@$wpNyarukoOption['wpNyarukoSpace']); ?>" size="3" maxlength="3" />像素</td>
+      <td>文章正文图片格式</td>
+      <td>文章中的图片宽度为正文宽度的百分之<input name="wpNyarukoPageImgWidth" type="text" id="wpNyarukoPageImgWidth" value="<?php echo(@$wpNyarukoOption['wpNyarukoPageImgWidth']); ?>" size="3" maxlength="3" />(电脑版) 和 百分之<input name="wpNyarukoPageImgWidthM" type="text" id="wpNyarukoPageImgWidthM" value="<?php echo(@$wpNyarukoOption['wpNyarukoPageImgWidthM']); ?>" size="3" maxlength="3" />(手机版)</td>
     </tr>
     <tr>
       <td>自定义鼠标指针</td>
