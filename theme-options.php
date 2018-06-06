@@ -220,6 +220,12 @@ if(!is_admin()) {
       <td>上下边距：<input name="wpNyarukoMarginTB" type="text" id="wpNyarukoMarginTB" value="<?php echo(@$wpNyarukoOption['wpNyarukoMarginTB']); ?>" size="4" maxlength="4" />像素　左右边距：<input name="wpNyarukoMarginLR" type="text" id="wpNyarukoMarginLR" value="<?php echo(@$wpNyarukoOption['wpNyarukoMarginLR']); ?>" size="3" maxlength="3" />%</td>
     </tr>
     <tr>
+      <td>文章正文格式</td>
+      <td>每个自然段前自动添加<input name="wpNyarukoIndent" type="text" id="wpNyarukoIndent" value="<?php echo(@$wpNyarukoOption['wpNyarukoIndent']); ?>" size="3" maxlength="3" />像素的空格
+      ，行距：<input name="wpNyarukoSpace" type="text" id="wpNyarukoSpace" value="<?php echo(@$wpNyarukoOption['wpNyarukoSpace']); ?>" size="3" maxlength="3" />像素
+      </td>
+    </tr>
+    <tr>
       <td>文章正文图片格式</td>
       <td>文章中的图片宽度为正文宽度的百分之<input name="wpNyarukoPageImgWidth" type="text" id="wpNyarukoPageImgWidth" value="<?php echo(@$wpNyarukoOption['wpNyarukoPageImgWidth']); ?>" size="3" maxlength="3" />(电脑版) 和 百分之<input name="wpNyarukoPageImgWidthM" type="text" id="wpNyarukoPageImgWidthM" value="<?php echo(@$wpNyarukoOption['wpNyarukoPageImgWidthM']); ?>" size="3" maxlength="3" />(手机版)</td>
     </tr>
