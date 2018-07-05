@@ -105,7 +105,12 @@ $wpNyarukoOption['wpNyarukoQRimgtype'] && $wpNyarukoOption['wpNyarukoQRimgtype']
 if ($wpNyarukoOption['wpNyarukoTextTable'] && $wpNyarukoOption['wpNyarukoTextTable'] != "") {
     $sentences = $wpdb->get_results("select * from ".$wpNyarukoOption['wpNyarukoTextTable']." order by rand() limit 1;")[0];
     if ($sentences && $sentences != null) {
-        $nowsentence = $sentences->text.'</br><a href="'.$wpNyarukoOption['wpNyarukoSearchURL'].$sentences->from.'" target="_blank" title="点击这里可以在《'.$wpNyarukoOption['wpNyarukoSearchName'].'》中搜索「'.$sentences->from.'」词条。可以刷新网页来看看其他句子。" >——'.$sentences->from.'</a>';
+        $nowsentence = $sentences->text;
+        if (isset($wpNyarukoOption['wpNyarukoSearchURL']) && $wpNyarukoOption['wpNyarukoSearchURL'] != "" && isset($wpNyarukoOption['wpNyarukoSearchName']) && $wpNyarukoOption['wpNyarukoSearchName'] != "" && $sentences->from != "") {
+            $nowsentence .= '</br><a href="'.$wpNyarukoOption['wpNyarukoSearchURL'].$sentences->from.'" target="_blank" title="点击这里可以在《'.$wpNyarukoOption['wpNyarukoSearchName'].'》中搜索「'.$sentences->from.'」词条。可以刷新网页来看看其他句子。" >——'.$sentences->from.'</a>';
+        } else if ($sentences->from != "") {
+            $nowsentence .= '</br>——'.$sentences->from;
+        }
     }
 }
   ?>
