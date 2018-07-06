@@ -7,46 +7,8 @@ if (!isset($_GET["data"])) { get_header(); ?>
 			<?php
 				$indexint = $datacount;
 				if (have_posts()) : while (have_posts()) : the_post();
-			?>
-			<div id="blockbdiv<?php echo $indexint ?>" class="blockbdiv" onclick="blockbdivclick(<?php echo "'".$indexint."','"; the_permalink(); echo "'"; ?>)" onmouseover="blockbdivblur(<?php echo $indexint ?>)" onmouseout="blockbdivfocus(<?php echo $indexint ?>)">
-				<div name="blocktopdiv" id="blocktopdiv<?php echo $indexint ?>" class="blocktopdiv">
-					<img name="blocktopimg" id="blocktopimg<?php echo $indexint ?>" src="<?php 
-					$itemimage = catch_that_image();
-					if ($itemimage == "") {
-						bloginfo("template_url");
-						echo "/images/default.jpg";
-					} else {
-						echo $itemimage;
-					}
-					?>" alt="<?php the_title(); ?>" />
-					<div class="topline"><?php the_time('Y-m-d') ?>&nbsp;</div>
-					<div class="toptags"><?php $category = get_the_category(); echo '<a href="'.get_category_link(end($category)->term_id ).'">'.end($category)->cat_name.'</a>'; ?></div>
-				</div>
-				<div class="blockbottomdiv">
-					<div class="bottomtitle"><?php the_title(); ?></div>
-					<div class="bottomcontent"><?php
-					the_excerpt();
-							// $content = get_the_content();
-							// $content = mb_strimwidth(strip_tags(apply_filters('the_content', $post->post_content)), 0, 600,"......");
-							// $keys = explode(" ",$s);
-							// $content = preg_replace('/('.implode('|', $keys) .')/iu','<span style="font-weight:700;background:#ffff00;">\0</span>',$content);
-							// // echo "<script>console.log('".$con11."');</script>";
-							// $content = preg_replace('/<img.*? \/>/','',$content);
-							// $content = str_replace(array("\r\n", "\r", "\n"), "<br/>", $content);
-							// $content = str_replace("<br/><br/>", "<br/>", $content);
-							// $content = str_replace("<br/><br/>", "<br/>", $content);
-							// $contentStart = substr($content,0,5);
-							// if ($contentStart == "<br/>") {
-							// 	$content = substr($content,5,(strlen($content)-5));
-							// }
-							// echo $content;
-							?></div>
-				</div>
-			</div>
-			<script>blockbdivin($("#blockhiddendiv<?php echo $indexint ?>"));</script>
-			<?php echo "<script>datacount=".$indexint.";</script>"; $indexint++; ?>
-			<div class="postlisthr">&nbsp;</div>
-			<?php endwhile; else : ?>
+				$indexint = postlistblock($indexint);
+				endwhile; else : ?>
 				<p id="nopost">没啦</p>
 		<?php endif; if (!isset($_GET["data"])) { get_header(); ?>
 		</div>
