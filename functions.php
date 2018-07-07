@@ -98,6 +98,9 @@ array(
     "std" => "",
     "title" => "关键字:")
 );
+if (plug_wsgp_installed()) {
+  $new_meta_boxes = nyarukoWSGPmetabox();//array_merge(nyarukoWSGPmetabox(),$new_meta_boxes);
+}
 function new_meta_boxes() {
   global $post, $new_meta_boxes;
 
@@ -111,10 +114,10 @@ function new_meta_boxes() {
     echo'<h4>'.$meta_box['title'].'</h4>';
 
     // 自定义字段输入框
-    echo '<textarea cols="60" rows="3" name="'.$meta_box['name'].'_value">'.$meta_box_value.'</textarea><br />';
+    echo '<textarea cols="60" rows="1" name="'.$meta_box['name'].'_value">'.$meta_box_value.'</textarea><br />';
   }
    
-  echo '<input type="hidden" name="ludou_metaboxes_nonce" id="ludou_metaboxes_nonce" value="'.wp_create_nonce( plugin_basename(__FILE__) ).'" />';
+  echo '<input type="hidden" name="metaboxes_nonce" id="metaboxes_nonce" value="'.wp_create_nonce( plugin_basename(__FILE__) ).'" />';
 }
 
 function create_meta_box() {
@@ -126,8 +129,8 @@ function create_meta_box() {
 function save_postdata( $post_id ) {
   global $new_meta_boxes;
    
-   if (isset($_POST['ludou_metaboxes_nonce'])) {
-     if ( !wp_verify_nonce( $_POST['ludou_metaboxes_nonce'], plugin_basename(__FILE__) ))
+   if (isset($_POST['metaboxes_nonce'])) {
+     if ( !wp_verify_nonce( $_POST['metaboxes_nonce'], plugin_basename(__FILE__) ))
     return;
    
   if ( !current_user_can( 'edit_posts', $post_id ))
@@ -242,29 +245,34 @@ echo "<a onclick='".$raonclick."' href='#respond' style='cursor:pointer;' />回�
 function getreplyinfo() {
   return [get_comment_ID(),get_comment_author(),base64_encode(get_comment_author())];
 }
+function plug_wsgp_installed() {
+  return defined('NYARUKOWSGP_PLUGIN_URL');
+}
 function postlistblock($indexint) {
+  if (plug_wsgp_installed()) {
+    nyarukoWSGPpostlistblock($indexint);
+  } else {
   ?>
   <div id="blockbdiv<?php echo $indexint ?>" class="blockbdiv" onclick="blockbdivclick(<?php echo "'".$indexint."','"; the_permalink(); echo "'"; ?>)" onmouseover="blockbdivblur(<?php echo $indexint ?>)" onmouseout="blockbdivfocus(<?php echo $indexint ?>)">
-				<div name="blocktopdiv" id="blocktopdiv<?php echo $indexint ?>" class="blocktopdiv">
-					<img name="blocktopimg" id="blocktopimg<?php echo $indexint ?>" src="<?php 
-					$itemimage = catch_that_image();
-					if ($itemimage == "") {
-						bloginfo("template_url");
-						echo "/images/default.jpg";
-					} else {
-						echo $itemimage;
-					}
-					?>" alt="<?php the_title(); ?>" />
-					<div class="topline"><?php the_time('Y-m-d') ?>&nbsp;</div>
-					<div class="toptags"><?php $category = get_the_category(); echo '<a href="'.get_category_link(end($category)->term_id ).'">'.end($category)->cat_name.'</a>'; ?></div>
-				</div>
-				<div class="blockbottomdiv">
-					<div class="bottomtitle"><?php the_title(); ?></div>
-					<div class="bottomcontent"><?php
-					the_excerpt();
-					?></div>
-				</div>
-			</div>
+      <div name="blocktopdiv" id="blocktopdiv<?php echo $indexint ?>" class="blocktopdiv">
+        <img name="blocktopimg" id="blocktopimg<?php echo $indexint ?>" src="<?php 
+        $itemimage = catch_that_image();
+        if ($itemimage == "") {
+          bloginfo("template_url");
+          echo "/images/default.jpg";
+        } else {
+          echo $itemimage;
+        }
+        ?>" alt="<?php the_title(); ?>" />
+        <div class="topline"><?php the_time('Y-m-d') ?>&nbsp;</div>
+        <div class="toptags"><?php $category = get_the_category(); echo '<a href="'.get_category_link(end($category)->term_id ).'">'.end($category)->cat_name.'</a>'; ?></div>
+      </div>
+      <div class="blockbottomdiv">
+        <div class="bottomtitle"><?php the_title(); ?></div>
+        <div class="bottomcontent"><?php the_excerpt(); ?></div>
+      </div>
+  </div>
+  <?php } ?>
 			<script>blockbdivin($("#blockhiddendiv<?php echo $indexint ?>"));</script>
 			<?php echo "<script>datacount=".$indexint.";</script>"; $indexint++; ?>
 			<div class="postlisthr">&nbsp;</div>

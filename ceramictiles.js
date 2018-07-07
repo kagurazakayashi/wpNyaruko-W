@@ -1,13 +1,14 @@
-var ceramictiles_setting = {
-    "tilesbox": "#postsbox",
-    "tiles": "#blockbdiv",
-    "datacount": 0,
-    "intervalwidth": 10,
-    "intervalheight": 10,
-    "tileswidth": 310,
-    "tilesheight": 400
+if (typeof ceramictiles_setting == "undefined") {
+    var ceramictiles_setting = {
+        "tilesbox": "#postsbox",
+        "tiles": "#blockbdiv",
+        "datacount": 0,
+        "intervalwidth": 10,
+        "intervalheight": 10,
+        "tileswidth": 310,
+        "tilesheight": 400
+    }
 }
-
 function ceramictiles_resize(animation = false) {
     var screenwidth = document.body.clientWidth;
     var datacount = ceramictiles_setting["datacount"];

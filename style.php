@@ -206,7 +206,7 @@ h4 {
 .blockbdiv{
 	width:310px;
 	height:400px;
-	background: #<?php echo @$wpNyarukoOption['wpNyarukoColorL']; ?>;
+	background-color: #<?php echo @$wpNyarukoOption['wpNyarukoColorL']; ?>;
 	box-shadow:0px 3px 5px lightgray;
 	border-radius: 4px;
 	overflow: hidden;
@@ -222,7 +222,7 @@ h4 {
 }
 .blockbdiv:hover {
 	box-shadow:0px 3px 5px gray;
-	background: #<?php echo @$wpNyarukoOption['wpNyarukoColorLL']; ?>;
+	background-color: #<?php echo @$wpNyarukoOption['wpNyarukoColorLL']; ?>;
 }
 .blocktopdiv .topline{
 	width:100%;
