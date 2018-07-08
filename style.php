@@ -212,6 +212,20 @@ h4 {
 	overflow: hidden;
 	position:absolute;
 	user-select: none;
+    background-image: -webkit-gradient(linear, 0 100%, 100% 0,
+                            color-stop(.25, rgba(255, 255, 255, .5)), color-stop(.25, transparent),
+                            color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .5)),
+                            color-stop(.75, rgba(255, 255, 255, .5)), color-stop(.75, transparent),
+                             to(transparent));
+    background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, .5) 25%, transparent 25%,
+                        transparent 50%, rgba(255, 255, 255, .5) 50%, rgba(255, 255, 255, .5) 75%,
+                        transparent 75%, transparent);
+    background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, .5) 25%, transparent 25%,
+                        transparent 50%, rgba(255, 255, 255, .5) 50%, rgba(255, 255, 255, .5) 75%,
+                        transparent 75%, transparent);
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, .5) 25%, transparent 25%,
+                        transparent 50%, rgba(255, 255, 255, .5) 50%, rgba(255, 255, 255, .5) 75%,
+                        transparent 75%, transparent);
 	<?php
 	echo "cursor: ";
     if ($wpNyarukoOption['wpNyarukoHandCursor'] && $wpNyarukoOption['wpNyarukoHandCursor'] != "") {
