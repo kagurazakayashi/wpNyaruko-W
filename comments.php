@@ -236,7 +236,7 @@ function comment($comment, $args, $depth) {
             </div>
         </span>
     </div>
-</div><div class="cellline"></div>
+</div><div class="cellline"></div><li class="liststylenone">
 <?php
 }
 ?>

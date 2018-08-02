@@ -189,7 +189,7 @@ if(!is_admin()) {
     </tr>
     <tr>
       <td>页面色</td>
-      <td>网页背景：#<input name="wpNyarukoColorBG" type="text" id="wpNyarukoColorBG" value="<?php echo(@$wpNyarukoOption['wpNyarukoColorBG']); ?>" size="6" maxlength="6" />　列表项：#<input name="wpNyarukoColorL" type="text" id="wpNyarukoColorL" value="<?php echo(@$wpNyarukoOption['wpNyarukoColorL']); ?>" size="6" maxlength="6" />　当前列表项：#<input name="wpNyarukoColorLL" type="text" id="wpNyarukoColorLL" value="<?php echo(@$wpNyarukoOption['wpNyarukoColorLL']); ?>" size="6" maxlength="6" />
+      <td>网页背景：#<input name="wpNyarukoColorBG" type="text" id="wpNyarukoColorBG" value="<?php echo(@$wpNyarukoOption['wpNyarukoColorBG']); ?>" size="6" maxlength="6" />　列表项：#<input name="wpNyarukoColorL" type="text" id="wpNyarukoColorL" value="<?php echo(@$wpNyarukoOption['wpNyarukoColorL']); ?>" size="6" maxlength="6" />　当前列表项：#<input name="wpNyarukoColorLL" type="text" id="wpNyarukoColorLL" value="<?php echo(@$wpNyarukoOption['wpNyarukoColorLL']); ?>" size="6" maxlength="6" /></td>
     </tr>
     <tr>
       <td>标题色</td>
@@ -412,7 +412,7 @@ if(!is_admin()) {
   </tbody>
     </table>
     <hr><p><input id="submitoption" type="submit" name="input_save" value="应用这些设定" />　<a href="themes.php?page=theme-options.php&reset">恢复初始设定</a>　<?php } ?><a title="开源是一种态度" target="_blank" href="https://github.com/cxchope/wpNyaruko-W" target="_blank">Github</a></p></form><p><br/></p>
-</div>
+
 <?php
 }
 add_action('admin_menu', 'init');
