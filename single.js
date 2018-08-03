@@ -72,6 +72,12 @@ function contentformat() {
                 if (nowlinetype2.length > 4) {
                     if (nowlinetype2.substr(0,4) != "<img") {
                         textlines[line] = nowlinesplit[0] + ">" + spacespan + nowlinetype2 + ">";
+                        if (nowlinesplit.length > 2) {
+                            for (let lineti = 2; lineti < nowlinesplit.length; lineti++) {
+                                const nowospan = nowlinesplit[lineti];
+                                if (nowospan != "") textlines[line] += nowospan + ">";
+                            }
+                        }
                     }
                 }
             } else if (nowlinetype != "" && nowlinetype.substr(0,1) != "<") {
