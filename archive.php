@@ -1,8 +1,58 @@
 <?php echo "<script>var max_num_pages=".$wp_query->max_num_pages.";var now_num_pages=1;</script>";
 if (!isset($_GET["data"])) { get_header(); ?>
+<div id="archivehead">
+<span class="sorting hidden">
+<a href="<?php bloginfo('url'); ?>" title="<?php bloginfo('name'); ?>主页">主页</a>
 <?php
 global $wp_query;
-
+cpath(false);
+$typename = "";
+$description = "";
+if (is_category()) {
+    $typename = single_cat_title('', false);
+    echo "分类".cpath(true).$typename;
+    if (category_description()) {
+        $description = category_description();
+    }
+} elseif (is_tag()) {
+    $typename = single_tag_title('', false);
+    echo "标签".cpath(true).$typename;
+    if (tag_description()) {
+        $description = tag_description();
+    }
+} elseif (is_day()) {
+    $typename = get_the_time('j日');
+    echo "日期存档".cpath(true).get_the_time('Y年n月j日');
+} elseif (is_month()) {
+    $typename = get_the_time('n月');
+    echo "月份存档".cpath(true).get_the_time('Y年n月');
+} elseif (is_year()) {
+    $typename = get_the_time('Y年');
+    echo "年份存档".cpath(true).get_the_time('Y年');
+} elseif (is_author()) {
+    $typename = "";
+    echo '作者存档';
+} elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {
+    echo '博客存档';
+}
+?>
+</span>
+<span class="sortby hidden">
+<select onchange="if(this.value==''){this.selectedIndex=this.defOpt;}else{window.location=this.value;}">
+    <option value="" selected>更改排序方式</option>
+    <option value="<?php echo curPageURL().'?'.http_build_query(array_merge($_GET, array('order' => 'date'))); ?>">最新内容</option>
+    <option value="<?php echo curPageURL().'?'.http_build_query(array_merge($_GET, array('order' => 'rand'))); ?>">随机阅读</option>
+    <option value="<?php echo curPageURL().'?'.http_build_query(array_merge($_GET, array('order' => 'commented'))); ?>">评论最多</option>
+    <option value="<?php echo curPageURL().'?'.http_build_query(array_merge($_GET, array('order' => 'title'))); ?>">标题排序</option>
+    <!-- <option value="<?php echo curPageURL().'?'.http_build_query(array_merge($_GET, array('order' => 'ID'))); ?>">文章ID</option>
+    <option value="<?php echo curPageURL().'?'.http_build_query(array_merge($_GET, array('order' => 'modified'))); ?>">修改时间</option> -->
+</select>
+</span>
+<?php
+if ($description != "") {
+    echo '<div id="description" class="racing_text">'.$description.'</div>';
+}
+echo "</div>";
 if ( isset($_GET['order']) && ($_GET['order']=='rand') ) 
 {
 	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
@@ -42,7 +92,7 @@ else if ( isset($_GET['order']) && ($_GET['order']=='alpha') )
 		$args,
 		$wp_query->query
 	);
-    query_posts($arms);
+    query_posts($arms);    query_posts($arms);
 } ?>
 
 	<!-- Column 1 /Content -->

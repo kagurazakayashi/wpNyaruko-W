@@ -18,6 +18,12 @@ Tags: nyaruko, acg
 	height: 100%;
 	background-color: #FFF;
 }
+.liststylenone {
+    list-style:none;
+}
+.hidden {
+    display: none;
+}
 /*顶端大图片上端渐变*/
 #bannerimg #bannertw {
     position: absolute;
@@ -211,7 +217,7 @@ Tags: nyaruko, acg
 /*文章列表框架*/
 .postlist {
 	width:100%;
-	float:left;
+	/* float:left; */
 	margin-right:-260px;
 	/*background:deeppink;*/
 }
@@ -769,6 +775,10 @@ Tags: nyaruko, acg
 .qrview {
 	align-items: center;
 }
-.liststylenone {
-    list-style:none;
+/* 分类目录 */
+#archivehead {
+    width: 80%;
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: center;
 }
