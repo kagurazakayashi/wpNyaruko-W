@@ -37,7 +37,8 @@ Tags: nyaruko, acg
     position:absolute;
     top: 20px;
     left: 20px;
-    width: 200px;
+    height: 100px;
+    width: auto;
 }
 /*主菜单框架*/
 #bannerimg #mainmenubox {

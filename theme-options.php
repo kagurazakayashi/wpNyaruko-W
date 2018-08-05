@@ -67,6 +67,8 @@ function getOptions() {
         $wpNyarukoOption['wpNyarukoSpace'] = '52';
         $wpNyarukoOption['wpNyarukoPageImgWidth'] = '80';
         $wpNyarukoOption['wpNyarukoPageImgWidthM'] = '100';
+        $wpNyarukoOption['wpNyarukoSingleExCodeA'] = '';
+        $wpNyarukoOption['wpNyarukoSingleExCodeB'] = '';
         update_option('wpNyaruko_options', $wpNyarukoOption);
         die('<div id="wpNyarukoInfo" style="text-align: center; width: 100%; height: 25px; line-height: 25px; border-radius: 0px 0px 5px 5px; overflow: hidden; background-color: yellow; box-shadow: 0px 0px 5px gray; font-size: 12px;">欢迎使用 wpNyaruko 主题，请先完成初始设定。<a href="themes.php?page=theme-options.php">现在开始</a></div>');
     }
@@ -145,6 +147,8 @@ function init() {
         @$wpNyarukoOption['wpNyarukoSpace'] = stripslashes($_POST['wpNyarukoSpace']);
         @$wpNyarukoOption['wpNyarukoPageImgWidth'] = stripslashes($_POST['wpNyarukoPageImgWidth']);
         @$wpNyarukoOption['wpNyarukoPageImgWidthM'] = stripslashes($_POST['wpNyarukoPageImgWidthM']);
+        @$wpNyarukoOption['wpNyarukoSingleExCodeA'] = stripslashes($_POST['wpNyarukoSingleExCodeA']);
+        @$wpNyarukoOption['wpNyarukoSingleExCodeB'] = stripslashes($_POST['wpNyarukoSingleExCodeB']);
         update_option('wpNyaruko_options', $wpNyarukoOption);
     } else {
         getOptions();
@@ -312,6 +316,10 @@ if(!is_admin()) {
     <tr>
       <td>首页顶部<br/>左侧模块<br/>自定义HTML</td>
       <td>顶部由此自定义块和一个小工具块组成。如果留空，小工具也会隐藏。<br/><textarea name="wpNyarukoScrollpic" cols="64" rows="8" maxlength="2000" id="wpNyarukoScrollpic"><?php echo(@$wpNyarukoOption['wpNyarukoScrollpic']); ?></textarea><br/><input name="wpNyarukoScrollpicSC" type="checkbox" id="wpNyarukoScrollpicSC" <?php if(@$wpNyarukoOption['wpNyarukoScrollpicSC']!='')echo('checked'); ?> />将这些内容理解为 Wordpress 短代码，可配合滚动图等插件使用。</td>
+    </tr>
+    <tr>
+      <td>文章顶端和<br/>文章底端<br/>自定义代码</td>
+      <td><textarea name="wpNyarukoSingleExCodeA" cols="64" rows="8" maxlength="2000" id="wpNyarukoSingleExCodeA"><?php echo(@$wpNyarukoOption['wpNyarukoSingleExCodeA']); ?></textarea><br/>（文章区域）<br/><textarea name="wpNyarukoSingleExCodeB" cols="64" rows="8" maxlength="2000" id="wpNyarukoSingleExCodeB"><?php echo(@$wpNyarukoOption['wpNyarukoSingleExCodeB']); ?></textarea></td>
     </tr>
     <tr>
       <td>自定义列表项<br/>(代替自动生成<br/>的文章列表)</td>
