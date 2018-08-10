@@ -434,14 +434,6 @@ h4 {
 		border-top-right-radius: 0px;
 		border-bottom-right-radius: 0px;
 	}
-	/*滚动图片*/
-	#scrollpic {
-		width: 100%;
-	}
-	/*头条列表*/
-	#scrolltext, #scrolltextsingle {
-		width: 100%;
-	}
 	#singlebdiv{
 		border-top-right-radius: 0px;
 	}
@@ -466,9 +458,9 @@ h4 {
 		width: 100%;
 	}
 	/*头条列表*/
-	#scrolltext {
+	#scrolltext, #scrolltextsingle {
 		width: 100%;
-		display: none;
+		text-align: center;
 	}
 	#commentd {
 		min-width: 130px;
