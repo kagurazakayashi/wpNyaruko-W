@@ -468,6 +468,9 @@ h4 {
 	#newls {
 		min-width: 130px;
 	}
+	.sidebarsbox {
+		margin-right: 10%;
+	}
 }
 @media screen and (min-width: <?php echo @$wpNyarukoOption['wpNyarukoPhone']; ?>px) {
 	#rightbottommenubox {
@@ -493,7 +496,7 @@ h4 {
 		height: auto !important;
 		padding-top: 20px !important;
 		padding-bottom: 20px !important;
-    }
+	}
 }
 </style>
 <?php } ?>
