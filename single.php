@@ -1,18 +1,41 @@
-<?php get_header(); $wpNyarukoOption = get_option('wpNyaruko_options'); ?>
+<?php get_header(); $wpNyarukoOption = get_option('wpNyaruko_options');
+$category = get_the_category(); ?>
 	<div id="scrollpic" class="singleleftbox">
 		<!-- Column 1 /Content -->
 		<?php if (have_posts()) : the_post(); update_post_caches($posts); ?>
 		<div id="singlebdiv">
+			<script type="text/javascript">
+			var singleinfo = {
+				"title":"<?php the_title(); ?>",
+				"date":[<?php the_time('"Y","n","j"') ?>],
+				"category":<?php
+				$categorystrs = [];
+				foreach ($category as $ncategory) {
+					array_push($categorystrs,('["'.$ncategory->term_id.'","'.$ncategory->cat_name.'"]'));
+				}
+				echo '['.implode(',', $categorystrs).']';
+				?>,
+				"author":[<?php echo '"'.get_the_author().'","'.get_the_author_url().'","'.get_the_author_email().'"'; ?>],
+				"tag":<?php
+				$tag = get_the_tags();
+				$tags = [];
+				foreach ($tag as $ntag) {
+					array_push($tags,('["'.$ntag->term_id.'","'.$ntag->name.'"]'));
+				}
+				echo '['.implode(',', $tags).']';
+				?>,
+				"id":<?php the_ID() ?>
+			};
+			</script>
 			<div id="singlerightdiv">
 				<span id="srdtop">
 					<div id="srdtitle"><?php the_title(); ?></div>
 					<div id="srddate"><?php the_time('Y年n月j日') ?> &bull; <?php
-					 $category = get_the_category();
 					 if (count($category) == 0) {
 						echo "页面";
 					 } else {
-						$category = $category[0];
-						echo '<a href="'.get_category_link($category->term_id ).'">'.$category->cat_name.'</a>';
+						$ncategory = $category[0];
+						echo '<a href="'.get_category_link($ncategory->term_id).'">'.$ncategory->cat_name.'</a>';
 					 }
 					 edit_post_link('编辑', ' &bull; ', '');
 					 ?></div>
