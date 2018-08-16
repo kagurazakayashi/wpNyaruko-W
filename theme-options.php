@@ -82,73 +82,13 @@ function init() {
     //保存设置
     if(isset($_POST['input_save'])) {
         $wpNyarukoOption = getOptions();
-        @$wpNyarukoOption['wpNyarukoTest'] = stripslashes($_POST['wpNyarukoTest']);
-        @$wpNyarukoOption['wpNyarukoLogo'] = stripslashes($_POST['wpNyarukoLogo']);
-        @$wpNyarukoOption['wpNyarukoColor'] = stripslashes($_POST['wpNyarukoColor']);
-        @$wpNyarukoOption['wpNyarukoColorH'] = stripslashes($_POST['wpNyarukoColorH']);
-        @$wpNyarukoOption['wpNyarukoColorT'] = stripslashes($_POST['wpNyarukoColorT']);
-        @$wpNyarukoOption['wpNyarukoColorI'] = stripslashes($_POST['wpNyarukoColorI']);
-        @$wpNyarukoOption['wpNyarukoColorH1'] = stripslashes($_POST['wpNyarukoColorH1']);
-        @$wpNyarukoOption['wpNyarukoColorH2'] = stripslashes($_POST['wpNyarukoColorH2']);
-        @$wpNyarukoOption['wpNyarukoColorH3'] = stripslashes($_POST['wpNyarukoColorH3']);
-        @$wpNyarukoOption['wpNyarukoColorH4'] = stripslashes($_POST['wpNyarukoColorH4']);
-        @$wpNyarukoOption['wpNyarukoColorBG'] = stripslashes($_POST['wpNyarukoColorBG']);
-        @$wpNyarukoOption['wpNyarukoColorL'] = stripslashes($_POST['wpNyarukoColorL']);
-        @$wpNyarukoOption['wpNyarukoColorLL'] = stripslashes($_POST['wpNyarukoColorLL']);
-        @$wpNyarukoOption['wpNyarukoCursor'] = stripslashes($_POST['wpNyarukoCursor']);
-        @$wpNyarukoOption['wpNyarukoHandCursor'] = stripslashes($_POST['wpNyarukoHandCursor']);
-        @$wpNyarukoOption['wpNyarukoMenuLeft'] = stripslashes($_POST['wpNyarukoMenuLeft']);
-        @$wpNyarukoOption['wpNyarukoMenuItemW'] = stripslashes($_POST['wpNyarukoMenuItemW']);
-        @$wpNyarukoOption['wpNyarukoPad'] = stripslashes($_POST['wpNyarukoPad']);
-        @$wpNyarukoOption['wpNyarukoPhone'] = stripslashes($_POST['wpNyarukoPhone']);
-        @$wpNyarukoOption['wpNyarukoPicDir'] = stripslashes($_POST['wpNyarukoPicDir']);
-        @$wpNyarukoOption['wpNyarukoTextTable'] = stripslashes($_POST['wpNyarukoTextTable']);
-        @$wpNyarukoOption['wpNyarukoSearchName'] = stripslashes($_POST['wpNyarukoSearchName']);
-        @$wpNyarukoOption['wpNyarukoSearchURL'] = stripslashes($_POST['wpNyarukoSearchURL']);
-        @$wpNyarukoOption['wpNyarukoFont'] = stripslashes($_POST['wpNyarukoFont']);
-        @$wpNyarukoOption['wpNyarukoFontSize'] = stripslashes($_POST['wpNyarukoFontSize']);
-        @$wpNyarukoOption['wpNyarukoIndexKeywords'] = stripslashes($_POST['wpNyarukoIndexKeywords']);
-        @$wpNyarukoOption['wpNyarukoRSSArticle'] = stripslashes($_POST['wpNyarukoRSSArticle']);
-        @$wpNyarukoOption['wpNyarukoRSSComment'] = stripslashes($_POST['wpNyarukoRSSComment']);
-        @$wpNyarukoOption['wpNyarukoJQ'] = stripslashes($_POST['wpNyarukoJQ']);
-        @$wpNyarukoOption['wpNyarukoCommentMode'] = stripslashes($_POST['wpNyarukoCommentMode']);
-        @$wpNyarukoOption['wpNyarukoCommentBox'] = stripslashes($_POST['wpNyarukoCommentBox']);
-        @$wpNyarukoOption['wpNyarukoCommentTitle'] = stripslashes($_POST['wpNyarukoCommentTitle']);
-        @$wpNyarukoOption['wpNyarukoHeader'] = stripslashes($_POST['wpNyarukoHeader']);
-        @$wpNyarukoOption['wpNyarukoFooter'] = stripslashes($_POST['wpNyarukoFooter']);
-        @$wpNyarukoOption['wpNyarukoScrollpic'] = stripslashes($_POST['wpNyarukoScrollpic']);
-        @$wpNyarukoOption['wpNyarukoGravatarProxyPage'] = stripslashes($_POST['wpNyarukoGravatarProxyPage']);
-        @$wpNyarukoOption['wpNyarukoGravatarProxy'] = stripslashes($_POST['wpNyarukoGravatarProxy']);
-        @$wpNyarukoOption['wpNyarukoCommentSysIco'] = stripslashes($_POST['wpNyarukoCommentSysIco']);
-        @$wpNyarukoOption['wpNyarukoCommentSysIcoInfo'] = stripslashes($_POST['wpNyarukoCommentSysIcoInfo']);
-        @$wpNyarukoOption['wpNyarukoPHPDebug'] = stripslashes($_POST['wpNyarukoPHPDebug']);
-        @$wpNyarukoOption['wpNyarukoColorCommentBG'] = stripslashes($_POST['wpNyarukoColorCommentBG']);
-        @$wpNyarukoOption['wpNyarukoColorCommentBG2'] = stripslashes($_POST['wpNyarukoColorCommentBG2']);
-        @$wpNyarukoOption['wpNyarukoMarginTB'] = stripslashes($_POST['wpNyarukoMarginTB']);
-        @$wpNyarukoOption['wpNyarukoMarginLR'] = stripslashes($_POST['wpNyarukoMarginLR']);
-        @$wpNyarukoOption['wpNyarukoConsoleLog'] = stripslashes($_POST['wpNyarukoConsoleLog']);
-        @$wpNyarukoOption['wpNyarukoConsoleLogT'] = stripslashes($_POST['wpNyarukoConsoleLogT']);
-        @$wpNyarukoOption['wpNyarukoSVG'] = stripslashes($_POST['wpNyarukoSVG']);
-        @$wpNyarukoOption['wpNyarukoBanBrowser'] = stripslashes($_POST['wpNyarukoBanBrowser']);
-        @$wpNyarukoOption['wpNyarukoWordlimit'] = stripslashes($_POST['wpNyarukoWordlimit']);
-        @$wpNyarukoOption['wpNyarukoWLInfo'] = stripslashes($_POST['wpNyarukoWLInfo']);
-        @$wpNyarukoOption['wpNyarukoScrollpicSC'] = stripslashes($_POST['wpNyarukoScrollpicSC']);
-        @$wpNyarukoOption['wpNyarukoAuthorSingle'] = stripslashes($_POST['wpNyarukoAuthorSingle']);
-        @$wpNyarukoOption['wpNyarukoAuthorPage'] = stripslashes($_POST['wpNyarukoAuthorPage']);
-        @$wpNyarukoOption['wpNyarukoOriginal'] = stripslashes($_POST['wpNyarukoOriginal']);
-        @$wpNyarukoOption['wpNyarukoReproduced'] = stripslashes($_POST['wpNyarukoReproduced']);
-        @$wpNyarukoOption['wpNyarukoOR'] = stripslashes($_POST['wpNyarukoOR']);
-        @$wpNyarukoOption['wpNyarukoQRtype'] = stripslashes($_POST['wpNyarukoQRtype']);
-        @$wpNyarukoOption['wpNyarukoQRecorrection'] = stripslashes($_POST['wpNyarukoQRecorrection']);
-        @$wpNyarukoOption['wpNyarukoQRmode'] = stripslashes($_POST['wpNyarukoQRmode']);
-        @$wpNyarukoOption['wpNyarukoQRecode'] = stripslashes($_POST['wpNyarukoQRecode']);
-        @$wpNyarukoOption['wpNyarukoQRimgtype'] = stripslashes($_POST['wpNyarukoQRimgtype']);
-        @$wpNyarukoOption['wpNyarukoIndent'] = stripslashes($_POST['wpNyarukoIndent']);
-        @$wpNyarukoOption['wpNyarukoSpace'] = stripslashes($_POST['wpNyarukoSpace']);
-        @$wpNyarukoOption['wpNyarukoPageImgWidth'] = stripslashes($_POST['wpNyarukoPageImgWidth']);
-        @$wpNyarukoOption['wpNyarukoPageImgWidthM'] = stripslashes($_POST['wpNyarukoPageImgWidthM']);
-        @$wpNyarukoOption['wpNyarukoSingleExCodeA'] = stripslashes($_POST['wpNyarukoSingleExCodeA']);
-        @$wpNyarukoOption['wpNyarukoSingleExCodeB'] = stripslashes($_POST['wpNyarukoSingleExCodeB']);
+        $options = ["wpNyarukoTest","wpNyarukoLogo","wpNyarukoColor","wpNyarukoColorH","wpNyarukoColorT","wpNyarukoColorI","wpNyarukoColorBG","wpNyarukoColorL","wpNyarukoColorLL","wpNyarukoCursor","wpNyarukoHandCursor","wpNyarukoMenuLeft","wpNyarukoMenuItemW","wpNyarukoPad","wpNyarukoPhone","wpNyarukoPicDir","wpNyarukoTextTable","wpNyarukoSearchName","wpNyarukoSearchURL","wpNyarukoFont","wpNyarukoFontSize","wpNyarukoIndexKeywords","wpNyarukoRSSArticle","wpNyarukoRSSComment","wpNyarukoJQ","wpNyarukoCommentMode","wpNyarukoCommentBox","wpNyarukoCommentTitle","wpNyarukoHeader","wpNyarukoFooter","wpNyarukoScrollpic","wpNyarukoGravatarProxyPage","wpNyarukoGravatarProxy","wpNyarukoCommentSysIco","wpNyarukoCommentSysIcoInfo","wpNyarukoPHPDebug","wpNyarukoColorCommentBG","wpNyarukoColorCommentBG2","wpNyarukoMarginTB","wpNyarukoMarginLR","wpNyarukoConsoleLog","wpNyarukoConsoleLogT","wpNyarukoSVG","wpNyarukoBanBrowser","wpNyarukoWordlimit","wpNyarukoWLInfo","wpNyarukoScrollpicSC","wpNyarukoAuthorSingle","wpNyarukoAuthorPage","wpNyarukoOriginal","wpNyarukoReproduced","wpNyarukoOR","wpNyarukoQRtype","wpNyarukoQRecorrection","wpNyarukoQRmode","wpNyarukoQRecode","wpNyarukoQRimgtype","wpNyarukoIndent","wpNyarukoSpace","wpNyarukoPageImgWidth","wpNyarukoPageImgWidthM","wpNyarukoSingleExCodeA","wpNyarukoSingleExCodeB"];
+        for ($i = 1; $i <= 4; $i++) {
+            array_push($options,("wpNyarukoColorH".$i));
+        }
+        foreach ($options as $value) {
+            @$wpNyarukoOption[$value] = stripslashes($_POST[$value]);
+        }
         update_option('wpNyaruko_options', $wpNyarukoOption);
     } else {
         getOptions();
