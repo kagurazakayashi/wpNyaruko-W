@@ -109,13 +109,19 @@ else if ( isset($_GET['order']) && ($_GET['order']=='alpha') )
 <?php endif; if (!isset($_GET["data"])) { get_header(); ?>
 		</div>
 		<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/ceramictiles.js"></script>
+		<script type="text/javascript">var wpNyarukoAutoLoadConf=[<?php echo '1,"'.@$wpNyarukoOption['wpNyarukoAutoLoadI'].'","'.@$wpNyarukoOption['wpNyarukoAutoLoadB'].'","'.@$wpNyarukoOption['wpNyarukoAutoLoad1'].'","'.@$wpNyarukoOption['wpNyarukoAutoLoad2'].'","'.@$wpNyarukoOption['wpNyarukoAutoLoad3'].'","'.@$wpNyarukoOption['wpNyarukoAutoLoad4'].'"'; ?>];</script>
 		<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/lan.js"></script>
 		<script>resize();</script>
 		<!-- Blog Navigation -->
 		<p><?php if ($wp_query->max_num_pages == 1) {
-			echo '<div id="loadstatus" value="2">没有更多内容了</div>';
+			echo '<div id="loadstatus" value="2">'.@$wpNyarukoOption['wpNyarukoAutoLoad2'].'</div>';
 		} else {
-			echo '<div id="loadstatus" value="0">滚动到页面最下方加载更多内容</div>';
+			$wpNyarukoAutoLoadI = intval(@$wpNyarukoOption['wpNyarukoAutoLoadI']);
+			if ($wpNyarukoAutoLoadI != 0 && $wpNyarukoAutoLoadI != 1) {
+				echo '<div id="loadstatus" value="0">'.@$wpNyarukoOption['wpNyarukoAutoLoad1'].'</div>';
+			} else {
+				echo '<div id="loadstatus" value="0">'.@$wpNyarukoOption['wpNyarukoAutoLoad3'].'</div>';
+			}
 		} ?></p>
     </div>
 	<?php get_footer(); ?>

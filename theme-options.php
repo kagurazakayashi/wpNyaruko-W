@@ -69,6 +69,12 @@ function getOptions() {
         $wpNyarukoOption['wpNyarukoPageImgWidthM'] = '100';
         $wpNyarukoOption['wpNyarukoSingleExCodeA'] = '';
         $wpNyarukoOption['wpNyarukoSingleExCodeB'] = '';
+        $wpNyarukoOption['wpNyarukoAutoLoadI'] = '-1';
+        $wpNyarukoOption['wpNyarukoAutoLoadB'] = '40';
+        $wpNyarukoOption['wpNyarukoAutoLoad1'] = '滚动到页面底部加载更多内容~';
+        $wpNyarukoOption['wpNyarukoAutoLoad2'] = '没有更多内容了';
+        $wpNyarukoOption['wpNyarukoAutoLoad3'] = '点击加载更多内容...';
+        $wpNyarukoOption['wpNyarukoAutoLoad4'] = '正在加载更多内容...';
         update_option('wpNyaruko_options', $wpNyarukoOption);
         die('<div id="wpNyarukoInfo" style="text-align: center; width: 100%; height: 25px; line-height: 25px; border-radius: 0px 0px 5px 5px; overflow: hidden; background-color: yellow; box-shadow: 0px 0px 5px gray; font-size: 12px;">欢迎使用 wpNyaruko 主题，请先完成初始设定。<a href="themes.php?page=theme-options.php">现在开始</a></div>');
     }
@@ -82,9 +88,12 @@ function init() {
     //保存设置
     if(isset($_POST['input_save'])) {
         $wpNyarukoOption = getOptions();
-        $options = ["wpNyarukoTest","wpNyarukoLogo","wpNyarukoColor","wpNyarukoColorH","wpNyarukoColorT","wpNyarukoColorI","wpNyarukoColorBG","wpNyarukoColorL","wpNyarukoColorLL","wpNyarukoCursor","wpNyarukoHandCursor","wpNyarukoMenuLeft","wpNyarukoMenuItemW","wpNyarukoPad","wpNyarukoPhone","wpNyarukoPicDir","wpNyarukoTextTable","wpNyarukoSearchName","wpNyarukoSearchURL","wpNyarukoFont","wpNyarukoFontSize","wpNyarukoIndexKeywords","wpNyarukoRSSArticle","wpNyarukoRSSComment","wpNyarukoJQ","wpNyarukoCommentMode","wpNyarukoCommentBox","wpNyarukoCommentTitle","wpNyarukoHeader","wpNyarukoFooter","wpNyarukoScrollpic","wpNyarukoGravatarProxyPage","wpNyarukoGravatarProxy","wpNyarukoCommentSysIco","wpNyarukoCommentSysIcoInfo","wpNyarukoPHPDebug","wpNyarukoColorCommentBG","wpNyarukoColorCommentBG2","wpNyarukoMarginTB","wpNyarukoMarginLR","wpNyarukoConsoleLog","wpNyarukoConsoleLogT","wpNyarukoSVG","wpNyarukoBanBrowser","wpNyarukoWordlimit","wpNyarukoWLInfo","wpNyarukoScrollpicSC","wpNyarukoAuthorSingle","wpNyarukoAuthorPage","wpNyarukoOriginal","wpNyarukoReproduced","wpNyarukoOR","wpNyarukoQRtype","wpNyarukoQRecorrection","wpNyarukoQRmode","wpNyarukoQRecode","wpNyarukoQRimgtype","wpNyarukoIndent","wpNyarukoSpace","wpNyarukoPageImgWidth","wpNyarukoPageImgWidthM","wpNyarukoSingleExCodeA","wpNyarukoSingleExCodeB"];
+        $options = ["wpNyarukoTest","wpNyarukoLogo","wpNyarukoColor","wpNyarukoColorH","wpNyarukoColorT","wpNyarukoColorI","wpNyarukoColorBG","wpNyarukoColorL","wpNyarukoColorLL","wpNyarukoCursor","wpNyarukoHandCursor","wpNyarukoMenuLeft","wpNyarukoMenuItemW","wpNyarukoPad","wpNyarukoPhone","wpNyarukoPicDir","wpNyarukoTextTable","wpNyarukoSearchName","wpNyarukoSearchURL","wpNyarukoFont","wpNyarukoFontSize","wpNyarukoIndexKeywords","wpNyarukoRSSArticle","wpNyarukoRSSComment","wpNyarukoJQ","wpNyarukoCommentMode","wpNyarukoCommentBox","wpNyarukoCommentTitle","wpNyarukoHeader","wpNyarukoFooter","wpNyarukoScrollpic","wpNyarukoGravatarProxyPage","wpNyarukoGravatarProxy","wpNyarukoCommentSysIco","wpNyarukoCommentSysIcoInfo","wpNyarukoPHPDebug","wpNyarukoColorCommentBG","wpNyarukoColorCommentBG2","wpNyarukoMarginTB","wpNyarukoMarginLR","wpNyarukoConsoleLog","wpNyarukoConsoleLogT","wpNyarukoSVG","wpNyarukoBanBrowser","wpNyarukoWordlimit","wpNyarukoWLInfo","wpNyarukoScrollpicSC","wpNyarukoAuthorSingle","wpNyarukoAuthorPage","wpNyarukoOriginal","wpNyarukoReproduced","wpNyarukoOR","wpNyarukoQRtype","wpNyarukoQRecorrection","wpNyarukoQRmode","wpNyarukoQRecode","wpNyarukoQRimgtype","wpNyarukoIndent","wpNyarukoSpace","wpNyarukoPageImgWidth","wpNyarukoPageImgWidthM","wpNyarukoSingleExCodeA","wpNyarukoSingleExCodeB","wpNyarukoAutoLoadI","wpNyarukoAutoLoadB"];
         for ($i = 1; $i <= 4; $i++) {
             array_push($options,("wpNyarukoColorH".$i));
+        }
+        for ($i = 1; $i <= 4; $i++) {
+            array_push($options,("wpNyarukoAutoLoad".$i));
         }
         foreach ($options as $value) {
             @$wpNyarukoOption[$value] = stripslashes($_POST[$value]);
@@ -190,8 +199,12 @@ if(!is_admin()) {
       <td>低于<input name="wpNyarukoPad" type="text" id="wpNyarukoPad" value="<?php echo(@$wpNyarukoOption['wpNyarukoPad']); ?>" size="4" maxlength="4" />像素时显示平板布局，低于<input name="wpNyarukoPhone" type="text" id="wpNyarukoPhone" value="<?php echo(@$wpNyarukoOption['wpNyarukoPhone']); ?>" size="3" maxlength="3" />像素时显示手机布局</td>
     </tr>
     <tr>
-      <td>响应式加载</td>
-      <td>滚动到页面底部时自动加载<input name="wpNyarukoAutoLoad" type="text" id="wpNyarukoAutoLoad" value="10" size="3" maxlength="3" disabled="true" />篇文章，最多加载<input name="wpNyarukoAutoLoadI" type="text" id="wpNyarukoAutoLoadI" value="-1" size="3" maxlength="3" disabled="true" />次</td>
+      <td>响应式加载<br/>配置</td>
+      <td>滚动到页面底部时自动加载文章：<br/>最多自动加载<input name="wpNyarukoAutoLoadI" type="text" id="wpNyarukoAutoLoadI" value="<?php echo(@$wpNyarukoOption['wpNyarukoAutoLoadI']); ?>" size="3" maxlength="3" />次(填写-1则为无数次)<br/><a href="options-reading.php" target=_blank>设置每次加载文章的数量</a><br/>距离底部补偿<input name="wpNyarukoAutoLoadB" type="text" id="wpNyarukoAutoLoadB" value="<?php echo(@$wpNyarukoOption['wpNyarukoAutoLoadB']); ?>" size="3" maxlength="3" />像素触发自动翻页</td>
+    </tr>
+    <tr>
+      <td>响应式加载<br/>自定义提示文字</td>
+      <td>滚动到页面最下方加载更多内容：<br/><input name="wpNyarukoAutoLoad1" type="text" id="wpNyarukoAutoLoad1" value="<?php echo(@$wpNyarukoOption['wpNyarukoAutoLoad1']); ?>" size="32" maxlength="32" /><br/>没有更多内容了：<br/><input name="wpNyarukoAutoLoad2" type="text" id="wpNyarukoAutoLoad2" value="<?php echo(@$wpNyarukoOption['wpNyarukoAutoLoad2']); ?>" size="32" maxlength="32" /><br/>点击加载更多内容：<br/><input name="wpNyarukoAutoLoad3" type="text" id="wpNyarukoAutoLoad3" value="<?php echo(@$wpNyarukoOption['wpNyarukoAutoLoad3']); ?>" size="32" maxlength="32" /><br/>正在加载更多内容：<br/><input name="wpNyarukoAutoLoad4" type="text" id="wpNyarukoAutoLoad4" value="<?php echo(@$wpNyarukoOption['wpNyarukoAutoLoad4']); ?>" size="32" maxlength="32" /><br/></td>
     </tr>
     <tr>
       <td>随机图片扫描文件夹</td>
@@ -359,7 +372,7 @@ if(!is_admin()) {
     </tr>
   </tbody>
     </table>
-    <hr><p><input id="submitoption" type="submit" name="input_save" value="应用这些设定" />　<a href="themes.php?page=theme-options.php&reset">恢复初始设定</a>　<?php } ?><a title="开源是一种态度" target="_blank" href="https://github.com/cxchope/wpNyaruko-W" target="_blank">Github</a></p></form><p><br/></p>
+    <hr><p id="wpNyarukoOptBtnBox"><input id="submitoption" type="submit" name="input_save" value="应用这些设定" />　<a href="themes.php?page=theme-options.php&reset">恢复初始设定</a>　<?php } ?><a title="开源是一种态度" target="_blank" href="https://github.com/cxchope/wpNyaruko-W" target="_blank">Github</a></p></form><p><br/></p>
 
 <?php
 }

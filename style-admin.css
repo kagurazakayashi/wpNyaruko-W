@@ -48,7 +48,7 @@
     border-bottom: ridge #FE99CC 2px;
     color: 000;
 }
-#submitoption, #optionbox a {
+#submitoption, #wpNyarukoOptBtnBox a {
   color: #ffffff;
   font-size: 14px;
   padding-top: 10px;
@@ -67,7 +67,7 @@
   background: linear-gradient(to bottom,#666666 0,gray 100%);
   cursor:pointer;
 }
-#submitoption:hover, #submitoption:focus, #optionbox a:hover, #optionbox a:focus {
+#submitoption:hover, #submitoption:focus, #wpNyarukoOptBtnBox a:hover, #wpNyarukoOptBtnBox a:focus {
     background: #e62097;
 }
 #wpfooter {

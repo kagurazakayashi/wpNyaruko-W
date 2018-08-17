@@ -149,30 +149,34 @@ function loadmore() {
 			imageslode();
 			now_num_pages++;
 			if (now_num_pages >= max_num_pages) {
-				$("#loadstatus").text("没有更多内容了");
+				$("#loadstatus").text(wpNyarukoAutoLoadConf[4]);
 				$("#loadstatus").attr("value", "2");
 			} else {
-				$("#loadstatus").text("滚动到页面最下方加载更多内容");
+				$("#loadstatus").text(wpNyarukoAutoLoadConf[3]);
 				$("#loadstatus").attr("value", "0");
 			}
 		},
 		error: function(msg) {
-			$("#loadstatus").text("没有更多内容了");
+			$("#loadstatus").text(wpNyarukoAutoLoadConf[4]);
 			$("#loadstatus").attr("value", "2");
 		}
 	});
 }
 $(window).scroll(function() {
-	var winscrtop = $(window).scrollTop();
-	var dochig = $(document).height();
-	var winhig = $(window).height();
-	if (winscrtop >= (dochig - winhig - 35)) {
-		var loadstatus = $("#loadstatus");
-		if (loadstatus.attr("value") == "0") {
-			loadstatus.attr("value", "1");
-			loadstatus.text("正在加载更多信息...");
-			loadmore();
-			imageslode();
+	if (wpNyarukoAutoLoadConf[0] > 0) {
+		var winscrtop = $(window).scrollTop();
+		var dochig = $(document).height();
+		var winhig = $(window).height();
+		var nowpagea = dochig - winhig - 50;
+		//console.log(winscrtop,nowpagea);
+		if (winscrtop >= nowpagea) {
+			var loadstatus = $("#loadstatus");
+			if (loadstatus.attr("value") == "0") {
+				loadstatus.attr("value", "1");
+				loadstatus.text(wpNyarukoAutoLoadConf[6]);
+				setTimeout(function(){loadmore();},500);
+				imageslode();
+			}
 		}
 	}
 });
