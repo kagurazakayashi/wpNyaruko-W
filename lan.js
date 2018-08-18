@@ -130,12 +130,12 @@ $(window).resize(function() {
 
 function loadmore() {
 	var url = window.location.href.split('?');
-	paged++;
 	var wparg = "";
 	if (url.length >= 2) {
 		wparg = url[1].split('&')[0];
 	}
-	url = url[0] + "?" + wparg + "&paged=" + paged + "&data=" + datacount;
+	now_num_pages++;
+	url = url[0] + "?" + wparg + "&paged=" + now_num_pages + "&data=" + datacount;
 	$.ajax({
 		url: url,
 		global: false,
@@ -147,12 +147,16 @@ function loadmore() {
 			$("#postsbox").append(msg);
 			resize();
 			imageslode();
-			now_num_pages++;
 			if (now_num_pages >= max_num_pages) {
 				$("#loadstatus").text(wpNyarukoAutoLoadConf[4]);
 				$("#loadstatus").attr("value", "2");
 			} else {
-				$("#loadstatus").text(wpNyarukoAutoLoadConf[3]);
+				if (now_num_pages > wpNyarukoAutoLoadConf[1] && wpNyarukoAutoLoadConf[1] != -1) {
+					var nextpagea = '<a href="javascript:loadnextpage();" title="跳转到第'+(now_num_pages+1)+'页">'+wpNyarukoAutoLoadConf[5]+'</a>';
+					$("#loadstatus").html(nextpagea);
+				} else {
+					$("#loadstatus").text(wpNyarukoAutoLoadConf[3]);
+				}
 				$("#loadstatus").attr("value", "0");
 			}
 		},
@@ -163,23 +167,26 @@ function loadmore() {
 	});
 }
 $(window).scroll(function() {
-	if (wpNyarukoAutoLoadConf[0] > 0) {
+	if ((wpNyarukoAutoLoadConf[0] > 0 && now_num_pages <= wpNyarukoAutoLoadConf[1]) || wpNyarukoAutoLoadConf[1] == -1) {
 		var winscrtop = $(window).scrollTop();
 		var dochig = $(document).height();
 		var winhig = $(window).height();
-		var nowpagea = dochig - winhig - 50;
+		var nowpagea = dochig - winhig - wpNyarukoAutoLoadConf[2];
 		//console.log(winscrtop,nowpagea);
 		if (winscrtop >= nowpagea) {
-			var loadstatus = $("#loadstatus");
-			if (loadstatus.attr("value") == "0") {
-				loadstatus.attr("value", "1");
-				loadstatus.text(wpNyarukoAutoLoadConf[6]);
-				setTimeout(function(){loadmore();},500);
-				imageslode();
-			}
+			loadnextpage();
 		}
 	}
 });
+function loadnextpage() {
+	var loadstatus = $("#loadstatus");
+	if (loadstatus.attr("value") == "0") {
+		loadstatus.attr("value", "1");
+		loadstatus.text(wpNyarukoAutoLoadConf[6]);
+		setTimeout(function(){loadmore();},500);
+		imageslode();
+	}
+}
 function blockbdivclick(selfid,url) {
     var self = $('#blockbdiv'+selfid);
     self.css({"position":"fixed","z-index":"200","padding":"0px","border-radius":"0px"});

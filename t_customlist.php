@@ -35,13 +35,13 @@ foreach ($jsondata as $nowdata){
 				</div>
 			</div>
 			<script>blockbdivin($("#blockhiddendiv<?php echo $indexint ?>"));</script>
-			<?php echo "<script>datacount=".$indexint.";</script>"; $indexint++; ?>
+			<?php echo "<script type='text/javascript'>datacount=".$indexint.";</script>"; $indexint++; ?>
 			<div class="postlisthr">&nbsp;</div>
 <?php
 } endif; ?>
 </div></div>
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/ceramictiles.js"></script>
-<script type="text/javascript">var wpNyarukoAutoLoadConf=[<?php echo '0,"'.@$wpNyarukoOption['wpNyarukoAutoLoadI'].'","'.@$wpNyarukoOption['wpNyarukoAutoLoadB'].'","'.@$wpNyarukoOption['wpNyarukoAutoLoad1'].'","'.@$wpNyarukoOption['wpNyarukoAutoLoad2'].'","'.@$wpNyarukoOption['wpNyarukoAutoLoad3'].'","'.@$wpNyarukoOption['wpNyarukoAutoLoad4'].'"'; ?>];</script>
+<script type="text/javascript">var wpNyarukoAutoLoadConf=[<?php echo '0,'.@$wpNyarukoOption['wpNyarukoAutoLoadI'].','.@$wpNyarukoOption['wpNyarukoAutoLoadB'].',"'.@$wpNyarukoOption['wpNyarukoAutoLoad1'].'","'.@$wpNyarukoOption['wpNyarukoAutoLoad2'].'","'.@$wpNyarukoOption['wpNyarukoAutoLoad3'].'","'.@$wpNyarukoOption['wpNyarukoAutoLoad4'].'"'; ?>];</script>
 <script type="text/javascript" src="<?php bloginfo('template_url'); ?>/lan.js"></script>
 <script>resize();</script>
 <?php get_footer(); ?>
