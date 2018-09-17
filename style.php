@@ -407,6 +407,9 @@ h4 {
 	padding-top: 20px !important;
 	padding-bottom: 20px !important;
 }
+#pagetext table {
+    <?php if ($wpNyarukoOption['wpNyarukoTableOverflowF']!='') { echo "width: 100% !important;"; } ?>
+}
 /*评论区域*/
 #sentcomment {
 	width: 100px;
@@ -436,7 +439,10 @@ h4 {
 	}
 	#singlebdiv{
 		border-top-right-radius: 0px;
-	}
+    }
+    #pagetext table {
+    <?php if ($wpNyarukoOption['wpNyarukoTableOverflowW']!='') { echo "width: 100% !important;"; } ?>
+    }
 }
 @media screen and (max-width: <?php echo @$wpNyarukoOption['wpNyarukoPhone']; ?>px) {
 	#bannerimg #mainmenubox {
@@ -470,7 +476,10 @@ h4 {
 	}
 	.sidebarsbox {
 		margin-right: 10%;
-	}
+    }
+    #pagetext table {
+    <?php if ($wpNyarukoOption['wpNyarukoTableOverflowW']!='') { echo "width: 100% !important;"; } ?>
+    }
 }
 @media screen and (min-width: <?php echo @$wpNyarukoOption['wpNyarukoPhone']; ?>px) {
 	#rightbottommenubox {

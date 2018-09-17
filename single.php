@@ -79,9 +79,7 @@ $category = get_the_category(); ?>
 						}
 					}
                     echo '<span><p>&nbsp;</p></span><div id="pagetext">';
-                    echo @$wpNyarukoOption['wpNyarukoSingleExCodeA'];
-                    the_content();
-                    echo @$wpNyarukoOption['wpNyarukoSingleExCodeB'];
+                    echo do_shortcode(contentconv(get_the_content()));
 					echo "</div>";
 					?>
 				</div></div>

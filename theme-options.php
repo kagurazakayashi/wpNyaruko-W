@@ -88,7 +88,7 @@ function init() {
     //保存设置
     if(isset($_POST['input_save'])) {
         $wpNyarukoOption = getOptions();
-        $options = ["wpNyarukoTest","wpNyarukoLogo","wpNyarukoColor","wpNyarukoColorH","wpNyarukoColorT","wpNyarukoColorI","wpNyarukoColorBG","wpNyarukoColorL","wpNyarukoColorLL","wpNyarukoCursor","wpNyarukoHandCursor","wpNyarukoMenuLeft","wpNyarukoMenuItemW","wpNyarukoPad","wpNyarukoPhone","wpNyarukoPicDir","wpNyarukoTextTable","wpNyarukoSearchName","wpNyarukoSearchURL","wpNyarukoFont","wpNyarukoFontSize","wpNyarukoIndexKeywords","wpNyarukoRSSArticle","wpNyarukoRSSComment","wpNyarukoJQ","wpNyarukoCommentMode","wpNyarukoCommentBox","wpNyarukoCommentTitle","wpNyarukoHeader","wpNyarukoFooter","wpNyarukoScrollpic","wpNyarukoGravatarProxyPage","wpNyarukoGravatarProxy","wpNyarukoCommentSysIco","wpNyarukoCommentSysIcoInfo","wpNyarukoPHPDebug","wpNyarukoColorCommentBG","wpNyarukoColorCommentBG2","wpNyarukoMarginTB","wpNyarukoMarginLR","wpNyarukoConsoleLog","wpNyarukoConsoleLogT","wpNyarukoSVG","wpNyarukoBanBrowser","wpNyarukoWordlimit","wpNyarukoWLInfo","wpNyarukoScrollpicSC","wpNyarukoAuthorSingle","wpNyarukoAuthorPage","wpNyarukoOriginal","wpNyarukoReproduced","wpNyarukoOR","wpNyarukoQRtype","wpNyarukoQRecorrection","wpNyarukoQRmode","wpNyarukoQRecode","wpNyarukoQRimgtype","wpNyarukoIndent","wpNyarukoSpace","wpNyarukoPageImgWidth","wpNyarukoPageImgWidthM","wpNyarukoSingleExCodeA","wpNyarukoSingleExCodeB","wpNyarukoAutoLoadI","wpNyarukoAutoLoadB"];
+        $options = ["wpNyarukoTest","wpNyarukoLogo","wpNyarukoColor","wpNyarukoColorH","wpNyarukoColorT","wpNyarukoColorI","wpNyarukoColorBG","wpNyarukoColorL","wpNyarukoColorLL","wpNyarukoCursor","wpNyarukoHandCursor","wpNyarukoMenuLeft","wpNyarukoMenuItemW","wpNyarukoPad","wpNyarukoPhone","wpNyarukoPicDir","wpNyarukoTextTable","wpNyarukoSearchName","wpNyarukoSearchURL","wpNyarukoFont","wpNyarukoFontSize","wpNyarukoIndexKeywords","wpNyarukoRSSArticle","wpNyarukoRSSComment","wpNyarukoJQ","wpNyarukoCommentMode","wpNyarukoCommentBox","wpNyarukoCommentTitle","wpNyarukoHeader","wpNyarukoFooter","wpNyarukoScrollpic","wpNyarukoGravatarProxyPage","wpNyarukoGravatarProxy","wpNyarukoCommentSysIco","wpNyarukoCommentSysIcoInfo","wpNyarukoPHPDebug","wpNyarukoColorCommentBG","wpNyarukoColorCommentBG2","wpNyarukoMarginTB","wpNyarukoMarginLR","wpNyarukoConsoleLog","wpNyarukoConsoleLogT","wpNyarukoSVG","wpNyarukoBanBrowser","wpNyarukoWordlimit","wpNyarukoWLInfo","wpNyarukoScrollpicSC","wpNyarukoAuthorSingle","wpNyarukoAuthorPage","wpNyarukoOriginal","wpNyarukoReproduced","wpNyarukoOR","wpNyarukoQRtype","wpNyarukoQRecorrection","wpNyarukoQRmode","wpNyarukoQRecode","wpNyarukoQRimgtype","wpNyarukoIndent","wpNyarukoSpace","wpNyarukoPageImgWidth","wpNyarukoPageImgWidthM","wpNyarukoSingleExCodeA","wpNyarukoSingleExCodeB","wpNyarukoAutoLoadI","wpNyarukoAutoLoadB","wpNyarukoTableOverflowW","wpNyarukoTableOverflowF","wpNyarukoTableOverflowS"];
         for ($i = 1; $i <= 4; $i++) {
             array_push($options,("wpNyarukoColorH".$i));
         }
@@ -181,6 +181,13 @@ if(!is_admin()) {
     <tr>
       <td>文章正文图片格式</td>
       <td>文章中的图片宽度为正文宽度的百分之<input name="wpNyarukoPageImgWidth" type="text" id="wpNyarukoPageImgWidth" value="<?php echo(@$wpNyarukoOption['wpNyarukoPageImgWidth']); ?>" size="3" maxlength="3" />(电脑版) 和 百分之<input name="wpNyarukoPageImgWidthM" type="text" id="wpNyarukoPageImgWidthM" value="<?php echo(@$wpNyarukoOption['wpNyarukoPageImgWidthM']); ?>" size="3" maxlength="3" />(手机版)</td>
+    </tr>
+    <tr>
+        <td>文章正文表格格式</td>
+        <td>
+        <input name="wpNyarukoTableOverflowW" type="checkbox" id="wpNyarukoTableOverflowW" <?php if(@$wpNyarukoOption['wpNyarukoTableOverflowW']!='')echo('checked'); ?> />电脑版自动将表格宽度跟随页面宽度而变化。<br/><input name="wpNyarukoTableOverflowF" type="checkbox" id="wpNyarukoTableOverflowF" <?php if(@$wpNyarukoOption['wpNyarukoTableOverflowF']!='')echo('checked'); ?> />移动版自动将表格宽度跟随页面宽度而变化。<br/>
+        或者：<input name="wpNyarukoTableOverflowS" type="checkbox" id="wpNyarukoTableOverflowS" <?php if(@$wpNyarukoOption['wpNyarukoTableOverflowS']!='')echo('checked'); ?> />添加横向滚动条，使表格支持横向拖动。
+        </td>
     </tr>
     <tr>
       <td>自定义鼠标指针</td>

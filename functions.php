@@ -301,4 +301,14 @@ function cpath($i) {
     if ($i) return $n;
     echo $n;
 }
+
+function contentconv($content) {
+    $wpNyarukoOption = get_option('wpNyaruko_options');
+    $content = @$wpNyarukoOption['wpNyarukoSingleExCodeA'].$content.$wpNyarukoOption['wpNyarukoSingleExCodeB'];
+    if (@$wpNyarukoOption['wpNyarukoTableOverflowS']!='') {
+        $content = str_replace("<table","<div class=\"scrolltable\"><table",$content);
+        $content = str_replace("</table>","</table></div>",$content);
+    }
+    return $content;
+}
 ?>

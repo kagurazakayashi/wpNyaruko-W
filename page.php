@@ -40,7 +40,7 @@
 					</table><hr>
 					<?php }
 					echo '<span><p>&nbsp;</p></span><div id="pagetext">';
-					the_content();
+					echo do_shortcode(contentconv(get_the_content()));
 					echo "</div>";
 					?>
 				</div></div>

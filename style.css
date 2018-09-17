@@ -805,6 +805,9 @@ body::-webkit-scrollbar-track {
 #commentform{
 	width: 80%;
 }
+.scrolltable {
+    overflow-x: auto;
+}
 /*二维码*/
 .qrview {
 	align-items: center;
