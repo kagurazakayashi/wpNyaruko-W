@@ -18,10 +18,12 @@ $category = get_the_category(); ?>
 				"author":[<?php echo '"'.get_the_author().'","'.get_the_author_url().'","'.get_the_author_email().'"'; ?>],
 				"tag":<?php
 				$tag = get_the_tags();
-				$tags = [];
-				foreach ($tag as $ntag) {
-					array_push($tags,('["'.$ntag->term_id.'","'.$ntag->name.'"]'));
-				}
+                $tags = [];
+                if(is_array($tag)) {
+                    foreach ($tag as $ntag) {
+                        array_push($tags,('["'.$ntag->term_id.'","'.$ntag->name.'"]'));
+                    }
+                }
 				echo '['.implode(',', $tags).']';
 				?>,
 				"id":<?php the_ID() ?>

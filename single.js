@@ -32,9 +32,11 @@ function contentformat() {
     var noformats = ["[noformat]","[noformat=all]","<script","<link","[noformat=img]","[noformat=indent]","[nyarukotabloid]"];
     var isnoformat = false;
     var newhtml = "";
+    // console.log("textlines[0]",textlines[0]);
     for (let noformatj = 2; noformatj <= 3; noformatj++) {
         const noformat = noformats[noformatj];
         if (textlines[0].length >= noformat.length && textlines[0].substr(0,noformat.length) == noformat) {
+            console.log(noformat);
             isnoformat = true;
             break;
         }
@@ -43,6 +45,7 @@ function contentformat() {
         for (let noformati = 0; noformati < noformats.length; noformati++) {
             const noformat = noformats[noformati];
             if (textlines[0].length >= noformat.length && textlines[0].substr(0,noformat.length) == noformat) {
+                console.log(noformat);
                 isnoformat = true;
                 newhtml = alltext.substr(noformat.length,alltext.length-noformat.length);
                 break;
@@ -102,6 +105,8 @@ function contentformat() {
                 $(this).addClass("pagetext_autosizeimg");
             });
         }
+    } else {
+        texts.html(newhtml);
     }
 }
 contentformat();
