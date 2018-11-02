@@ -10,6 +10,9 @@ if(@$wpNyarukoOption['wpNyarukoPHPDebug']!='') {
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?php include_once("KagurazakaYashi.php"); ?>
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="remote_ip" content="<?php echo $_SERVER['REMOTE_ADDR']; ?>"/>
+<meta name="forwarded_ip" content="<?php echo $_SERVER['HTTP_X_FORWARDED_FOR']; ?>"/>
+<meta name="template" content="wpNyaruko-F" />
 <?php echo @$wpNyarukoOption['wpNyarukoHeader']; ?>
 <title><?php if ( is_home() ) {
     bloginfo('name'); echo " - "; bloginfo('description');
