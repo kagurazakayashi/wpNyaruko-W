@@ -59,28 +59,21 @@ function b_qr() {
   include(TEMPLATEPATH . '/b_qr.php');
 }
 /*获取图片开始*/
-function catch_that_image() {
-global $post, $posts;
-$first_img = '';
-ob_start();
-ob_end_clean();
-$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
- 
-//获取文章中第一张图片的路径并输出
-$first_img = @$matches[1][0];
- 
-//如果文章无图片，获取自定义图片
- 
-if(empty($first_img)){ //Defines a default image
-$first_img = bloginfo("template_url")."/images/default.jpg";
- 
-//请自行设置一张default.jpg图片
-}
- 
-return $first_img;
+function catch_image($npost=null,$showdefaultimg=true,$iscontent=false) {
+    global $post;
+    if (!$npost) $npost = $post;
+    $first_img = '';
+    $raimage = '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i';
+    $ncontent = $iscontent ? $npost : $npost->post_content;
+    $output = preg_match_all($raimage, $ncontent, $matches);
+    //获取文章中第一张图片的路径并输出
+    $first_img = @$matches[1][0];
+    if(empty($first_img) && $showdefaultimg){
+        $first_img = get_bloginfo("template_url")."/images/default.jpg";
+    }
+    return $first_img;
 }
 /*获取图片完*/
-
 
 // 添加自定义字段面板
 $new_meta_boxes =
@@ -256,13 +249,7 @@ function postlistblock($indexint) {
   <div id="blockbdiv<?php echo $indexint ?>" class="blockbdiv" onclick="blockbdivclick(<?php echo "'".$indexint."','"; the_permalink(); echo "'"; ?>)" onmouseover="blockbdivblur(<?php echo $indexint ?>)" onmouseout="blockbdivfocus(<?php echo $indexint ?>)">
       <div name="blocktopdiv" id="blocktopdiv<?php echo $indexint ?>" class="blocktopdiv">
         <img name="blocktopimg" id="blocktopimg<?php echo $indexint ?>" src="<?php 
-        $itemimage = catch_that_image();
-        if ($itemimage == "") {
-          bloginfo("template_url");
-          echo "/images/default.jpg";
-        } else {
-          echo $itemimage;
-        }
+        echo catch_image();
         ?>" alt="<?php the_title(); ?>" />
         <div class="topline"><?php the_time('Y-m-d') ?>&nbsp;</div>
         <div class="toptags"><?php $category = get_the_category(); echo '<a href="'.get_category_link(end($category)->term_id ).'">'.end($category)->cat_name.'</a>'; ?></div>

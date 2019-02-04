@@ -35,6 +35,20 @@ if(@$wpNyarukoOption['wpNyarukoPHPDebug']!='') {
     echo '<meta name="ua" content="'.$_SERVER['HTTP_USER_AGENT'].'" />';
 } ?>
 
+<?php 
+$sharepicurl = "";
+$sharepiccss = "";
+if (is_single() || is_page()) {
+    $nowcontent = get_post()->post_content;
+    if ($nowcontent) {
+        $sharepicurl = catch_image($nowcontent,false,true);
+        if ($sharepicurl != "") {
+            $sharepiccss = "margin:0 auto; display:none;";
+            echo '<link rel="image" href="'.$sharepicurl.'" />';
+        }
+    }
+}
+?>
 <meta name="template" content="wpNyaruko-F" />
 <?php echo @$wpNyarukoOption['wpNyarukoHeader']; ?>
 <title><?php if ( is_home() ) {
@@ -50,7 +64,6 @@ if(@$wpNyarukoOption['wpNyarukoPHPDebug']!='') {
 } else {
     wp_title('',true);
 } ?></title>
-<!-- Stylesheets -->
 <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
 <?php include_once("style.php");
 wpNyarukoGCSS($wpNyarukoOption); ?>
@@ -103,7 +116,13 @@ $keywords = trim(strip_tags($keywords));
 </head>
 <?php flush(); ?>
 <body>
-    <div id="bodyhidden"></div>
+<?php 
+    if ($sharepicurl != "") {
+        echo '<div id="wx_pic" style="'.$sharepiccss.'"><img src="'.$sharepicurl.'" /></div>';
+    }
+    $nowcontent = null;
+?>
+  <div id="bodyhidden"></div>
   <?php
   $wpuploaddirs = wp_upload_dir();
   $wallpapers = scandir($wpuploaddirs["basedir"]."/".$wpNyarukoOption['wpNyarukoPicDir']."/");
