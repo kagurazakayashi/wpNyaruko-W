@@ -43,6 +43,12 @@ body::-webkit-scrollbar-track {
     /*border-radius: 10px;*/
     background: lightgray;
 }
+#wx_pic {
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
 /*顶端大图片上端渐变*/
 #bannerimg #bannertw {
     position: absolute;

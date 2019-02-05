@@ -37,13 +37,11 @@ if(@$wpNyarukoOption['wpNyarukoPHPDebug']!='') {
 
 <?php 
 $sharepicurl = "";
-$sharepiccss = "";
 if (is_single() || is_page()) {
     $nowcontent = get_post()->post_content;
     if ($nowcontent) {
         $sharepicurl = catch_image($nowcontent,false,true);
         if ($sharepicurl != "") {
-            $sharepiccss = "margin:0 auto; display:none;";
             echo '<link rel="image" href="'.$sharepicurl.'" />';
         }
     }
@@ -118,7 +116,7 @@ $keywords = trim(strip_tags($keywords));
 <body>
 <?php 
     if ($sharepicurl != "") {
-        echo '<div id="wx_pic" style="'.$sharepiccss.'"><img src="'.$sharepicurl.'" /></div>';
+        echo '<div id="wx_pic"><img src="'.$sharepicurl.'" /></div>';
     }
     $nowcontent = null;
 ?>
