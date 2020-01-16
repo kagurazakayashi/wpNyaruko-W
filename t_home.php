@@ -4,8 +4,8 @@ Template Name: 跳转页
 */
 $wpNyarukoOption = get_option('wpNyaruko_options');
 if(@$wpNyarukoOption['wpNyarukoBanBrowser']!='') {
-  include_once("broswerchk.php");
-  broswerchkto($wpNyarukoOption['wpNyarukoBanBrowser']);
+    include_once("broswerchk.php");
+    broswerchkto($wpNyarukoOption['wpNyarukoBanBrowser']);
 }
 if (have_posts()) : the_post(); update_post_caches($posts);
 echo '<!doctype html><!--yashigoto--><head><meta charset="utf-8"><title>';
@@ -21,77 +21,69 @@ echo "ERR";
 endif;
 function GetBrowser(){
     if(!empty($_SERVER['HTTP_USER_AGENT'])){
-    $br = $_SERVER['HTTP_USER_AGENT'];
-    if (preg_match('/MSIE/i',$br)) {
-                            $br = 'MSIE';
-                        }elseif (preg_match('/Firefox/i',$br)) {
-        $br = 'Firefox';
-    }elseif (preg_match('/Chrome/i',$br)) {
-        $br = 'Chrome';
-            }elseif (preg_match('/Safari/i',$br)) {
-        $br = 'Safari';
-    }elseif (preg_match('/Opera/i',$br)) {
+        $br = $_SERVER['HTTP_USER_AGENT'];
+        if (preg_match('/MSIE/i',$br)) {
+            $br = 'MSIE';
+        } elseif (preg_match('/Firefox/i',$br)) {
+            $br = 'Firefox';
+        } elseif (preg_match('/Chrome/i',$br)) {
+            $br = 'Chrome';
+        } elseif (preg_match('/Safari/i',$br)) {
+            $br = 'Safari';
+        } elseif (preg_match('/Opera/i',$br)) {
             $br = 'Opera';
-    }else {
+        } else {
             $br = 'Other';
+        }
+        return $br;
+    } else {
+        return "未知";
     }
-    return $br;
-}else{return "未知";}
-}
-function GetLang(){
-    if(!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])){
-    $lang = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
-    $lang = substr($lang,0,5);
-    if(preg_match("/zh-cn/i",$lang)){
-        $lang = "简体中文";
-    }elseif(preg_match("/zh/i",$lang)){
-        $lang = "繁体中文";
-    }else{
-            $lang = "English";
-    }
-    return $lang;
-    }else{return "未知";}
 }
 function GetOs(){
-    if(!empty($_SERVER['HTTP_USER_AGENT'])){
-    $OS = $_SERVER['HTTP_USER_AGENT'];
+    if(!empty($_SERVER['HTTP_USER_AGENT'])) {
+        $OS = $_SERVER['HTTP_USER_AGENT'];
         if (preg_match('/win/i',$OS)) {
-        $OS = 'Windows';
-    }elseif (preg_match('/mac/i',$OS)) {
-        $OS = 'Apple';
-    }elseif (preg_match('/linux/i',$OS)) {
-        $OS = 'Linux';
-    }elseif (preg_match('/unix/i',$OS)) {
-        $OS = 'Unix';
-    }elseif (preg_match('/bsd/i',$OS)) {
-        $OS = 'BSD';
-    }else {
-        $OS = '未知';
+            $OS = 'Windows';
+        } elseif (preg_match('/mac/i',$OS)) {
+            $OS = 'Apple';
+        } elseif (preg_match('/linux/i',$OS)) {
+            $OS = 'Linux';
+        } elseif (preg_match('/unix/i',$OS)) {
+            $OS = 'Unix';
+        } elseif (preg_match('/bsd/i',$OS)) {
+            $OS = 'BSD';
+        } else {
+            $OS = '未知';
+        }
+        return $OS;
+    } else {
+        return "未知";
     }
-                return $OS;
-    }else{return "未知";}
 }
 function Getip(){
     $ip = false;
     $ips = false;
-    if(!empty($_SERVER["HTTP_CLIENT_IP"])){
+    if (!empty($_SERVER["HTTP_CLIENT_IP"])){
         $ip = $_SERVER["HTTP_CLIENT_IP"];
     }
-    if(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){ //获取代理ip
-    $ips = explode(',',$_SERVER['HTTP_X_FORWARDED_FOR']);
+    if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){ //获取代理ip
+        $ips = explode(',',$_SERVER['HTTP_X_FORWARDED_FOR']);
     }
-    if($ip){
+    if ($ip){
         $ips = array_unshift($ips,$ip);
     }
-    $count = count($ips);
-    for($i=0;$i<$count;$i++){
-        if(!preg_match("/^(10|172\.16|192\.168)\./i",$ips[$i])){//排除局域网ip
-        $ip = $ips[$i];
-        break;
+    if (is_array($ips)) {
+        $count = count($ips);
+        for ($i = 0; $i < $count; $i++){
+            if(!preg_match("/^(10|172\.16|192\.168)\./i",$ips[$i])){//排除局域网ip
+                $ip = $ips[$i];
+                break;
+            }
         }
     }
     $tip = empty($_SERVER['REMOTE_ADDR']) ? $ip : $_SERVER['REMOTE_ADDR'];
-    if($tip=="127.0.0.1"){ //获得本地真实IP
+    if($tip == "127.0.0.1"){ //获得本地真实IP
         return $this->get_onlineip();
     }else{
         return $tip;

@@ -131,12 +131,6 @@ $current_user = get_currentuserinfo();
                 }
                 $svgsrc = get_bloginfo("template_url").'/images/'.$userico[0].$svgtype;
                 echo '<a title="'.$usericoalt.'"><div class="commiticon" style="background-color:#'.$userico[1].';"><img class="commiticonimg" src="'.$svgsrc.'" alt="'.$usericoalt.'" /></div></a>';
-                /*
-<img src="'.$svgsrc.'" alt="'.$usericoalt.'" />
-<embed src="'.$svgsrc.'" 
-type="image/svg+xml"
-pluginspage="http://www.adobe.com/svg/viewer/install/" />
-*/
             }
             ?>
         </div>
